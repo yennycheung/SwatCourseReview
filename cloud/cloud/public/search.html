@@ -1,0 +1,48 @@
+<form method="POST" action="/search">
+<label><input type="checkbox" name="ac" value="checked">Air Conditioning</label><br>
+
+<label><input type="checkbox" name="laundry" value="checked">Laundry Machines</label> <br>
+
+<label><input type="checkbox" name="printer" value="checked">Printer</label><br>
+
+<label><input type="checkbox" name="subfree" value="checked">Substance Free</label><br>
+
+Located on <select name="campus" size="1">
+<option value="" selected=""></option>
+<option value="North">North</option>
+<option value="South">South</option>
+<option value="East">East</option>
+</select> campus.<br>
+
+On the <select name="floor" size="1">
+<option value="" selected=""></option>
+<option value="0">Pit</option>
+<option value="1">First</option>
+<option value="2">Second</option>
+<option value="3">Third</option>
+<option value="4">Fourth</option>
+</select> floor. <br>
+
+A <select name="type" size="1">
+<option value=""></option>
+<option value="Single">Single</option>
+<option value="Cubby Single"> -Cubby</option>
+<option value="Double">Double</option>
+<option value="D2">-Two-Room</option>
+<option value="D3">-Three-Room</option>
+<option value="T">Triple</option>
+<option value="T2">-Two-Room</option>
+<option value="Q">Quad</option>
+<option value="AS">Student Advisor</option>
+<option value="HWC">Hall Wellness Coordinator</option>
+<option value="COOP">Co-Op</option>
+<option value="APART">Apartment Living</option>
+</select>.<br><br>
+
+<h2>OR</h2>
+Room Number: <input type="text" name="room" size="4" maxlength="4"><br><br>
+
+<input type="hidden" name="results" value="yes">
+
+<input type="submit" value="Search!">
+</form>

@@ -1,0 +1,42 @@
+.pagecontact {
+	height: 700px !important;
+	.wrapper {
+		margin-top: 70px;
+		.bottom {
+				padding-top: 15px;
+			}
+	}
+}
+
+
+.contactscontainer {
+			width: 700px;
+			background: rgba(255,255,255,.95);
+			//float: center;
+			.top {
+				height: 80px;
+				span {
+					display: block;
+					text-transform:uppercase;
+					text-align:left;
+					line-height: 58px;
+					color:$green;
+					font-size: 15px;
+					padding-left:40px;
+					padding-top: 20px;
+					font-size:25px;
+					margin-top: 20px;
+					font-weight:700;
+				}
+				
+				.bottom{
+					padding-bottom: 20px;
+				}
+				.active {
+					background: #fff;
+				}
+			}
+			.bottom {
+				padding: 40px;
+			}
+		}

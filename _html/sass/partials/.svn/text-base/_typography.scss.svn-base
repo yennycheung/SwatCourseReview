@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'gotham_proregular';
+    src: url('../fonts/gothaproreg-webfont.eot');
+    src: url('../fonts/gothaproreg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gothaproreg-webfont.woff') format('woff'),
+         url('../fonts/gothaproreg-webfont.ttf') format('truetype'),
+         url('../fonts/gothaproreg-webfont.svg#gotham_proregular') format('svg');
+    font-weight: 100;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gotham_problack';
+    src: url('../fonts/gothaprobla-webfont.eot');
+    src: url('../fonts/gothaprobla-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gothaprobla-webfont.woff') format('woff'),
+         url('../fonts/gothaprobla-webfont.ttf') format('truetype'),
+         url('../fonts/gothaprobla-webfont.svg#gotham_problack') format('svg');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+@mixin gotham($type) {
+	@if $type == bold {
+		font-family: gotham_problack;
+	} @else {
+		 font-family: 'gotham_proregular';
+	}
+}
+
+p, li, a, span {
+    @include gotham(reg);
+    font-size:16px;
+}
+p, li, span, h1, h3, h4, h5, h6 {
+    @include gotham(reg);
+    color:$dark;
+    font-weight: 100;
+}
+h2 {
+    @include gotham(bold);
+    font-weight: 100;
+    color: $dark;
+    font-size: 42px;
+    text-transform: uppercase;
+    line-height: 1.2em;
+    margin-bottom: 20px;
+    
+}
+h3 {
+    font-size:19px;
+}
+h4 {
+    @include gotham(bold);
+    font-weight: 100;
+    color: $dark;
+    font-size: 32px;
+    text-transform: uppercase;
+    line-height: 1.2em;
+}
+h5 {
+    font-size: 18px;
+    @include gotham(reg);
+    color:$light-gray;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    
+}
+p {
+     font-size:18px;
+     line-height: 1.4em;
+     margin-bottom: 13px;
+}
+a {
+    color:$skyblue;
+    text-decoration:none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+strong {
+    @include gotham(bold);
+}

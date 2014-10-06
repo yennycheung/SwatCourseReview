@@ -1,0 +1,11 @@
+// Lights
+$light-gray:#8b9193;
+$light-blue:#7fa1ac;
+$even-lighter-blue:#ecf3f5;
+// Darks
+$dark:#323536;
+
+// Regular 
+$green:#05C151;
+$white:#fff;
+$skyblue:#15a7e4;

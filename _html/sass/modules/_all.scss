@@ -1,0 +1,10 @@
+// list items quick fix
+.list-fix {
+	list-style:none;
+	li {
+		float: left;
+		a {
+			text-decoration: none;
+		}
+	}
+}

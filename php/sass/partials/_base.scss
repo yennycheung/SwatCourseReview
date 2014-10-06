@@ -1,0 +1,174 @@
+* {
+	margin:0;
+	padding:0;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+html, body {
+	width:100%;
+	height:100%;
+}
+header, nav, section, article, aside, footer {
+   display:block;
+}
+.container {	
+	section {
+		width: 100%;
+		overflow: hidden;
+	}
+}
+.error {
+	color:red !important;
+	border-color:red !important;
+}
+.wrapper {
+	@include outer-container;	
+	@include media(tablet) {
+		width: 90%;
+	}
+}
+.base {
+
+}
+form {
+	width:100%;
+	overflow:hidden;
+}
+input, textarea {
+	width:100%;
+	color:#777;
+	
+}
+section {
+	width: 100%;
+	overflow: hidden;
+	clear: both;
+}
+.everythingcentered {
+	overflow:hidden;
+	padding:50px 0;
+	h2 {
+	 	text-align: center;
+	}
+	p {
+		text-align: center;
+	}
+}
+.hide {
+	display: none;
+}
+.show {
+	display:block;
+}
+:required {
+ 	border:1px solid #ddd;
+ 	box-shadow:none;
+ 	outline:none;
+}
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+.loader {
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:9000;
+	background:rgba(0,0,0,.7) url(../img/loader.gif) no-repeat center center;
+	background-size:80px;	
+}
+
+.table { 
+    display:table;
+    width:100%;
+    height:100%;
+}
+
+.sidebar {
+    width:380px;
+    height:100%;
+    background:silver;
+    display:table-cell;
+    white-space:nowrap;
+    vertical-align: top;
+}
+
+.content {
+    height:100%;
+    display:table-cell;
+    vertical-align: top;
+}
+
+
+
+.rating {
+	float: left;
+}
+.rating > ul {
+	list-style: none;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.rating > ul > li {
+	float: left;
+	margin-left: 2px;
+	background: url(../img/star.jpg) no-repeat left top;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+}
+.rating > ul > li:first-child {
+	margin-left: 0;
+}
+.rating > ul > li.hover {
+	background-position: left bottom;
+}
+.rating > ul > li.active {
+	background-position: left bottom;
+}
+.rating > span.less {
+	cursor: pointer;
+	background: url(../img/star.jpg) no-repeat left bottom;
+	display: block;
+	float: left;
+	height: 18px;
+	width: 18px;
+}
+
+
+.ratingbigger {
+	float: left;
+}
+.ratingbigger > ul {
+	list-style: none;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.ratingbigger > ul > li {
+	float: left;
+	margin-left: 2px;
+	background: url(../img/star-big.png) no-repeat left top;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+.ratingbigger > ul > li:first-child {
+	margin-left: 0;
+}
+.ratingbigger > ul > li.hover {
+	background-position: left bottom;
+}
+.ratingbigger > ul > li.active {
+	background-position: left bottom;
+}
+.ratingbigger > span.less {
+	cursor: pointer;
+	background: url(../img/star-big.png) no-repeat left bottom;
+	display: block;
+	float: left;
+	height: 32px;
+	width: 32px;
+}

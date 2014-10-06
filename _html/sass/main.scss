@@ -1,0 +1,37 @@
+//Vendor
+@import "vendor/normalize";
+@import "bourbon/bourbon";
+$visual_grid: true;
+@import "neat/neat";
+@import "neat/neat-helpers"; 
+
+// Change the grid settings
+
+
+// Define your breakpoints
+
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+
+//@import "vendor/bootstrap";
+
+// Modules
+@import "modules/all";
+@import "modules/mixins";
+
+
+// Partials
+@import "partials/colors";
+@import "partials/typography";
+@import "partials/base";
+@import "partials/buttons";
+
+// Elements
+@import "elements/header";
+@import "elements/footer";
+@import "elements/home";
+@import "elements/secondary";
+
+// Responsive
+@import "responsive/quarries";

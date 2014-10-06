@@ -1,0 +1,25 @@
+<form method="POST" action="/user">
+
+<span class="fieldname">First Name:</span>
+<input type="text" name="forename" size="20" maxlength="20" value="" onblur="checkName(this,fnamecheck)"><span id="fnamecheck"></span><br>
+
+<span class="fieldname">Last Name:</span>
+<input type="text" name="surname" size="20" maxlength="20" value="" onblur="checkName(this,snamecheck)"><span id="snamecheck"></span><br>
+
+<span class="fieldname">Email Address:</span>
+<input type="text" name="email" size="20" value="" onblur="checkEmail(this)"><span id="emailcheck"></span><br>
+
+<span class="fieldname">Graduation Year:</span>
+<input type="text" name="gradyear" size="4" maxlength="4" value="" onblur="checkGradyear(this)"><span id="gyearcheck"></span><br>
+
+<span class="fieldname">Password:</span>
+<input type="password" name="password" size="20" value="" onblur="checkPassword(this)"><span id="pwordcheck"></span><br>
+
+<span class="fieldname">Verify Password:</span>
+<input type="password" name="vpassword" size="20" onblur="verifyPassword(password, this)"><span id="vpasscheck"></span><br>
+
+<input type="hidden" name="submitted" value="yes">
+
+<span class="fieldname">&nbsp;</span>
+<input type="submit" value="Register!">
+</form>

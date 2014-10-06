@@ -1,0 +1,55 @@
+.header {
+	width:100%;
+	height: 72px;
+	background:$white;
+	padding:0;
+	position:fixed;
+	top:0;
+	z-index:900;
+	border-bottom:1px solid #eee;
+	opacity: 0.6;
+	
+	.wrapper {
+		max-width:95%;
+	}
+
+	.logo {
+		@include span-columns(3);
+		//height:40px;
+		float:left;
+		a:hover {
+			text-decoration: none;
+		}
+		span {
+			color:#333;
+			font-weight: 100;
+			font-size: 25px;
+			margin-top:18px;
+			display:block;
+			strong {
+				font-size: inherit;
+				font-weight: 700;
+				color:$green;
+			}
+		}
+	}
+	.login {
+		@include span-columns(6);
+		@include shift(3);
+		margin-top:12px;
+
+		form {
+			overflow: visible;
+			.col {
+				@include span-columns(2 of 6);
+			}
+			input[type=submit] {
+				height:auto;
+			}
+			input {
+				margin-top: 2px;
+			}
+		}
+	}
+}
+

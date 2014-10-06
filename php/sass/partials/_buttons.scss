@@ -1,0 +1,93 @@
+input {
+	padding:10px 10px;
+	margin-bottom:20px;
+	border:1px solid #ddd;
+	border-radius:3px;
+}
+input[type="submit"] {
+	text-align:center;
+	color:$green;
+	border:3px solid $green;
+	border-radius:3px;
+	text-transform:uppercase;
+	background: none;
+	height:60px;
+	&:hover {
+		background:#497a70;
+	}
+}
+.btn {
+	color:$white;
+	background: none;
+	border: 3px solid $white;
+	border-radius: 3px;
+	padding: 15px 15px;
+	display:block;
+	width:200px;
+	text-align:center;
+	font-weight:700;
+	font-size:18px;
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:23px;
+    height:23px;
+    background:url(../img/checkbox.png) left top no-repeat;
+    position: relative;
+    top:7px;
+    margin-right:15px;
+}
+input[type="checkbox"] + label {
+	font-size:14px;
+	color:#333;
+	height:39px;
+}
+input[type="checkbox"]:checked + label span {
+    display:inline-block;
+    width:23px;
+    height:23px;
+    background:url(../img/checkbox.png) left bottom no-repeat;
+}
+select {
+	
+	color:#777;
+}
+
+form {
+	.row {
+		margin-bottom:10px;
+	}
+}
+.select-style {
+    border:1px solid #ddd;
+    border-radius: 3px;
+    width: 150px;
+    overflow: hidden;
+    background: #fff url("../img/dropdown.jpg") no-repeat top right;
+    opacity: 0.6;
+    height:31px;
+   	float:left;
+} 
+
+.select-style { 
+	select {
+	    padding: 5px 8px;
+	    width: 100%;
+	    border: none;
+	    box-shadow: none;
+	    background: transparent;
+	    background-image: none;
+	    -webkit-appearance: none;
+	    &:focus {
+		    outline: none;
+		}
+	}
+}
+.select label {
+	width:30%;
+	float:left;
+}

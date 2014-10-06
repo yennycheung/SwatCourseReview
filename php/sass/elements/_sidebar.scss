@@ -1,0 +1,22 @@
+.sidebar {
+	background:#eee;
+	padding:100px 30px 50px;
+	.fixed {
+		position:fixed;
+	}
+	.row {
+		width:100%;
+		clear:both;
+		float:left;
+		margin-bottom: 20px;
+	}
+	.select {
+		label {
+			line-height: 31px;
+		}
+	}
+	.select-style {
+		width: 66%;
+		float:right;
+	}
+}

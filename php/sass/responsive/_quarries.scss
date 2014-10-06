@@ -1,0 +1,22 @@
+//Tablet (horizontal)
+@media (max-width: 1024px) { 
+	@import "tablet/base";
+	@import "tablet/footer";
+	@import "tablet/header";
+	@import "tablet/home";
+	@import "tablet/secondary";
+}
+
+//Tablet (Verticle) 
+@media (max-width: 786px) {
+	@import "tablet/verticle";
+}
+
+//Mobile Devices
+@media (max-width: 568px) { 
+	@import "mobile/base";
+	@import "mobile/footer";
+	@import "mobile/header";
+	@import "mobile/home";
+	@import "mobile/secondary";
+}

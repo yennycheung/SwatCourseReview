@@ -1,0 +1,47 @@
+@mixin rounded($radius : 5px ) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+ 
+@mixin border($size: 1px, $type: solid, $color: $red) {
+	border: $size $type $color;
+}
+
+@mixin fontname($type) {
+	@if $type == bold {
+		font-family: name;
+	} @else {
+		 font-family: name;
+	}
+}
+
+@mixin media($device) {
+  
+  $bp-tabletH: "(max-width: 1024px) and (min-width: 769px)";
+  $bp-tabletV: "(max-width: 768px) and (min-width: 569px)";
+  $bp-mobileH: "(max-width: 568px) and (min-width: 321px)";
+  $bp-mobileV: "(max-width: 320px)";
+  $bp-mobile: "(max-width: 568px)";
+  $bp-tablet: "(max-width: 1024px)"; 
+
+  @if $device == tabletH {
+    @media #{$bp-tabletH} { @content; }
+  }
+  @else if $device == tabletV {
+    @media #{$bp-tabletV} { @content; }
+  }
+  @else if $device == mobileH {
+    @media #{$bp-mobileH}  { @content; }
+  }
+  @else if $device == mobileV {
+    @media #{$bp-mobileV}  { @content; }
+  }
+  @else if $device == mobile {
+    @media #{$bp-mobile}  { @content; }
+  }
+  @else if $device == tablet {
+    @media #{$bp-tablet}  { @content; }
+  }
+
+}
