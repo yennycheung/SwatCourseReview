@@ -788,7 +788,6 @@ form .row {
     background: url(../img/bg.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    background-position: 50% 0;
     /*.signupcontainer {
     	width: 350px;
     	background: rgba(255,255,255,.95);
@@ -874,10 +873,9 @@ form .row {
       font-size: 35px; }
     .body section.hello .wrapper {
       text-align: center;
+      margin: auto;
       margin-top: 120px;
-      margin-bottom: 150px;
-      margin-left: 25%;
-      margin-right: 25%; }
+      margin-bottom: 150px; }
       .body section.hello .wrapper p {
         font-weight: 100;
         line-height: 1.6; }
@@ -889,10 +887,9 @@ form .row {
     background-attachment: fixed; }
     .body section.stats .wrapper {
       text-align: center;
+      margin: auto;
       margin-top: 100px;
-      margin-bottom: 100px;
-      margin-left: 25%;
-      margin-right: 25%; }
+      margin-bottom: 100px; }
     .body section.stats h1 {
       font-size: 70px;
       color: #fff;
