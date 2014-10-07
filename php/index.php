@@ -9,10 +9,10 @@
 			<div class="row-select">
 				<div class="select-style">
 					<select name="" id="search-criteria">
-						<option value="" name="Course ID">Course ID</option>
-						<option value="" name="Course Name">Course Name</option>
-						<option value="" name="Professor">Professor</option>
-						<option value="" name="Department">Department</option>
+						<option value="" name="course-id">Course ID</option>
+						<option value="" name="course-name">Course Name</option>
+						<option value="" name="professor">Professor</option>
+						<option value="" name="department">Department</option>
 					</select>
 				</div>
 			</div>
@@ -20,6 +20,7 @@
 				<input type="string" style="width:48%; height:31px; font-size:13px; padding:6px 10px;" name="" id="search" placeholder="Search for your class" >
 			</div>
 			<a href="#roomsearch" class="white btn searchbtn" >Search Now!</a>
+			<a href="#hello" class="arrow">▾</a>
 		</div><!-- wrapper -->
 	</section>
 <!--
@@ -92,22 +93,26 @@
 		</section>
 -->
 		
-		<section class = "hello">
+		<section class = "hello" id = "hello">
 			<div class="wrapper">
-				<h3>How can SwatCoRe help you?</h3>
-				<p><br>Welcome to SwatCore, the student-built Swarthmore Course Review Website.
-					<br>This website is built and maintained by Yenny Cheung. 
+				<h3>Hello Swarthmore!</h3>
+				<p><br>Welcome to SwatCoRe, the student-built Swarthmore Course Review Website. 
+					Are your classes interesting? Engaging professors? 
+					Want to let your peers to know more about your classes? 
+					Share your experience with us!
+					This website is built and maintained by Yenny Cheung. 
 					Feel free to reach me at swatcoreteam@gmail.com for any feedback.</p>
 			</div>
 		</section>
 
-		<section class = "stats"><!-- divParallax" data-speed="2">
+		<section class = "stats bgParallax" data-speed="3">
 			<div class="wrapper">
-				<h1>SwatCoRe</h1>
-			</div>-->
+				<h1>30</h1>
+				<p>courses reviewed... and the number is on the rise!</p>
+			</div>
 		</section>
 
-
+<!--
 		<section class="intro">
 			<div class="wrapper">
 				<div class="left">
@@ -119,7 +124,7 @@
 				</div>
 			</div>
 		</section>
-
+-->
 
 		<section class="testimonial">
 			<div class="wrapper">

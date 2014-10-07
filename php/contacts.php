@@ -4,12 +4,10 @@
 		
 		<section class="welcome bgParallax pagecontact" data-speed="2">
 			<div class="wrapper">
-				<div class="right">
-					<div class="contactscontainer">
-						<div class="top"> <span>Contact Us</span> </div>
-						<div class="bottom">
-							<p>DORMSDB is maintained by Alex Mitchell. If you have any questions, please email Alex at mithell17@grinnell.edu. Thank you for using DORMSDB!</p>	
-						</div>
+				<div class="contactscontainer">
+					<div class="top"> <span>Contact Us</span> </div>
+					<div class="bottom">
+						<p>SwatCoRe is maintained by Yenny Cheung. If you have any questions, please email Yenny at swatcoreteam@gmail.com. Thank you for using SwatCoRe!</p>	
 					</div>
 				</div>
 			</div><!-- wrapper -->
