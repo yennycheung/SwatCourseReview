@@ -8,14 +8,11 @@
 	        	<?php include('sidebar.php'); ?>
 	        </div>
 	        <div class="content">
-	        	<div class="topimg">
-	        		<img src="img/bigroom.jpg" alt="">
-	        	</div>
 	        	<div class="deatlstext">
 	        		<div class="row top">
 	        			<div class="title">
-	        				<h3>Norris 88331</h3>
-	        				<p>Double | 11 reviews | Campaus North</p>
+	        				<h3>CPSC 91 Cloud Computing - Kevin Webb</h3>
+	        				<p>CPSC 91 | 9 reviews</p>
 	        			</div>
 	        			<div class="ratingbigger">
 	        				<div class="ratingbigger" data-rating-max="5"></div>
@@ -25,21 +22,36 @@
         					<a href="#"><img src="img/iconplus.jpg" alt=""></a>
 	        			</div>
 	        		</div>
+	        		<div class="row classdesc">
+	        			<div class="left">
+	        				<h4>Course Summary</h4>
+	        			</div>
+	        			<div class="right">
+		        			<p>On the Internet today, popular services like Google, Facebook, and
+							many others are too large to be hosted by just a few servers.
+							Instead, service providers "scale out" across a coordinated set of
+							hundreds to thousands of machines.  Such clusters yield an interesting
+							operating environment, the data center, in which a single
+							administrative entity owns a network at the scale that resembles the
+							Internet. To meet customer demands, administrators often face
+							stringent inter-machine coordination constraints.
+	
+							In this course, we'll examine the current state of the art in
+							providing cloud-based services, including many interesting problems in
+							distributed systems, networking, failure recovery, and OS
+							virtualization.
+							</p>
+						</div>
+	        		</div>
 	        		<div class="row closedetails">
 	        			<div class="left">
-	        				<h4>Amenities</h4>
+	        				<h4>Details</h4>
 	        			</div>
 	        			<div class="right">
 	        				<div class="col">
-	        					<p class="airconditioning">
-	        						<i><img src="img/icon-wind.jpg" alt=""></i>
-	        						<span>Air Conditioning</span>
-	        					</p>
-	        				</div>
-	        				<div class="col">
-	        					<p class="laundry">
-	        						<i><img style="margin-left:10px;" src="img/iconlaundry.jpg" alt=""></i>
-	        						<span style="left:31px;">Laundry in the Building</span>
+	        					<p class="lab">
+	        						<i><img src="img/Lab.png" width="60" height="60" alt=""></i>
+	        						<span>Natural Sciences</span>
 	        					</p>
 	        				</div>
 	        			</div>	
@@ -49,7 +61,7 @@
 	        				<h4>Reviews</h4>
 	        			</div>
 	        			<div class="right">
-	        				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus alias eaque suscipit molestiae iste temporibus aliquid obcaecati quam doloribus, fuga voluptatem repudiandae culpa ad quibusdam, maxime aspernatur voluptas ullam quia?</p>
+	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
 	        			</div>	
 	        		</div>
 	        	</div><!-- end details -->

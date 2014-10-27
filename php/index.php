@@ -17,7 +17,7 @@
 				</div>
 				<input type="string" name="" id="search" placeholder="Search for your class" >
 			</div>
-			<a href="#roomsearch" class="white btn searchbtn" >Search Now!</a>
+			<a href="results.php" class="white btn searchbtn" >Search Now!</a>
 			<a href="#hello" class="arrow">▾</a>
 		</div><!-- wrapper -->
 	</section>

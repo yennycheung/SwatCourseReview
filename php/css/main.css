@@ -398,11 +398,13 @@ h2 {
 
 h3 {
   color: #666666;
+  font-weight: 500;
   font-size: 25px; }
 
 p {
   color: #999999;
-  font-size: 18px; }
+  font-size: 18px;
+  font-weight: 300; }
 
 a {
   text-decoration: none; }
@@ -600,7 +602,11 @@ input[type="submit"] {
   width: 200px;
   text-align: center;
   font-weight: 700;
-  font-size: 18px; }
+  font-size: 18px;
+  /*&:hover {
+  	background: #497a70;
+  	background-color: rgba(0,0,0,0.8);
+  }*/ }
 
 input[type="checkbox"] {
   display: none; }
@@ -827,7 +833,6 @@ form .row {
     	}
     }*/ }
     .body section.welcome .wrapper {
-      margin-left: width/2;
       margin-top: 250px;
       margin-bottom: 50px;
       text-align: center; }
@@ -990,6 +995,28 @@ form .row {
     width: 90%; }
     .results .realContent a {
       color: #777; }
+    .results .realContent .list {
+      width: 90%;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 10px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: rgba(0, 66, 55, 0.4);
+      margin: 20px 0; }
+      .results .realContent .list span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal; }
+      .results .realContent .list p {
+        font-weight: 300;
+        font-size: 15px;
+        margin-left: 10px; }
+        .results .realContent .list p strong {
+          font-size: inherit;
+          font-weight: 500; }
+    .results .realContent .list:hover {
+      border-color: #006655; }
   .results .bottom {
     background: #fff;
     margin-top: -4px;
@@ -1009,25 +1036,20 @@ form .row {
   .secondary .content {
     background: #fff; }
 
-.details .content .topimg {
-  width: 100%;
-  height: 400px;
-  overflow: hidden; }
-  .details .content .topimg img {
-    width: 100%; }
 .details .content .row {
+  margin: 75px 0;
   width: 100%;
-  overflow: hidden; }
+  overflow: auto; }
   .details .content .row.top {
     border-bottom: 1px solid #eee;
     padding: 20px 40px; }
     .details .content .row.top div {
       float: left; }
     .details .content .row.top .title h3 {
-      font-weight: 100;
-      font-size: 22px; }
+      line-height: 40px; }
     .details .content .row.top .title p {
-      font-size: 14px; }
+      font-size: 15px;
+      line-height: 22px; }
     .details .content .row.top .right {
       float: right;
       margin-top: 9px;
@@ -1041,25 +1063,45 @@ form .row {
   .details .content .row .ratingbigger {
     margin-left: 40px;
     margin-top: 4px; }
+.details .content .classdesc {
+  padding: 0 30px; }
+  .details .content .classdesc .left {
+    float: left;
+    width: 15%;
+    color: #777; }
+  .details .content .classdesc .right {
+    float: left;
+    width: 80%;
+    overflow: hidden; }
+    .details .content .classdesc .right p {
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 20px; }
 .details .content .closedetails {
-  padding: 40px; }
+  padding: 0 30px; }
   .details .content .closedetails .left {
     float: left;
     width: 15%;
     color: #777; }
   .details .content .closedetails .right {
-    float: right;
+    float: left;
     width: 85%; }
-    .details .content .closedetails .right .airconditioning {
+    .details .content .closedetails .right .lab {
       margin-bottom: 20px; }
     .details .content .closedetails .right i {
-      display: inline-block; }
+      display: inline-block;
+      height: 100%;
+      width: auto; }
     .details .content .closedetails .right span {
       position: relative;
       top: -22px;
       left: 20px; }
     .details .content .closedetails .right p {
-      font-size: 14px; }
+      font-size: 15px; }
+.details .content .two p {
+  padding: 30px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee; }
 
 .pagecontact {
   height: 700px !important; }
@@ -1073,7 +1115,7 @@ form .row {
 .contactscontainer {
   width: 700px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.95); }
+  background: rgba(255, 255, 255, 0.6); }
   .contactscontainer .top {
     height: 80px; }
     .contactscontainer .top span {
@@ -1094,7 +1136,9 @@ form .row {
   .contactscontainer .bottom {
     padding: 40px; }
     .contactscontainer .bottom p {
-      font-weight: 300; }
+      font-weight: 300;
+      color: #777;
+      line-height: 1.5; }
 
 @media (max-width: 1024px) {
   .home .banner {

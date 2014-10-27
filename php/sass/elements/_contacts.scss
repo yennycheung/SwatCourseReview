@@ -14,8 +14,7 @@
 .contactscontainer {
 			width: 700px;
 			margin: auto;
-			background: rgba(255,255,255,.95);
-
+			background: rgba(255,255,255,.6);
 			//float: center;
 			.top {
 				height: 80px;
@@ -44,6 +43,8 @@
 				padding: 40px;
 				p{
 					font-weight: 300;
+					color: #777;
+					line-height: 1.5;
 				}	
 			}
 		}

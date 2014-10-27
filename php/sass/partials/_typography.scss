@@ -19,6 +19,7 @@ h2 {
 }
 h3 {
      color:$darkgray;
+     font-weight: 500;
      font-size:25px;
 }
 h4 {
@@ -30,6 +31,7 @@ h5 {
 p {
 	color:$gray;
 	font-size:18px;
+    font-weight: 300;
 }
 a {
     text-decoration:none;

@@ -1,0 +1,19 @@
+{
+    "results": [
+        {
+            "class": {
+                "subject": "CPSC",
+                "number": "91",
+                "course-name": "cloudcomputing",
+                "section": "",
+                "insF": "kevin",
+                "insL": "webb",
+                "raters": "1",
+                "department": "computerscience",
+                "locB": "sci",
+                "locN": 181,
+
+            }
+        },
+    ]
+}

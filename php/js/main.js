@@ -45,7 +45,36 @@ $(function() {
 		//minus: true // step minus button
 	});
 
+/*
+	//populating courses
+	var contentSize = 30;
+    $.getResults(function(){
+    	console.log('som');
+		var	endDiv = '</div>',
+			title = '<div class="title">',
+			description = '<div class="description">',
+			type = '<span class="type">',
+			reviews = '<span class="reviews">',
+			campus = '<span class="campus">',
+			endSpan = '</span>',
+			rating = '<div class="right"><div class="rating" data-rating-max="'
+			endRating = '"></div>';
 
+
+	    for(var i = 0; i < response.results.length; i++) {
+	    	var loop = i+1;
+	    	if(loop>4){
+	    		loop = loop%4+1;
+	    	}
+
+		var entryStart = '<div class="entry"><img src="img/room' + loop + '.jpg" alt=""><div class="bottom"><div class="left">';
+		var snippet = '<a href="details.php">' + entryStart + title + "Course Title" + " " + "Course Id: xxx" + '</p>' + endDiv + description + type + " W " + ' |' + endSpan + reviews + " 5 " + " Reviews | "+ endSpan + endSpan + endDiv + endDiv + rating + " 5 " + endRating + endDiv + endDiv + endDiv + '</a> ';
+		console.log(snippet);
+		$('.realContent').append(snippet);
+		}
+    });
+*/
+/*
 	//getting JSON SEARCH
 	var url = "json/db.json";
 	var search;
@@ -102,5 +131,5 @@ $(function() {
 				
 
 	    }
-	});
+	});*/
 });

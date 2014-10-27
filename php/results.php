@@ -17,9 +17,32 @@ if(isset($_POST)){
 	        	<?php include('sidebar.php'); ?>
 	        </div>
 	        <div class="content">
-	        	<h3 id="resultText">149 Rooms Found</h3>
+	        	<h3 id="resultText">Courses Found</h3>
 	        	<div class="realContent">
-
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 91</strong> | CLOUD COMPUTING  | Kevin Webb</p>
+							<p>NS | 9 Reviews | Rating: 3
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 65</strong> | NATURAL LANGUAGE PROCESSING | Richard Wicentowski </p>
+							<p>NS | 4 Reviews | Rating: 4
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 21</strong> | INTRO TO COMPUTER SCIENCE | Lisa Meeden</p>
+							<p>NS | 13 Reviews | Rating: 5
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+							<p>NS | 3 Reviews | Rating: 4
+						</span>
+					</div>
 	        	</div>
 
 
