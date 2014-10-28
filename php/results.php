@@ -43,6 +43,30 @@ if(isset($_POST)){
 							<p>NS | 3 Reviews | Rating: 4
 						</span>
 					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+							<p>NS | 3 Reviews | Rating: 4
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+							<p>NS | 3 Reviews | Rating: 4
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+							<p>NS | 3 Reviews | Rating: 4
+						</span>
+					</div>
+					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+						<span>
+							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+							<p>NS | 3 Reviews | Rating: 4
+						</span>
+					</div>
 	        	</div>
 
 
