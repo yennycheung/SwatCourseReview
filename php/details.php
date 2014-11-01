@@ -61,10 +61,12 @@
 	        				<h4>Reviews</h4>
 	        			</div>
 	        			<div class="right">
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+	        				<div id="reviews">
+		        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+		        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+		        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+		        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+	        				</div>
 	        				<div class="add-review">
 	        					<textarea rows="2" name="reviewText" id="reviewText" placeholder="Add Your Course Review"></textarea>
   								<input type="submit" class="add-review-btn" value="Add Review"/>

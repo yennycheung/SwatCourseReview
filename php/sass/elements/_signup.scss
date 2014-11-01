@@ -1,0 +1,50 @@
+.login {
+	height: 700px !important;
+	.wrapper {
+		margin-top: 50px;
+		margin-left: 25%;
+		margin-right: 25%;
+		.bottom {
+				padding-top: 15px;
+			}
+	}
+}
+
+
+.contactscontainer {
+			width: 700px;
+			margin: auto;
+			background: rgba(255,255,255,.6);
+			//float: center;
+			.top {
+				height: 80px;
+				span {
+					display: block;
+					text-transform:uppercase;
+					text-align:left;
+					line-height: 58px;
+					color:$green;
+					padding-left:40px;
+					padding-top: 20px;
+					font-size:25px;
+					margin-top: 20px;
+					font-weight:500;
+				}
+
+				.bottom{
+					padding-bottom: 20px;
+					
+				}
+				.active {
+					background: #fff;
+				}
+			}
+			.bottom {
+				padding: 40px;
+				p{
+					font-weight: 300;
+					color: #777;
+					line-height: 1.5;
+				}	
+			}
+		}
