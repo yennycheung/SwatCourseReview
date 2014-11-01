@@ -2,13 +2,18 @@
 
 require_once('header.php'); 
 
-$postval = json_encode($_POST);
+$searchCriteria = json_encode($_POST["search-criteria"]);
+$searchString = json_encode($_POST["search-string"]);
+
 if(isset($_POST)){
 ?>
 	<script>
-		var searchResultData = <?php echo $postval; ?>;
+		var searchCriteria = <?php echo $searchCriteria; ?>;
+		var searchString = <?php echo $searchString; ?>;
 	</script>
+
 <?php } ?>
+
 	<div class="body results">
 	<div class="loader"></div>
 
@@ -19,6 +24,7 @@ if(isset($_POST)){
 	        <div class="content">
 	        	<h3 id="resultText">Courses Found</h3>
 	        	<div class="realContent">
+	        		<!--
 					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
 						<span>
 							<p><strong>CPSC 91</strong> | CLOUD COMPUTING  | Kevin Webb</p>
@@ -43,6 +49,7 @@ if(isset($_POST)){
 							<p>NS | 3 Reviews | Rating: 4
 						</span>
 					</div>
+					-->
 	        	</div>
 
 

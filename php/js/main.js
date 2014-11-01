@@ -47,22 +47,48 @@ $(function() {
 
 	// Initialize Parse
 	Parse.initialize("rxgRS4EuA2QMKJX6ptoz6jcAdUOa0IwJD7jFWjXG", "MbqgQljkBjOWK6mFlQTnKB612dsE7cbVPSKkEPJU");
-	/*
-	var query = new Parse.Query("TestCourse");
-	query.equalTo("dept", "CPSC");
-	query.find({
-		success: function(results) {
-			for (i=0; i<results.length; i++) {
-				course = results[i]
-				console.log(course.get("courseName"))
-			}
-		},
-		error: function() {
-			console.log("error");
+
+	function courseToContent(courseObject) {
+		content = "<div class = \"list\" onclick=\"location.href='details.php';\" style=\"cursor:pointer;\">\n<span>";
+		content += ("<p><strong>" + courseObject.get("dept") + " " + courseObject.get("courseNum") + "</strong>");
+		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("instrFirstName") + " " + courseObject.get("instrLastName") + "</p>\n");
+		content += "<p>NS | 9 Reviews | Rating: 3";
+		content += "\n</span>\n</div>";
+		return content;
+	}
+
+	$(document).ready(function() {
+		var query = new Parse.Query("TestCourse");
+		if (searchCriteria == "course-id") {
+			query.equalTo("courseNum", Number(searchString));
 		}
+		if (searchCriteria == "course-name") {
+			query.equalTo("courseName", searchString);
+		}		
+		if (searchCriteria == "professor") {
+			query.equalTo("instrLastName", searchString);
+		}
+		if (searchCriteria == "department") {
+			console.log("appending equalTo(" + searchString + ") to dept");
+			query.equalTo("dept", searchString);
+		}
+
+		query.find({
+			success: function(results) {
+				for (i=0; i<results.length; i++) {
+					course = results[i];
+					$(".realContent").append(courseToContent(course));			
+				}
+			},
+			error: function() {
+				console.log("search error!");
+			}
+		});
 	});
-	*/
-	
+
+
+
+
 	$(document).ready(function(){
 	    $('textarea').autosize();   
 	});
