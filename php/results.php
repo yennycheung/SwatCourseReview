@@ -2,12 +2,15 @@
 
 require_once('header.php'); 
 
-$postval = json_encode($_POST);
+$searchCriteria = json_encode($_POST["search-criteria"]);
+$searchString = json_encode($_POST["search-string"]);
 if(isset($_POST)){
 ?>
 	<script>
-		var searchResultData = <?php echo $postval; ?>;
-		console.log(searchResultData);
+		var searchCriteria = <?php echo $searchCriteria; ?>;
+		var searchString = <?php echo $searchString; ?>;
+		console.log(searchCriteria);
+		console.log(searchString);
 	</script>
 <?php } ?>
 	<div class="body results">

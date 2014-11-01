@@ -9,14 +9,14 @@
 			<form action="results.php" method="post">
 			    <div class="row-select">
 				    <div class="select-style">
-					    <select name="" id="search-criteria">
-						    <option value="" name="course-id">Course ID</option>
-					    	<option value="" name="course-name">Course Name</option>
-						    <option value="" name="professor">Professor</option>
-						    <option value="" name="department">Department</option>
+					    <select name="search-criteria" id="search-criteria">
+						    <option value="course-id" name="">Course ID</option>
+					    	<option value="course-name" name="">Course Name</option>
+						    <option value="professor" name="">Professor</option>
+						    <option value="department" name="">Department</option>
 					    </select>
 				    </div>
-				    <input type="string" name="" id="search" placeholder="Search for your class" >
+				    <input type="string" name="search-string" id="search" placeholder="Search for your class" >
 			    </div>
 				<input type="submit" class="white btn searchbtn" value="Search Now!">
 			</form>
