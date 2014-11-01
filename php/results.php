@@ -7,6 +7,7 @@ if(isset($_POST)){
 ?>
 	<script>
 		var searchResultData = <?php echo $postval; ?>;
+		console.log(searchResultData);
 	</script>
 <?php } ?>
 	<div class="body results">
@@ -35,12 +36,6 @@ if(isset($_POST)){
 						<span>
 							<p><strong>CPSC 21</strong> | INTRO TO COMPUTER SCIENCE | Lisa Meeden</p>
 							<p>NS | 13 Reviews | Rating: 5
-						</span>
-					</div>
-					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
-						<span>
-							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
-							<p>NS | 3 Reviews | Rating: 4
 						</span>
 					</div>
 					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
