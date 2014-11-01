@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/ezValidation.js"></script>
 	<script type="text/javascript" src="js/star-rating.min.js"></script>
+	<script type="text/javascript" src="js/parse-1.3.1.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

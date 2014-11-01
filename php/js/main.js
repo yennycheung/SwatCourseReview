@@ -45,6 +45,22 @@ $(function() {
 		//minus: true // step minus button
 	});
 
+	// Initialize Parse
+	Parse.initialize("rxgRS4EuA2QMKJX6ptoz6jcAdUOa0IwJD7jFWjXG", "MbqgQljkBjOWK6mFlQTnKB612dsE7cbVPSKkEPJU");
+	var query = new Parse.Query("TestCourse");
+	query.equalTo("dept", "CPSC");
+	query.find({
+		success: function(results) {
+			for (i=0; i<results.length; i++) {
+				course = results[i]
+				console.log(course.get("courseName"))
+			}
+		},
+		error: function() {
+			console.log("error");
+		}
+	});
+
 /*
 	//populating courses
 	var contentSize = 30;
