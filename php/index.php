@@ -6,18 +6,20 @@
 		<div class="wrapper">
 			<h1>Swat<strong>C</strong>o<strong>R</strong>e</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
-			<div class="row-select">
-				<div class="select-style">
-					<select name="" id="search-criteria">
-						<option value="" name="course-id">Course ID</option>
-						<option value="" name="course-name">Course Name</option>
-						<option value="" name="professor">Professor</option>
-						<option value="" name="department">Department</option>
-					</select>
-				</div>
-				<input type="string" name="" id="search" placeholder="Search for your class" >
-			</div>
-			<a href="results.php" class="white btn searchbtn" >Search Now!</a>
+			<form action="results.php" method="post">
+			    <div class="row-select">
+				    <div class="select-style">
+					    <select name="" id="search-criteria">
+						    <option value="" name="course-id">Course ID</option>
+					    	<option value="" name="course-name">Course Name</option>
+						    <option value="" name="professor">Professor</option>
+						    <option value="" name="department">Department</option>
+					    </select>
+				    </div>
+				    <input type="string" name="search-query" id="search" placeholder="Search for your class" >
+			    </div>
+				<input type="submit" class="white btn searchbtn" value="Search Now!">
+			</form>
 			<a href="#hello" class="arrow">▾</a>
 		</div><!-- wrapper -->
 	</section>
