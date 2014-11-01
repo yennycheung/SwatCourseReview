@@ -31,6 +31,18 @@ $(function() {
 		});
 	});
 
+    var start = 0,
+    max = 30,
+    scrollPos = $(window).scrollTop();
+    $(window).scroll(function() {  
+    	if (scrollPos > 550 && scrollPos < 1655 && start < max) {
+    		//console.log(scrollPos);
+    		console.log(start);
+    		start += 1 
+       		$("#num-reviews").text(start);
+    	} 
+    	scrollPos = $(window).scrollTop();
+	});
 
 	// loader
 	$(window).load(function() {
@@ -52,7 +64,7 @@ $(function() {
 	$(".add-review-btn").click(function(){
 		var content = document.getElementById('reviewText').value;
 		console.log(content);
-		$('.two.right').append('<p>'+content+'</p>');
+		$('#reviews').append('<p>'+content+'</p>');
 	});
 
 
