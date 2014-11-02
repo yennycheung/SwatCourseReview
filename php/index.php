@@ -1,4 +1,10 @@
-<?php require_once('header.php'); ?>
+<!DOCTYPE html>
+<html lang="en" >
+
+	<?php require_once('header.php'); ?>
+
+	<!-- Begin of Body -->
+
 	<div class="body">
 	<div class="loader"></div>
 
@@ -6,7 +12,7 @@
 		<div class="wrapper">
 			<h1><strong>Swat</strong> Course Review</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
-			<form action="results.php" method="post">
+			<form id="id-form-search"action="results.php" method="post">
 			    <div class="row-select">
 				    <div class="select-style">
 					    <select name="search-criteria" id="search-criteria">
@@ -25,51 +31,66 @@
 	</section>
 
 		
-		<section class = "hello" id = "hello">
-			<div class="wrapper">
-				<h3>Hello Swarthmore!</h3>
-				<p><br>Welcome to SwatCourseReview, the student-built Swarthmore Course Review Website. 
-					Are your classes interesting? Engaging professors? 
-					Want to let your peers to know more about your classes? 
-					Share your experience with us!
-					This website is built and maintained by Yenny Cheung and Peng Zhao. 
-					Feel free to reach us at swatcoreteam@gmail.com for any feedback.</p>
+	<section class = "hello" id = "hello">
+		<div class="wrapper">
+			<h3>Hello Swarthmore!</h3>
+			<p><br>Welcome to SwatCourseReview, the student-built Swarthmore Course Review Website. 
+				Are your classes interesting? Engaging professors? 
+				Want to let your peers to know more about your classes? 
+				Share your experience with us!
+				This website is built and maintained by Yenny Cheung and Peng Zhao. 
+				Feel free to reach us at swatcoreteam@gmail.com for any feedback.</p>
+		</div>
+	</section>
+
+	<section class = "stats bgParallax" data-speed="3">
+		<div class="wrapper">
+			<h1 id="num-reviews">0</h1>
+			<p>courses reviewed... and the number is on the rise!</p>
+		</div>
+	</section>
+
+
+	<section class="testimonial">
+		<div class = "wrapper">
+			<h3>Meet your developers!</h3>
+		</div>
+		<div class="wrapper">
+			<div class="col">
+				<img src="img/yenny.jpg" alt="">
+				<p>I believe that more academic resources should be available to students in a transparent way. SwatCourseReview provides us with a clean interface to search and review for courses taught by individual professors, providing information for students to pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
 			</div>
-		</section>
-
-		<section class = "stats bgParallax" data-speed="3">
-			<div class="wrapper">
-				<h1 id="num-reviews">0</h1>
-				<p>courses reviewed... and the number is on the rise!</p>
+			<div class="col">
+				<img src="img/shivam.jpg" alt="">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
 			</div>
-		</section>
-
-
-		<section class="testimonial">
-			<div class = "wrapper">
-				<h3>Meet your developers!</h3>
+			<div class="col">
+				<img src="img/alex.jpg" alt="">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
 			</div>
-			<div class="wrapper">
-				<div class="col">
-					<img src="img/yenny.jpg" alt="">
-					<p>I believe that more academic resources should be available to students in a transparent way. SwatCourseReview provides us with a clean interface to search and review for courses taught by individual professors, providing information for students to pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
-				</div>
-				<div class="col">
-					<img src="img/shivam.jpg" alt="">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
-				</div>
-				<div class="col">
-					<img src="img/alex.jpg" alt="">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
-				</div>
-			</div>
-		</section>
+		</div>
+	</section>
 
-		<section class="test">
-			<div class = "wrapper">
-			</div>
-		</section>
+	<section class="test">
+		<div class = "wrapper">
+		</div>
+	</section>
 
 
-	</div><!-- body -->
-<?php require_once('footer.php'); ?>
+	</div>
+
+	<!-- End of Body -->
+
+	<?php require_once('footer.php'); ?>
+
+	<!-- JS INCLUDES -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/ezValidation.js"></script>
+	<script type="text/javascript" src="js/star-rating.min.js"></script>
+	<script type="text/javascript" src="js/parse-1.3.1.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/page_index.js"></script>
+
+</body>
+</html>
+

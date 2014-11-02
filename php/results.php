@@ -1,60 +1,82 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en" >
 
-require_once('header.php'); 
+<?php require_once('header.php'); ?>
 
-$searchCriteria = json_encode($_POST["search-criteria"]);
-$searchString = json_encode($_POST["search-string"]);
-
-if(isset($_POST)){
+<?php
+	$hasPostData = False;
+	if(isset($_POST)) {
+		if (array_key_exists("search-criteria", $_POST) && array_key_exists("search-string", $_POST) ) {
+			$searchCriteria = json_encode($_POST["search-criteria"]);
+			$searchQuery = json_encode($_POST["search-string"]);
+			$hasPostData = True;
+		}
+	}
 ?>
-	<script>
-		var searchCriteria = <?php echo $searchCriteria; ?>;
-		var searchString = <?php echo $searchString; ?>;
-	</script>
-
-<?php } ?>
-
-	<div class="body results">
-	<div class="loader"></div>
-
-		<div class="table">
-	        <div class="sidebar">
-	        	<?php include('sidebar.php'); ?>
-	        </div>
-	        <div class="content">
-	        	<h3 id="resultText">Courses Found</h3>
-	        	<div class="realContent">
-	        		<!--
-					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
-						<span>
-							<p><strong>CPSC 91</strong> | CLOUD COMPUTING  | Kevin Webb</p>
-							<p>NS | 9 Reviews | Rating: 3
-						</span>
-					</div>
-					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
-						<span>
-							<p><strong>CPSC 65</strong> | NATURAL LANGUAGE PROCESSING | Richard Wicentowski </p>
-							<p>NS | 4 Reviews | Rating: 4
-						</span>
-					</div>
-					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
-						<span>
-							<p><strong>CPSC 21</strong> | INTRO TO COMPUTER SCIENCE | Lisa Meeden</p>
-							<p>NS | 13 Reviews | Rating: 5
-						</span>
-					</div>
-					<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
-						<span>
-							<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
-							<p>NS | 3 Reviews | Rating: 4
-						</span>
-					</div>
-					-->
-	        	</div>
 
 
-	        </div>
-	    </div>
-	</div><!-- end body -->
+<!-- Begin of Body -->
+<div class="body results">
+<div class="loader"></div>
+
+	<div class="table">
+        <div class="sidebar">
+        	<?php include('sidebar.php'); ?>
+        </div>
+        <div class="content">
+
+        <?php if ($hasPostData): ?>
+        	<div id="data-search-criteria" style="display: none;"><?php echo $searchCriteria ?></div>
+        	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
+        <?php endif ?>    
+        	<h3 id="resultText">Courses Found</h3>
+        	<div class="realContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- End of Body -->
 
 <?php require_once('footer.php'); ?>
+
+
+<!-- JS INCLUDES -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/ezValidation.js"></script>
+<script type="text/javascript" src="js/star-rating.min.js"></script>
+<script type="text/javascript" src="js/parse-1.3.1.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/auto_size.js"></script>
+<script type="text/javascript" src="js/page_results.js"></script>
+
+</body>
+</html>
+
+
+<!-- Format of .realContent -->
+<!--
+<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+	<span>
+		<p><strong>CPSC 91</strong> | CLOUD COMPUTING  | Kevin Webb</p>
+		<p>NS | 9 Reviews | Rating: 3
+	</span>
+</div>
+<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+	<span>
+		<p><strong>CPSC 65</strong> | NATURAL LANGUAGE PROCESSING | Richard Wicentowski </p>
+		<p>NS | 4 Reviews | Rating: 4
+	</span>
+</div>
+<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+	<span>
+		<p><strong>CPSC 21</strong> | INTRO TO COMPUTER SCIENCE | Lisa Meeden</p>
+		<p>NS | 13 Reviews | Rating: 5
+	</span>
+</div>
+<div class = "list" onclick="location.href='details.php';" style="cursor:pointer;">
+	<span>
+		<p><strong>CPSC 68</strong> | BIOINFORMATICS | Ameet Soni</p>
+		<p>NS | 3 Reviews | Rating: 4
+	</span>
+</div>
+-->
