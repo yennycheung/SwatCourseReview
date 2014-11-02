@@ -24,7 +24,7 @@
 	<div class="header">
 		<div class="wrapper">
 			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CR</a></div>
-			<button id="id-btn-logout" type="button">Log Out</button>
+			<button id="id-btn-logout" type="button" style="display: none;">Log Out</button>
 			<div class="login">
 				<form action="#" id="id-form-login">
 					<div class="col">
