@@ -7,7 +7,7 @@
 					<li><a href="signup.php">Sign up</a></li>
 				</ul>
 			</div>	
-			<div class="right">&copy; 2014 <strong>Swat</strong>CR
+			<div class="right">&copy; 2014 <strong>SWAT</strong>CoRe
 			</div>
 		</div>
 	</div><!-- end footer -->

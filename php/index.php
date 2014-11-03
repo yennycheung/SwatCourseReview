@@ -4,7 +4,7 @@
 
 	<section class="welcome bgParallax" data-speed="2">
 		<div class="wrapper">
-			<h1><strong>Swat</strong> Course Review</h1>
+			<h1><strong>Swat</strong>CoRe</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
 			<form action="results.php" method="post">
 			    <div class="row-select">
@@ -28,7 +28,7 @@
 		<section class = "hello" id = "hello">
 			<div class="wrapper">
 				<h3>Hello Swarthmore!</h3>
-				<p><br>Welcome to SwatCourseReview, the student-built Swarthmore Course Review Website. 
+				<p><br>Welcome to SwatCoRe, the student-built Swarthmore Course Review Website. 
 					Are your classes interesting? Engaging professors? 
 					Want to let your peers to know more about your classes? 
 					Share your experience with us!

@@ -25,7 +25,7 @@
 <body>
 	<div class="header">
 		<div class="wrapper">
-			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CR</a></div>
+			<div class="logo"><a href="index.php"><span><strong>SWAT</strong>CoRe</a></div>
 			<div class="login">
 				<form action="#" id="login">
 					<div class="col">
