@@ -1,4 +1,3 @@
-
 	<div class="footer">
 		<div class="wrapper">
 			<div class="left">
@@ -10,12 +9,5 @@
 			<div class="right">&copy; 2014 <strong>SWAT</strong>CoRe
 			</div>
 		</div>
-	</div><!-- end footer -->
-
-	<!-- JS INCLUDES -->
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/ezValidation.js"></script>
-	<script type="text/javascript" src="js/star-rating.min.js"></script>
-	<script src="js/main.js"></script>
-</body>
-</html>
+	</div>
+</div><!-- end footer -->

@@ -6,14 +6,15 @@ input {
 }
 input[type="submit"] {
 	text-align:center;
-	color:$green;
-	border:3px solid $green;
+	color:$lightgreen;
+	border:2px solid $lightgreen;
 	border-radius:3px;
 	text-transform:uppercase;
 	background: none;
 	height:60px;
 	&:hover {
-		background:#497a70;
+		border-color:$green;
+		color: $green;
 	}
 }
 
@@ -32,6 +33,10 @@ input[type="submit"] {
 		background: #497a70;
 		background-color: rgba(0,0,0,0.8);
 	}*/
+}
+
+input[type="email"], input[type="password"]{
+	opacity:0.6;
 }
 
 input[type="checkbox"] {

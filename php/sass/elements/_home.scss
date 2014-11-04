@@ -11,8 +11,7 @@
 		background-attachment:fixed;
 
 		.wrapper {
-			margin-top:250px;
-			margin-bottom: 50px;
+			margin-top:180px;
 			text-align: center;
 
 			h1 {
@@ -32,6 +31,56 @@
 				font-weight:lighter;
 				text-shadow:1px 0px 1px #666;
 			}
+
+			.icon-menu{
+				margin-top: 15px;
+				.sel{
+					cursor:pointer;
+					display: inline-block;
+					border: solid rgba(255,255,255,0.6);
+					border-width: 2px;
+					border-radius: 3px;
+					width: 90px;
+					height: 90px;
+					margin: 10px;
+					.icon{
+						width:50px;
+						height:50px;
+						padding: 6px 10px 6px 10px;
+						margin: 15px;
+						margin-top: 5px;
+						text-align: middle;
+						opacity: 0.7
+				 	}
+				 	p{
+						font-size: 13px;
+						color:rgba(255,255,255,0.7);
+						text-shadow:1px 0px 1px #666;
+						font-weight: 100;
+						line-height: 0px;
+					}
+					&:hover {
+							border-color:$white;
+							.icon{
+								opacity: 1;
+							}
+							p{
+								color:$white;
+							}
+					}
+				}
+				.sel-clicked{
+					border-color:$white;
+					border-width: 3px;
+					.icon{
+						opacity:1;
+					}
+					p{
+						color:$white;
+						font-weight: 500;
+					}
+				}
+			}
 			
 			.row-select {
 				margin-top: 18px;
@@ -41,7 +90,7 @@
 				}
 				#search {
 					opacity: 0.6;
-					width:400px; 
+					width:430px; 
 					margin-left: 5px;
 					height:31px; 
 					font-size:13px;
@@ -49,7 +98,7 @@
 
 			}
 
-			#search-now {
+			#signup-now {
 				color:$white;
 				border:3px solid $white;
 			}
@@ -70,83 +119,7 @@
 				}
 			}
 		}
-
-		/*.signupcontainer {
-			width: 350px;
-			background: rgba(255,255,255,.95);
-			float: right;
-			.top {
-				height: 60px;
-				span {
-					display: block;
-					text-transform:uppercase;
-					text-align:left;
-					line-height: 58px;
-					color:$green;
-					font-size: 15px;
-					padding-left:20px;
-					font-size:25px;
-					margin-top: 10px;
-					font-weight:700;
-				}
-				.left {
-					width: 50%;
-					float: left;
-					height: 100%;
-					border-right:1px solid #fff;
-				}
-				.right {
-					width: 50%;
-					float: left;
-					height: 100%;
-					background: #e6e7e8;
-				}
-				.active {
-					background: #fff;
-				}
-			}
-			.bottom {
-				padding: 20px;
-			}
-		}*/
 	}
-	
-	/*section.room-search {
-		background:#eee;
-		padding:40px 0;
-		.left {
-			@include span-columns(6);
-		}
-		.right {
-			@include span-columns(6);
-			@include omega();
-		}
-		.row {
-			width: 100%;
-			overflow: hidden;
-			float:left;
-		}
-		input {
-			width: auto;
-		}
-		label{
-			display:inline-block;
-		}
-		.right {
-			.row {
-				margin-bottom:15px;
-			}
-		}
-		.submit {
-			@include span-columns(12);
-			float: left;
-			margin-top:20px;
-			input {
-				width:300px;
-			}
-		}
-	}
-	*/
 
 	section.hello {
 		background:#eee;
@@ -159,6 +132,7 @@
 			margin: auto;
 			margin-top: 120px;
 			margin-bottom: 150px;
+			height:180px;
 			p {
 				font-weight: 100;
 				line-height: 1.6;
@@ -237,6 +211,8 @@
 			p {
 				text-align:center;
 				padding:40px 20px 60px;
+				font-size: 16px;
+				line-height: 20px;
 
 			}
 		}

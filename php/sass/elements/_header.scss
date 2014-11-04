@@ -1,13 +1,12 @@
 .header {
 	width:100%;
-	height: 72px;
-	background:$white;
+	height: 65px;
+	background:rgba(255,255,255,0.6);
 	padding:0;
 	position:fixed;
 	top:0;
 	z-index:900;
-	border-bottom:1px solid #eee;
-	opacity: 0.6;
+	border-bottom:1px solid #eee 0.6;
 	
 	.wrapper {
 		max-width:95%;
@@ -32,6 +31,13 @@
 				color:$green;
 			}
 		}
+	}
+	#id-btn-logout{
+		@include span-columns(2);
+		float:right;
+		height: auto;
+		margin-right:0;
+		margin-top: 14px;
 	}
 	.login {
 		@include span-columns(6);

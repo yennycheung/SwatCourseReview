@@ -583,14 +583,15 @@ input {
 
 input[type="submit"] {
   text-align: center;
-  color: #006655;
-  border: 3px solid #006655;
+  color: rgba(0, 66, 55, 0.4);
+  border: 2px solid rgba(0, 66, 55, 0.4);
   border-radius: 3px;
   text-transform: uppercase;
   background: none;
   height: 60px; }
   input[type="submit"]:hover {
-    background: #497a70; }
+    border-color: #006655;
+    color: #006655; }
 
 .btn {
   color: #fff;
@@ -607,6 +608,9 @@ input[type="submit"] {
   	background: #497a70;
   	background-color: rgba(0,0,0,0.8);
   }*/ }
+
+input[type="email"], input[type="password"] {
+  opacity: 0.6; }
 
 input[type="checkbox"] {
   display: none; }
@@ -664,14 +668,13 @@ form .row {
 
 .header {
   width: 100%;
-  height: 72px;
-  background: #fff;
+  height: 65px;
+  background: rgba(255, 255, 255, 0.6);
   padding: 0;
   position: fixed;
   top: 0;
   z-index: 900;
-  border-bottom: 1px solid #eee;
-  opacity: 0.6; }
+  border-bottom: 1px solid #eee 0.6; }
   .header .wrapper {
     max-width: 95%; }
   .header .logo {
@@ -694,6 +697,17 @@ form .row {
         font-size: inherit;
         font-weight: 700;
         color: #006655; }
+  .header #id-btn-logout {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 14.70196%;
+    float: right;
+    height: auto;
+    margin-right: 0;
+    margin-top: 14px; }
+    .header #id-btn-logout:last-child {
+      margin-right: 0; }
   .header .login {
     float: left;
     display: block;
@@ -750,91 +764,16 @@ form .row {
 
 .body {
   width: 100%;
-  overflow: hidden;
-  /*section.room-search {
-  	background:#eee;
-  	padding:40px 0;
-  	.left {
-  		@include span-columns(6);
-  	}
-  	.right {
-  		@include span-columns(6);
-  		@include omega();
-  	}
-  	.row {
-  		width: 100%;
-  		overflow: hidden;
-  		float:left;
-  	}
-  	input {
-  		width: auto;
-  	}
-  	label{
-  		display:inline-block;
-  	}
-  	.right {
-  		.row {
-  			margin-bottom:15px;
-  		}
-  	}
-  	.submit {
-  		@include span-columns(12);
-  		float: left;
-  		margin-top:20px;
-  		input {
-  			width:300px;
-  		}
-  	}
-  }
-  */ }
+  overflow: hidden; }
   .body section.welcome {
     width: 100%;
     height: 100%;
     padding-bottom: 220px;
     background: url(../img/bg.jpg) no-repeat;
     background-size: cover;
-    background-attachment: fixed;
-    /*.signupcontainer {
-    	width: 350px;
-    	background: rgba(255,255,255,.95);
-    	float: right;
-    	.top {
-    		height: 60px;
-    		span {
-    			display: block;
-    			text-transform:uppercase;
-    			text-align:left;
-    			line-height: 58px;
-    			color:$green;
-    			font-size: 15px;
-    			padding-left:20px;
-    			font-size:25px;
-    			margin-top: 10px;
-    			font-weight:700;
-    		}
-    		.left {
-    			width: 50%;
-    			float: left;
-    			height: 100%;
-    			border-right:1px solid #fff;
-    		}
-    		.right {
-    			width: 50%;
-    			float: left;
-    			height: 100%;
-    			background: #e6e7e8;
-    		}
-    		.active {
-    			background: #fff;
-    		}
-    	}
-    	.bottom {
-    		padding: 20px;
-    	}
-    }*/ }
+    background-attachment: fixed; }
     .body section.welcome .wrapper {
-      margin-top: 250px;
-      margin-bottom: 50px;
+      margin-top: 180px;
       text-align: center; }
       .body section.welcome .wrapper h1 {
         font-size: 80px;
@@ -850,17 +789,56 @@ form .row {
         font-size: 20px;
         font-weight: lighter;
         text-shadow: 1px 0px 1px #666; }
+      .body section.welcome .wrapper .icon-menu {
+        margin-top: 15px; }
+        .body section.welcome .wrapper .icon-menu .sel {
+          cursor: pointer;
+          display: inline-block;
+          border: solid rgba(255, 255, 255, 0.6);
+          border-width: 2px;
+          border-radius: 3px;
+          width: 90px;
+          height: 90px;
+          margin: 10px; }
+          .body section.welcome .wrapper .icon-menu .sel .icon {
+            width: 50px;
+            height: 50px;
+            padding: 6px 10px 6px 10px;
+            margin: 15px;
+            margin-top: 5px;
+            text-align: middle;
+            opacity: 0.7; }
+          .body section.welcome .wrapper .icon-menu .sel p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 1px 0px 1px #666;
+            font-weight: 100;
+            line-height: 0px; }
+          .body section.welcome .wrapper .icon-menu .sel:hover {
+            border-color: #fff; }
+            .body section.welcome .wrapper .icon-menu .sel:hover .icon {
+              opacity: 1; }
+            .body section.welcome .wrapper .icon-menu .sel:hover p {
+              color: #fff; }
+        .body section.welcome .wrapper .icon-menu .sel-clicked {
+          border-color: #fff;
+          border-width: 3px; }
+          .body section.welcome .wrapper .icon-menu .sel-clicked .icon {
+            opacity: 1; }
+          .body section.welcome .wrapper .icon-menu .sel-clicked p {
+            color: #fff;
+            font-weight: 500; }
       .body section.welcome .wrapper .row-select {
         margin-top: 18px;
         text-align: center;
         display: inline-block; }
         .body section.welcome .wrapper .row-select #search {
           opacity: 0.6;
-          width: 400px;
+          width: 430px;
           margin-left: 5px;
           height: 31px;
           font-size: 13px; }
-      .body section.welcome .wrapper #search-now {
+      .body section.welcome .wrapper #signup-now {
         color: #fff;
         border: 3px solid #fff; }
       .body section.welcome .wrapper .btn {
@@ -883,7 +861,8 @@ form .row {
       text-align: center;
       margin: auto;
       margin-top: 120px;
-      margin-bottom: 150px; }
+      margin-bottom: 150px;
+      height: 180px; }
       .body section.hello .wrapper p {
         font-weight: 100;
         line-height: 1.6; }
@@ -955,7 +934,9 @@ form .row {
         margin-top: 40px; }
       .body section.testimonial .col p {
         text-align: center;
-        padding: 40px 20px 60px; }
+        padding: 40px 20px 60px;
+        font-size: 16px;
+        line-height: 20px; }
 
 .sidebar {
   background: #eee;

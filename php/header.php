@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" >
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,14 +23,15 @@
 <body>
 	<div class="header">
 		<div class="wrapper">
-			<div class="logo"><a href="index.php"><span><strong>SWAT</strong>CoRe</a></div>
+			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CoRe</a></div>
+			<input id="id-btn-logout" type="submit" value="log out">
 			<div class="login">
-				<form action="#" id="login">
+				<form action="#" id="id-form-login">
 					<div class="col">
 						<input type="email" class="email" required placeholder="Email">	
 					</div>
 					<div class="col">
-						<input type="password" class="req" placeholder="Password" required>	
+						<input type="password" class="password" placeholder="Password" required>	
 					</div>	
 					<div class="col">
 						<input type="submit" value="login">
