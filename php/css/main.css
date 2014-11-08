@@ -394,7 +394,7 @@ body:before {
   font-size: 14px; }
 
 h2 {
-  color: #999999; }
+  color: #888; }
 
 h3 {
   color: #666666;
@@ -402,7 +402,7 @@ h3 {
   font-size: 25px; }
 
 p {
-  color: #999999;
+  color: #888;
   font-size: 18px;
   font-weight: 300; }
 
@@ -592,6 +592,11 @@ input[type="submit"] {
   input[type="submit"]:hover {
     border-color: #006655;
     color: #006655; }
+
+textarea {
+  background: #fff;
+  padding: 10px;
+  vertical-align: middle; }
 
 .btn {
   color: #fff;
@@ -1069,37 +1074,66 @@ form .row {
         left: 20px; }
       .details .content .closedetails .right p {
         font-size: 15px; }
-  .details .content .two p {
-    padding: 30px 0;
+  .details .content .two .right .review {
+    padding: 20px 0 15px 0;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee; }
-  .details .content .two .add-review {
-    margin: 40px 0;
-    padding: 5px; }
-  .details .content .two .right .add-review {
+    border-bottom: 1px solid #eee;
+    clear: both; }
+    .details .content .two .right .review .action {
+      display: inline-block;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      padding-right: 5px;
+      color: #aaa;
+      font-size: 12px; }
+    .details .content .two .right .review #comment, .details .content .two .right .review #upvote {
+      cursor: pointer; }
+    .details .content .two .right .review .comment-thread p {
+      font-size: 12px;
+      padding-left: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: #eee; }
+  .details .content .two .right .review-textbox, .details .content .two .right .comment-textbox {
+    clear: both;
+    margin-bottom: 15px;
+    height: auto;
     background: #eee;
     overflow: auto; }
-    .details .content .two .right .add-review textarea {
+    .details .content .two .right .review-textbox textarea, .details .content .two .right .comment-textbox textarea {
       float: left;
       display: block;
       margin-right: 4.82916%;
       width: 65.05695%;
-      background: #fff;
-      padding: 10px;
-      vertical-align: middle;
-      margin: 15px 0 15px 6px; }
-      .details .content .two .right .add-review textarea:last-child {
+      margin: 10px 0 10px 6px; }
+      .details .content .two .right .review-textbox textarea:last-child, .details .content .two .right .comment-textbox textarea:last-child {
         margin-right: 0; }
-    .details .content .two .right .add-review input {
+    .details .content .two .right .review-textbox input, .details .content .two .right .comment-textbox input {
       float: left;
       display: block;
       margin-right: 4.82916%;
       width: 30.11389%;
       float: right;
-      height: auto;
-      margin: 20px 10px 20px 18px; }
-      .details .content .two .right .add-review input:last-child {
+      height: auto; }
+      .details .content .two .right .review-textbox input:last-child, .details .content .two .right .comment-textbox input:last-child {
         margin-right: 0; }
+    .details .content .two .right .review-textbox .add-review-btn, .details .content .two .right .comment-textbox .add-review-btn {
+      margin: 20px 10px 20px;
+      margin-right: 7px !important; }
+    .details .content .two .right .review-textbox .add-comment-btn, .details .content .two .right .comment-textbox .add-comment-btn {
+      margin-top: 10px;
+      margin-right: 7px !important; }
+  .details .content .two .right .review-textbox {
+    overflow: hidden;
+    margin-top: 15px;
+    height: 75px; }
+  .details .content .two .right .comment-textbox {
+    display: none;
+    margin-bottom: 30px;
+    overflow: hidden;
+    width: 100%;
+    float: right;
+    height: 60px; }
 
 .pagecontact {
   height: 700px !important; }
