@@ -1086,7 +1086,7 @@ form .row {
       padding-right: 5px;
       color: #aaa;
       font-size: 12px; }
-    .details .content .two .right .review #comment, .details .content .two .right .review #upvote {
+    .details .content .two .right .review .comment, .details .content .two .right .review .upvote {
       cursor: pointer; }
     .details .content .two .right .review .comment-thread p {
       font-size: 12px;
