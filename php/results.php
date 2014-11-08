@@ -6,8 +6,7 @@
 <?php
 	$hasPostData = False;
 	if(isset($_POST)) {
-		if (array_key_exists("search-criteria", $_POST) && array_key_exists("search-string", $_POST) ) {
-			$searchCriteria = json_encode($_POST["search-criteria"]);
+		if (array_key_exists("search-string", $_POST) ) {
 			$searchQuery = json_encode($_POST["search-string"]);
 			$hasPostData = True;
 		}
@@ -26,7 +25,6 @@
         <div class="content">
 
         <?php if ($hasPostData): ?>
-        	<div id="data-search-criteria" style="display: none;"><?php echo $searchCriteria ?></div>
         	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
         <?php endif ?>    
         	<h3 id="resultText">Courses Found</h3>

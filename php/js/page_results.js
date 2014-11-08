@@ -1,8 +1,16 @@
 // Execute code without declaring global variables.
 jQuery(document).ready(function() {
 
+	var TypeEnum = {STR:0, NUM:1, OTHER:2};
+	var queryTime, returnTime;
 	main();
 	
+	/* Attention: Instead of breaking the search query at client side, we can create a new "search" field in remote
+	 * database that contains all possible search phrases.
+	 * For example, the search phrase for CS91 could be:
+	 * "cloudcomputing%cpsc%cs%computerscience%091%kevinwebb%"
+	 * ["cloud", "computing", "cpsc", "cs", "computer", "science", "091", "kevin", "webb"]
+	 */
 	function main() {
 		// If not logged in, display the remind string.
 		if ( !Parse.User.current()) {
@@ -11,54 +19,145 @@ jQuery(document).ready(function() {
 		}
 
 		// If these data DOM components don't exist, then page didn't receive POST data.
-		if ( !( $("#data-search-criteria").length>0 && $("#data-search-query").length>0 ) ) {
+		if ( ! $("#data-search-query").length>0) {
 			$("#resultText").html("Post data not found! Did you reach here from home?");
 			return;
 		} 
 
 		// Extract search queries from DOM objects.
-		var searchCriteria = $("#data-search-criteria").text();
-		var searchQuery = $("#data-search-query").text();
+		var searchString = $("#data-search-query").text();
 		
 		// Strip php json_encode() extra string.
-		searchCriteria = searchCriteria.substring(1, searchCriteria.length-1);
-		searchQuery = searchQuery.substring(1, searchQuery.length-1);
+		searchString = searchString.substring(1, searchString.length-1);
 
-		queryParseAndDisplayResult(searchCriteria, searchQuery);
+		queryParse(searchString);
 	}
 
 
-	function queryParseAndDisplayResult(searchCriteria, searchString) {
-		var query = new Parse.Query("TestCourse");
-		if (searchCriteria == "course-id") {
-			query.equalTo("courseId", searchString);
-		}
-		if (searchCriteria == "course-name") {
-			query.equalTo("courseName", searchString);
-		}		
-		if (searchCriteria == "professor") {
-			query.equalTo("profLastName", searchString);
-		}
-		if (searchCriteria == "department") {
-			query.equalTo("dept", searchString);
-		}
+	function queryParse(searchString) {
+		if (searchString) {
+			var searchComponents = processSearchString(searchString);
+			var query = new Parse.Query("TestCourse");
 
-		query.find({
-			success: function(results) {
-				for (i=0; i<results.length; i++) {
-					course = results[i];
-					$(".realContent").append(courseToContent(course));			
-				}
-			},
-			error: function() {
-				console.log("search error!");
+			// Use PERL regex to query one field multiple times.
+			perlRegex = ""
+			for (var i=0; i<searchComponents.length; i++) {
+				perlRegex += ( "(?=.*" + searchComponents[i] + ".*)" );
 			}
-		});
+			query.matches("searchField", perlRegex, "");
+
+			// Query for results.
+			query.find({
+				success: function(results) {
+					returnTime = new Date().getTime();
+					console.log("query took " + (returnTime - queryTime) + "ms");
+					displayResults(results);
+				},
+				error: function() {
+					console.log("search error!");
+				}
+			});
+			queryTime = new Date().getTime();
+
+		}
+		else {
+			$("#resultText").html("Search Query cannot be empty!");
+		}
 	}
+
+
+	function processSearchString(searchString) {
+
+		var searchComponents = [];
+		var component = "";
+		var componentType = TypeEnum.OTHER;
+
+		// For end handling.
+		searchString += "%";
+
+		for (var i=0; i<searchString.length; i++) {
+			var ch = searchString.charAt(i);
+
+			// Handle letter
+			if (/^[a-zA-Z]$/.test(ch)) {
+				if (componentType == TypeEnum.NUM) {
+					searchComponents.push(formatSearchNum(component));
+					component = ch;
+				}
+				else {
+					component += ch;
+				}
+				componentType = TypeEnum.STR;
+				continue;
+			}
+
+			// Handle number
+			if (/^[0-9]$/.test(ch)) {
+				if (componentType == TypeEnum.STR) {
+					searchComponents.push(formatSearchStr(component));
+					component = ch;
+				}
+				else {
+					component += ch;
+				}
+				componentType = TypeEnum.NUM;
+				continue;
+			}
+
+			// Handle whitespace and other characters.
+			if (componentType == TypeEnum.NUM) {
+				searchComponents.push(formatSearchNum(component));				
+			}
+			else if (componentType == TypeEnum.STR) {
+				searchComponents.push(formatSearchStr(component));
+			}
+			componentType = TypeEnum.OTHER;
+			component = "";
+		}
+		return searchComponents;
+	}
+
+	function formatSearchNum(component) {
+		var newComponent = "";
+		for (var i=0; i<component.length; i++) {
+			ch = component.charAt(i);
+			if (ch != 0) {
+				newComponent += ch;
+			}
+		}
+		switch(newComponent.length) {
+			case 1:
+				newComponent = "00" + newComponent;
+				break;
+			case 2:
+				newComponent = "0" + newComponent;
+				break;
+        	default:
+        		break;
+		}
+		return newComponent
+	}
+
+	function formatSearchStr(component) {
+		return component.toLowerCase();
+	}
+
+
+	function displayResults(results) {
+		if (!results) {
+			return;
+		}
+
+		for (i=0; i<results.length; i++) {
+			course = results[i];
+			$(".realContent").append(courseToContent(course));			
+		}
+	}
+
 
 	function courseToContent(courseObject) {
 		content = "<div class = \"list\" onclick=\"location.href='details.php';\" style=\"cursor:pointer;\">\n<span>";
-		content += ("<p><strong>" + courseObject.get("dept") + " " + courseObject.get("courseId") + "</strong>");
+		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + "</strong>");
 		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
 		content += "<p>NS | 9 Reviews | Rating: 3";
 		content += "\n</span>\n</div>";
