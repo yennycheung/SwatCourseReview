@@ -2,7 +2,7 @@
 	background: #fff;
 	.content {
 		.row {
-		    margin: 75px 0;
+			margin: 75px 0;
 			width: 100%;
 			overflow:auto;
 			&.top {
@@ -22,9 +22,9 @@
 				}
 				.right {
 					float: right;
-				    margin-top: 9px;
-				    width: 100px;
-				    margin-right: 50px;
+					margin-top: 9px;
+					width: 100px;
+					margin-right: 50px;
 					a {
 						display: inline-block;
 						margin-left: 20px;
@@ -36,7 +36,7 @@
 			}
 			.ratingbigger {
 				margin-left: 40px;
-    			margin-top: 4px;
+				margin-top: 4px;
 			}
 		}
 		.classdesc {
@@ -87,35 +87,72 @@
 			}
 		}
 		.two{
-				p{
-					padding: 30px 0;
+			.right{
+				.review{
+					padding: 20px 0 15px 0;
 					border-top: 1px solid #eee;
 					border-bottom: 1px solid #eee;
-				}
-				.add-review{
-					margin: 40px 0;
-					padding: 5px;
+					clear:both;
+					.action{
+						display: inline-block;
+						margin-top: 15px;
+						margin-bottom: 10px;
+						padding-right: 5px;
+						color: #aaa;
+						font-size: 12px;
+					}
+					#comment, #upvote{
+						cursor: pointer;
+					}
+					.comment-thread{
+						p{
+							font-size: 12px;
+							padding-left: 10px;
+							padding-top: 15px;
+							padding-bottom: 15px;
+							background-color: #eee;
 
-				}
-				.right{
-					.add-review{
-						background: #eee;
-						overflow: auto;
-						textarea{
-							@include span-columns(4 of 6);
-							background: #fff;
-							padding: 10px;
-							vertical-align: middle;
-							margin: 15px 0 15px 6px;
-						}
-						input{
-						   @include span-columns(2 of 6);
-						   float: right;
-						   height: auto;
-						   margin: 20px 10px 20px 18px;
 						}
 					}
 				}
+				.review-textbox, .comment-textbox{
+					clear: both;
+					margin-bottom: 15px;
+					height: auto;
+					background: #eee;
+					overflow: auto;
+					textarea{
+						@include span-columns(4 of 6);
+						margin: 10px 0 10px 6px;
+					}
+					input{
+						@include span-columns(2 of 6);
+						float: right;
+						height: auto;
+					}
+					.add-review-btn {
+						margin: 20px 10px 20px;
+						margin-right: 7px !important;
+					}
+					.add-comment-btn {
+						margin-top: 10px;
+						margin-right: 7px !important;
+					}
+				}
+				.review-textbox{
+					overflow: hidden;
+					margin-top: 15px;
+					height: 75px;
+				}
+				.comment-textbox{
+					display:none;
+					margin-bottom:30px;
+					overflow: hidden;
+					width:100%;
+					float: right;
+					height: 60px;
+				}
 			}
+		}
 	}
 }

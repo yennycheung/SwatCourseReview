@@ -67,21 +67,29 @@
         			</div>
         			<div class="right">
         				<div id="reviews">
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-	        				<p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-        				</div>
-        				<div class="add-review">
-        					<textarea rows="2" name="reviewText" id="reviewText" placeholder="Add Your Course Review"></textarea>
-								<input type="submit" class="add-review-btn" value="Add Review"/>
-        				</div>
-        			</div>	
-        		</div>
-        	</div><!-- end details -->
+	        				<div class="review">
+                                <p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
+                                <div class="actions">
+                                    <p class="action" id="upvote">Upvote</p>
+                                    <p class="action" id="comment">Comment</p>
+                                </div>
+                                <div class="comments">
+                                    <div class="comment-textbox">
+                                        <textarea rows="1" name="commentText" id="commentText" required placeholder="Add a Comment..."></textarea>
+                                        <input type="submit" type="button" class="add-comment-btn" value="Comment"/>
+                                    </div>
+                                </div>
+                            </div><!-- end review -->  
+        			    </div>
+                        <div class="review-textbox">
+                            <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>
+                            <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                        </div>
+        		    </div>
+        	    </div>
+            </div>
         </div>
     </div>
-</div>
 
 <!-- End of Body -->		
 	
