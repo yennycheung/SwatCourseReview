@@ -68,21 +68,6 @@
         			<div class="right">
 
         				<div id="reviews">
-                            <!--
-	        				<div class="review">
-                                <p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
-                                <div class="actions">
-                                    <p class="action upvote" id = "0">Upvote</p>
-                                    <p class="action comment" id = "0">Comment</p>
-                                </div>
-                                <div class="comments">
-                                    <div class="comment-textbox">
-                                        <textarea rows="1" name="commentText" id="commentText" required placeholder="Add a Comment..."></textarea>
-                                        <input type="submit" type="button" class="add-comment-btn" value="Comment"/>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
         			    </div>
                         <div class="review-textbox">
                             <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>
