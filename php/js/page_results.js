@@ -40,16 +40,21 @@ jQuery(document).ready(function() {
 			var query = new Parse.Query("TestCourse");
 
 			// Use PERL regex to query one field multiple times.
+			
 			perlRegex = ""
 			for (var i=0; i<searchComponents.length; i++) {
 				perlRegex += ( "(?=.*" + searchComponents[i] + ".*)" );
 			}
 			query.matches("searchField", perlRegex, "");
+			
+
+			//query.containsAll("searchArray", searchComponents);
 
 			// Query for results.
 			query.find({
 				success: function(results) {
 					returnTime = new Date().getTime();
+					$("#resultText").html("Courses Found");
 					console.log("query took " + (returnTime - queryTime) + "ms");
 					displayResults(results);
 				},
@@ -57,6 +62,7 @@ jQuery(document).ready(function() {
 					console.log("search error!");
 				}
 			});
+			$("#resultText").html("Searching Database ...");
 			queryTime = new Date().getTime();
 
 		}

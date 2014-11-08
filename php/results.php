@@ -27,7 +27,7 @@
         <?php if ($hasPostData): ?>
         	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
         <?php endif ?>    
-        	<h3 id="resultText">Courses Found</h3>
+        	<h3 id="resultText"></h3>
         	<div class="realContent"></div>
         </div>
     </div>
