@@ -66,7 +66,9 @@
         				<h4>Reviews</h4>
         			</div>
         			<div class="right">
+
         				<div id="reviews">
+                            <!--
 	        				<div class="review">
                                 <p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
                                 <div class="actions">
@@ -79,7 +81,8 @@
                                         <input type="submit" type="button" class="add-comment-btn" value="Comment"/>
                                     </div>
                                 </div>
-                            </div><!-- end review -->  
+                            </div>
+                            -->
         			    </div>
                         <div class="review-textbox">
                             <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>

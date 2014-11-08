@@ -15,23 +15,31 @@ $(function() {
 	    $('textarea').autosize();   
 	});
 
+
 	$(".add-review-btn").click(function(){
 		var content = document.getElementById('reviewText').value;
 		//console.log(content);
-		$('#reviews').append("<div class='review'><p>"+content+"</p><div class='actions'><p class='action' id='upvote'>Upvote</p><p class='action comment' id='"+ commentCount +"'>Comment</p></div><div class='comments'><div class='comment-textbox'><textarea rows='1' name='commentText' id='commentText' placeholder='Add a Comment...''></textarea><input type='submit' type='button' class='add-comment-btn' value='Comment'/></div></div></div>");
-		commentCount += 1;
-	});
+		var parsedDOMs = $.parseHTML("<div class='review'><p>"+content+"</p><div class='actions'><p class='action' id='upvote'>Upvote</p><p class='action comment'>Comment</p></div><div class='comments'><div class='comment-textbox'><textarea rows='1' name='commentText' id='commentText' placeholder='Add a Comment...''></textarea><input type='submit' type='button' class='add-comment-btn' value='Comment'/></div></div></div>")
+		if (parsedDOMs.length < 1) {
+			return;
+		}
+		
+		var newReviewDOM = parsedDOMs[0];
+		var newReviewJQuery = $(newReviewDOM);
 
-	$(".comment").click(function(){
-		console.log(commentCount);
-		console.log($(this).attr('id'));
-        $(".comment-textbox").toggle();
-        $(".comment-thread").toggle();
-	});
+		newReviewJQuery.find(".comment").click(function() {
+			newReviewJQuery.find(".comment-textbox").toggle();
 
-	$(".add-comment-btn").click(function(){
-		var comment = document.getElementById('commentText').value;
-        $(".comments").prepend('<div class="comment-thread"><p>'+comment+'</p></div>');
+		});
+
+		newReviewJQuery.find(".add-comment-btn").click(function(){
+			var comment = newReviewJQuery.find("#commentText").val();
+			console.log(comment);
+			newReviewJQuery.find(".comments").prepend('<div class="comment-thread"><p>'+comment+'</p></div>');
+		});
+
+		$('#reviews').append(newReviewDOM);
+
 	});
 
 });
