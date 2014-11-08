@@ -70,8 +70,8 @@
 	        				<div class="review">
                                 <p>This class has quite a lot of reading per class. Reading research papers isn't the funnest thing in the world. The labs are interesting though.</p>
                                 <div class="actions">
-                                    <p class="action" id="upvote">Upvote</p>
-                                    <p class="action" id="comment">Comment</p>
+                                    <p class="action upvote" id = "0">Upvote</p>
+                                    <p class="action comment" id = "0">Comment</p>
                                 </div>
                                 <div class="comments">
                                     <div class="comment-textbox">
