@@ -54,10 +54,22 @@
         			</div>
         			<div class="right">
         				<div class="col">
-        					<p class="lab">
-        						<i><img src="img/Lab.png" width="60" height="60" alt=""></i>
-        						<span>Natural Sciences</span>
-        					</p>
+        					<div class="detail lab">
+        						<i><img src="img/Lab.png" width="50" height="55" alt=""></i>
+        						<p>Natural Sciences</p>
+        					</div>
+                            <div class="detail wcourse">
+                                <i><img src="img/writingcourse.png" width="50" height="55" alt=""></i>
+                                <p>Writing Course</p>
+                            </div>
+                            <div class="detail humanities">
+                                <i><img src="img/humanities.png" width="50" height="55" alt=""></i>
+                                <p>Humanities</p>
+                            </div>
+                            <div class="detail socialscience">
+                                <i><img src="img/socialscience.png" width="50" height="55" alt=""></i>
+                                <p>Social Science</p>
+                            </div>
         				</div>
         			</div>	
         		</div>

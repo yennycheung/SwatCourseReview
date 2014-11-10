@@ -67,22 +67,19 @@
 			.right {
 				float:left;
 				width:85%;
-				.lab {
+				.detail {
 					margin-bottom: 20px;
-				}
-				i {
+					i {
 					display: inline-block;
 					height:100%;
 					width: auto;	
-
-				}
-				span {
-					position: relative;
-					top:-22px;
-					left:20px;
-				}
-				p {
-					font-size: 15px;
+					}
+					p {
+						position: relative;
+						top:-40px;
+						left:70px;
+						font-size: 14px;
+					}
 				}
 			}
 		}

@@ -1062,18 +1062,17 @@ form .row {
     .details .content .closedetails .right {
       float: left;
       width: 85%; }
-      .details .content .closedetails .right .lab {
+      .details .content .closedetails .right .detail {
         margin-bottom: 20px; }
-      .details .content .closedetails .right i {
-        display: inline-block;
-        height: 100%;
-        width: auto; }
-      .details .content .closedetails .right span {
-        position: relative;
-        top: -22px;
-        left: 20px; }
-      .details .content .closedetails .right p {
-        font-size: 15px; }
+        .details .content .closedetails .right .detail i {
+          display: inline-block;
+          height: 100%;
+          width: auto; }
+        .details .content .closedetails .right .detail p {
+          position: relative;
+          top: -40px;
+          left: 70px;
+          font-size: 14px; }
   .details .content .two .right .review {
     padding: 20px 0 15px 0;
     border-top: 1px solid #eee;
