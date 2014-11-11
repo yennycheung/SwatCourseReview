@@ -163,9 +163,9 @@ jQuery(document).ready(function() {
 
 	function courseToContent(courseObject) {
 		content = "<div class = \"list\" onclick=\"location.href='details.php';\" style=\"cursor:pointer;\">\n<span>";
-		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + "</strong>");
+		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + " </strong>");
 		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
-		content += "<p>NS | 9 Reviews | Rating: 3";
+		content += "<p> "+ courseObject.get("division") + " | 9 Reviews | Rating: 3";
 		content += "\n</span>\n</div>";
 		return content;
 	}

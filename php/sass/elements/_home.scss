@@ -11,7 +11,7 @@
 		background-attachment:fixed;
 
 		.wrapper {
-			margin-top:180px;
+			margin-top:240px;
 			text-align: center;
 
 			h1 {
@@ -197,23 +197,42 @@
 			h3 {
 			font-weight: lighter;
 			font-size: 35px;
-		}
+			margin-bottom: 15px;
+			}
 		}
 		.col {
 			@include span-columns(4);
-			
+			border-radius: 15px;
 			background:#fff;
-			img {
+			&:hover{
+				cursor:pointer;
+			}
+			img, .desc {
 				display:block;
 				margin: 0 auto;
+				height:182px;
+				width: 254px;
 				margin-top:40px;
 			}
+			.desc{
+				display:none;
+				font-size: 15px;
+				font-weight: 100;
+				line-height: auto;
+			}
 			p {
-				text-align:center;
-				padding:40px 20px 60px;
+				//text-align:center;
+				//padding:40px 20px 60px;
 				font-size: 16px;
-				line-height: 20px;
-
+				line-height: 22px;
+				margin: 0 18px auto;
+			}
+			.dev-name{
+				margin-top: 10px;
+				font-weight: 500;
+			}
+			.dev-title{
+				margin-bottom: 15px;
 			}
 		}
 	}

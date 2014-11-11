@@ -778,7 +778,7 @@ form .row {
     background-size: cover;
     background-attachment: fixed; }
     .body section.welcome .wrapper {
-      margin-top: 180px;
+      margin-top: 240px;
       text-align: center; }
       .body section.welcome .wrapper h1 {
         font-size: 80px;
@@ -924,24 +924,39 @@ form .row {
       margin-bottom: 20px; }
       .body section.testimonial .wrapper h3 {
         font-weight: lighter;
-        font-size: 35px; }
+        font-size: 35px;
+        margin-bottom: 15px; }
     .body section.testimonial .col {
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 31.76157%;
+      border-radius: 15px;
       background: #fff; }
       .body section.testimonial .col:last-child {
         margin-right: 0; }
-      .body section.testimonial .col img {
+      .body section.testimonial .col:hover {
+        cursor: pointer; }
+      .body section.testimonial .col img, .body section.testimonial .col .desc {
         display: block;
         margin: 0 auto;
+        height: 182px;
+        width: 254px;
         margin-top: 40px; }
+      .body section.testimonial .col .desc {
+        display: none;
+        font-size: 15px;
+        font-weight: 100;
+        line-height: auto; }
       .body section.testimonial .col p {
-        text-align: center;
-        padding: 40px 20px 60px;
         font-size: 16px;
-        line-height: 20px; }
+        line-height: 22px;
+        margin: 0 18px auto; }
+      .body section.testimonial .col .dev-name {
+        margin-top: 10px;
+        font-weight: 500; }
+      .body section.testimonial .col .dev-title {
+        margin-bottom: 15px; }
 
 .sidebar {
   background: #eee;
@@ -1062,18 +1077,17 @@ form .row {
     .details .content .closedetails .right {
       float: left;
       width: 85%; }
-      .details .content .closedetails .right .lab {
+      .details .content .closedetails .right .detail {
         margin-bottom: 20px; }
-      .details .content .closedetails .right i {
-        display: inline-block;
-        height: 100%;
-        width: auto; }
-      .details .content .closedetails .right span {
-        position: relative;
-        top: -22px;
-        left: 20px; }
-      .details .content .closedetails .right p {
-        font-size: 15px; }
+        .details .content .closedetails .right .detail i {
+          display: inline-block;
+          height: 100%;
+          width: auto; }
+        .details .content .closedetails .right .detail p {
+          position: relative;
+          top: -40px;
+          left: 70px;
+          font-size: 14px; }
   .details .content .two .right .review {
     padding: 20px 0 15px 0;
     border-top: 1px solid #eee;
