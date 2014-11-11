@@ -13,7 +13,7 @@
 			<h1><strong>Swat</strong>CoRe</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
 			<form id="id-form-search"action="results.php" method="post">
-				<div class="icon-menu">
+				<!--<div class="icon-menu">
 					<div class="sel" data-value="course-id">
 						<img class="icon" src="img/CourseId.png">
 						<p> Course ID </p>
@@ -31,7 +31,7 @@
 						<p> Department </p>
 					</div>
 					<input type="hidden" id="search-criteria" name="search-criteria" value="">
-				</div>
+				</div>-->
 			    <div class="row-select">
 				    <input type="string" name="search-string" id="search" placeholder="Search for your class">
 			    </div>
@@ -68,17 +68,21 @@
 			<h3>Meet your developers!</h3>
 		</div>
 		<div class="wrapper">
-			<div class="col">
+			<div class="col" id="dev">
 				<img src="img/yenny.jpg" alt="">
-				<p>I believe that more academic resources should be available to students in a transparent way. SwatCourseReview provides us with a clean interface to search and review for courses taught by individual professors, providing information for students to pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
+				<p class = "desc">I believe that more academic resources should be more transparent to students. SwatCoRe has a clean interface for searching and reviewing courses, helping students pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
+				<p class="dev-name">Yenny Cheung</p>
+				<p class="dev-title">Designer and Frontend Developer</p>
 			</div>
 			<div class="col">
-				<img src="img/shivam.jpg" alt="">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
+				<img src="img/peng.jpg" alt="">
+				<p class="dev-name">Peng Zhao</p>
+				<p class="dev-title">Backend Developer</p>
 			</div>
 			<div class="col">
-				<img src="img/alex.jpg" alt="">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum facilis amet maiores consequatur doloremque esse aspernatur voluptate, rerum, delectus rem, veniam possimus sint minus perferendis! Quas vel a, quia soluta.</p>
+				<img src="img/peng.jpg" alt="">
+				<p class="dev-name">Peng Zhao</p>
+				<p class="dev-title">Backend Developer</p>
 			</div>
 		</div>
 	</section>
