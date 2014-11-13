@@ -38,7 +38,7 @@ jQuery(document).ready(function() {
         }
     }); 
 
-    $("#dev").click(function() {
+    $(".dev").click(function() {
         $(this).find($(".desc")).toggle();
         $(this).find($("img")).toggle();
     });

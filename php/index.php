@@ -68,14 +68,15 @@
 			<h3>Meet your developers!</h3>
 		</div>
 		<div class="wrapper">
-			<div class="col" id="dev">
+			<div class="col dev">
 				<img src="img/yenny.jpg" alt="">
-				<p class = "desc">I believe that more academic resources should be more transparent to students. SwatCoRe has a clean interface for searching and reviewing courses, helping students pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
+				<p class = "desc">I believe that academic resources should be more transparent to students. SwatCoRe has a clean interface for searching and reviewing courses, helping students pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
 				<p class="dev-name">Yenny Cheung</p>
 				<p class="dev-title">Designer and Frontend Developer</p>
 			</div>
-			<div class="col">
+			<div class="col dev">
 				<img src="img/peng.jpg" alt="">
+				<p class = "desc">I believe that more academic resources should be more transparent to students. SwatCoRe has a clean interface for searching and reviewing courses, helping students pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
 				<p class="dev-name">Peng Zhao</p>
 				<p class="dev-title">Backend Developer</p>
 			</div>
