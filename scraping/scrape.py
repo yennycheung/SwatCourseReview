@@ -5,13 +5,84 @@ from lxml import html
 from lxml import etree
 import codecs
 import re
+import json
 
 SEMEMSTER = None
 SCHEDULE_TABLE_TOTAL_COLS = 13
+SHORT_SUMMARY_THRESHOLD = 130
 
 ROW_TYPE_COURSE = "course"
 ROW_TYPE_INFO = "info"
 
+
+DEPT_SEARCH_KEY = {}
+
+"""
+strings to add to search phrase for each department
+"""
+def populateDeptSearchKey():
+	global DEPT_SEARCH_KEY
+	DEPT_SEARCH_KEY["arth"] = ["arthistory"]
+	DEPT_SEARCH_KEY["stua"] = ["studioart"]
+	DEPT_SEARCH_KEY["asia"] = ["asianstudies", "asianstudy"]
+	DEPT_SEARCH_KEY["biol"] = ["biology"]
+	DEPT_SEARCH_KEY["blst"] = ["blackstudies", "blackstudy"]
+	DEPT_SEARCH_KEY["chem"] = ["chemistry"]
+	DEPT_SEARCH_KEY["grek"] = ["greek", "classics"]
+	DEPT_SEARCH_KEY["latn"] = ["latin"]
+	DEPT_SEARCH_KEY["anch"] = ["ancienthistory"]
+	DEPT_SEARCH_KEY["clst"] = ["classicalstudies"]
+	DEPT_SEARCH_KEY["cogs"] = ["cognitivescience", "cogscience"]
+	DEPT_SEARCH_KEY["cpsc"] = ["computerscience", "cs"]
+	DEPT_SEARCH_KEY["econ"] = ["economics", "finance"]
+	DEPT_SEARCH_KEY["educ"] = ["educationalstudies", "educationalstudy"]
+	DEPT_SEARCH_KEY["engr"] = ["engineering"]
+	DEPT_SEARCH_KEY["engl"] = ["englishliterature"]
+	DEPT_SEARCH_KEY["envs"] = ["environmentalstudies", "environmentalstudy"]
+	DEPT_SEARCH_KEY["fmst"] = ["filmandmediastudies", "study", "filmmedia", "filmstudies"]
+	DEPT_SEARCH_KEY["gsst"] = ["genderandsexualitystudies", "study", "gendersexual", "genderstudy", "genderstudies"]
+	DEPT_SEARCH_KEY["hist"] = ["history"]
+	DEPT_SEARCH_KEY["intp"] = ["interpretationtheory"]
+	DEPT_SEARCH_KEY["islm"] = ["islamicstudies", "islamicstudy"]
+	DEPT_SEARCH_KEY["lasc"] = ["latinamericanstudies", "study", "latino", "latinstudy", "latinstudies"]
+	DEPT_SEARCH_KEY["ling"] = ["linguistics"]
+	DEPT_SEARCH_KEY["math"] = ["mathematics"]
+	DEPT_SEARCH_KEY["stat"] = ["statistics", "stats"]
+	DEPT_SEARCH_KEY["litr"] = ["modernlanguagesandliteratures"]
+	DEPT_SEARCH_KEY["arab"] = ["arabics", "arabs"]
+	DEPT_SEARCH_KEY["chin"] = ["chinese", "china"]
+	DEPT_SEARCH_KEY["fren"] = ["frenchandfrancophonestudies", "study", "france"]
+	DEPT_SEARCH_KEY["gmst"] = ["germanstudies", "study"]
+	DEPT_SEARCH_KEY["jpns"] = ["japanese"]
+	DEPT_SEARCH_KEY["russ"] = ["russian"]
+	DEPT_SEARCH_KEY["span"] = ["spanish", "spain"]
+	DEPT_SEARCH_KEY["musi"] = ["music"]
+	DEPT_SEARCH_KEY["danc"] = ["dance", "dancing"]
+	DEPT_SEARCH_KEY["peac"] = ["peaceandconflictstudies", "study", "peaceconflict"]
+	DEPT_SEARCH_KEY["phil"] = ["philosophy"]
+	DEPT_SEARCH_KEY["phys"] = ["physics"]
+	DEPT_SEARCH_KEY["astr"] = ["astronomy", "star"]
+	DEPT_SEARCH_KEY["pols"] = ["politicalscience", "polisci"]
+	DEPT_SEARCH_KEY["psyc"] = ["psychology"]
+	DEPT_SEARCH_KEY["relg"] = ["religions"]
+	DEPT_SEARCH_KEY["soci"] = ["sociology"]
+	DEPT_SEARCH_KEY["anth"] = ["anthropology"]
+	DEPT_SEARCH_KEY["soan"] = ["sociologyandanthropology"]
+	DEPT_SEARCH_KEY["thea"] = ["theaters", "theatre", ]
+
+
+"""
+Given a list of words with punctuations:
+	["(Cross-listed ", "with", "CPSC", "052.)"]
+Return a list of same words without punctuations:
+	["Crosslisted ", "with", "CPSC", "052"]
+"""
+def stripPunctuations(rawWords):
+	punctuations = set(string.punctuation)	
+	words = []
+	for rawWord in rawWords:
+		words.append("".join(ch for ch in rawWord if ch not in punctuations))
+	return words
 
 """
 Every page of course schedule contains a header with semester information.
@@ -72,8 +143,8 @@ class Course:
 		# Sometimes prof name is not specified (such as directed reading classes)
 		profNames = courseRow[8].text.split(",")
 		if len(profNames) < 2:
-			self.profFirstName = None
-			self.profLastName = None
+			self.profFirstName = "STAFF"
+			self.profLastName = ""
 		else:
 			self.profFirstName = courseRow[8].text.split(',')[1]
 			self.profLastName = courseRow[8].text.split(',')[0]
@@ -85,8 +156,7 @@ class Course:
 
 
 		# Infomation initialized here and populated later.
-		self.summary = ""
-		self.searchField = ""
+		self.summary = "Summary not available."
 		self.crossList = []
 
 		# Handle occasional mislabeling of Lab:
@@ -137,6 +207,52 @@ class Course:
 
 		return description
 
+	"""
+	Serialize this class to a JSON string.
+	"""
+	def toJSONObject(self):
+		jsonObject = {}
+		jsonObject["courseName"] = self.courseName
+		jsonObject["dept"] = self.dept
+		jsonObject["courseId"] = self.courseId
+		jsonObject["profFirstName"] = self.profFirstName
+		jsonObject["profLastName"] = self.profLastName
+		jsonObject["summary"] = self.summary
+		jsonObject["semester"] = self.semester
+		jsonObject["isWritingCourse"] = self.isWritingCourse
+		jsonObject["hasLab"] = self.hasLab
+		jsonObject["isFYS"] = self.isFYS
+		jsonObject["division"] = self.division
+		jsonObject["courseType"] = self.courseType
+		jsonObject["credit"] = self.credit
+		jsonObject["searchField"] = self.generateSearchField()
+		return jsonObject
+
+	
+	"""
+	Generate the search field to support one-line no category search. 
+	For example, the search field for cs91 is :
+	"cloudcomputing%cpsc%cs%computerscience%091%kevinwebb%webbkevin%"
+	"""
+	def generateSearchField(self):
+		global DEPT_SEARCH_KEY
+		searchField = ""
+
+		for word in stripPunctuations(self.courseName.split()):
+			searchField += word.lower()
+		searchField += "%%"
+
+		searchField += (self.dept.lower() + "%%")
+		for extraKey in DEPT_SEARCH_KEY[self.dept.lower()]:
+			searchField += extraKey
+			searchField += "%%"
+
+		searchField += (self.courseId.lower() + "%%" )
+		searchField += (self.profFirstName.lower() + self.profLastName.lower() + "%%")
+		searchField += (self.profLastName.lower() + self.profFirstName.lower() + "%%")
+
+		return searchField
+
 
 """
 Structure that stores all course information. 
@@ -167,6 +283,16 @@ class CourseDB:
 			for course in self.deptDictionary[dept]:
 				print course.toString()
 
+	def toJSON(self):
+		courseList = []
+		for dept in sorted(self.deptDictionary.keys()):
+			for course in self.deptDictionary[dept]:
+				courseList.append(course.toJSONObject())
+
+		jsonObject = {}
+		jsonObject["results"] = courseList
+		return json.dumps(jsonObject)
+
 
 """
 Stores all summary information extracted from course catalog.
@@ -193,21 +319,6 @@ class CourseSummaryDB:
 
 
 	"""
-	Given a list of words with punctuations:
-		["(Cross-listed ", "with", "CPSC", "052.)"]
-	Return a list of same words without punctuations:
-		["Crosslisted ", "with", "CPSC", "052"]
-	"""
-	@staticmethod
-	def stripPunctuations(rawWords):
-		punctuations = set(string.punctuation)	
-		words = []
-		for rawWord in rawWords:
-			words.append("".join(ch for ch in rawWord if ch not in punctuations))
-		return words
-
-
-	"""
 	Given the text in a course title:
 		CPSC 043.                   JPNS 003-004
 	Returns a list of (dept, id) tuples corresponding to that text, or [] if text is malformed.
@@ -223,12 +334,13 @@ class CourseSummaryDB:
 		if len(rawWords) < 2 or len (rawWords) > 3:
 			return []
 
-		words = CourseSummaryDB.stripPunctuations(rawWords)
+		words = stripPunctuations(rawWords)
 		if not words[0].isalpha():
 			return []
 
 		for word in words[1:]:
-			if not ( (len(word) == 3 and word.isdigit() ) or (len(word) == 4 and word[0:3].isdigit() ) ):
+			if not ( (len(word) == 3 and word.isdigit() ) or 
+				     ( ( len(word) == 4 or len(word) == 5) and word[0:3].isdigit() and word[3:].isalpha() ) ):
 				return []
 
 		if len(words) == 2:
@@ -298,7 +410,7 @@ class CourseSummaryDB:
 
 			newLine = line.strip().lower()
 			rawWords = newLine.split()
-			words = CourseSummaryDB.stripPunctuations(rawWords)
+			words = stripPunctuations(rawWords)
 
 			if len(words) < 2:
 				continue
@@ -424,7 +536,6 @@ def scrapeCatalog():
 		deptPath = deptLink.get("href")
 		scrapeDeptPage(summaryDB, "http://www.swarthmore.edu" + deptPath)
 
-	#scrapeDeptPage(summaryDB, "http://www.swarthmore.edu/college-catalog/japanese")
 	return summaryDB
 
 
@@ -447,8 +558,6 @@ def scrapeDeptPage(summaryDB, deptURL):
 		infoParagraphs = []
 		for element in courseBlock:
 
-			#print lxml.etree.tostring(element)
-			#print CourseSummaryDB.isCourseTitle(element)
 
 			if (CourseSummaryDB.isCourseTitle(element) >= 0):
 				summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
@@ -494,18 +603,20 @@ def combineDB(courseDB, summaryDB):
 	for dept in sorted(courseDB.deptDictionary.keys()):
 		for course in courseDB[dept]:
 			summary = summaryDB[(course.dept, course.courseId)]
-
 			if summary == None:
 				print " Summary for " + course.dept + " " + course.courseId + " not found!"
-
-	for dept in sorted(courseDB.deptDictionary.keys()):
-		for course in courseDB[dept]:
-			summary = summaryDB[(course.dept, course.courseId)]
-
-			if summary != None and len(summary) < 130:
+			elif len(summary) < SHORT_SUMMARY_THRESHOLD:
 				print " Summary for " + course.dept + " " + course.courseId + " is too short!"
-				print summary
+			else:
+				course.summary = summary
 
+"""
+Save courseDB to a json file understandable by Parse import
+"""
+def saveToFile(courseDB, filename):
+	jsonFile = codecs.open(filename, mode="w", encoding='utf-8')
+	jsonFile.write(courseDB.toJSON())
+	jsonFile.close()
 
 
 def main():
@@ -519,6 +630,9 @@ def main():
 	for page in scheduleTree.getroot().findall(".//page"):
 		pages.append(page)
 
+	# Populate department search array
+	populateDeptSearchKey()
+
 	# Set global semester info from a page header.
 	setGlobalSemester(pages[0])
 
@@ -530,6 +644,10 @@ def main():
 
 	# Conbine the two scrape result to get complete course information
 	combineDB(courseDB, summaryDB)
+
+	# Save the DB to a json file
+	saveToFile(courseDB, "Course" + SEMESTER + ".json")
+
 
 if __name__ == "__main__":
 	main()

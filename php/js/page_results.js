@@ -37,7 +37,7 @@ jQuery(document).ready(function() {
 	function queryParse(searchString) {
 		if (searchString) {
 			var searchComponents = processSearchString(searchString);
-			var query = new Parse.Query("TestCourse");
+			var query = new Parse.Query("Course");
 
 			// Use PERL regex to query one field multiple times.
 			
