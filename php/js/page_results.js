@@ -160,14 +160,24 @@ jQuery(document).ready(function() {
 		}
 	}
 
+	
 
 	function courseToContent(courseObject) {
-		content = "<div class = \"list\" onclick=\"location.href='details.php';\" style=\"cursor:pointer;\">\n<span>";
+		content = "<form name='getcourse' id='getcourse' action='details.php' method='post'>";
+		content += "<input type='hidden' id='get-course' name='get-course' value='"+courseObject.id+"'>";
+		content += "<div class='list' style='cursor:pointer;'>\n<span>";
 		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + " </strong>");
 		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
-		content += "<p> "+ courseObject.get("division") + " | 9 Reviews | Rating: 3";
-		content += "\n</span>\n</div>";
+		content += "<p> "+ courseObject.get("division") + " | 9 Reviews | Rating: 3" + "</p>";
+		//content += "<p id='objectId' display='none'>" + courseObject.id + "</p>";
+		content += "\n</span>\n</div>\n</form>";
+		$('.list').click(function(){
+			console.log('inside function');
+			document.getElementById("getcourse").submit();
+		});
 		return content;
 	}
+
+
 
 });

@@ -12,7 +12,7 @@
 		<div class="wrapper">
 			<h1><strong>Swat</strong>CoRe</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
-			<form id="id-form-search"action="results.php" method="post">
+			<form id="id-form-search" action="results.php" method="post">
 				<!--<div class="icon-menu">
 					<div class="sel" data-value="course-id">
 						<img class="icon" src="img/CourseId.png">

@@ -4,7 +4,15 @@
 <?php require_once('header.php'); ?>
 
 <!-- Begin of Body -->
-
+<?php
+    $hasPostData = False;
+    if(isset($_POST)) {
+        if (array_key_exists("get-course", $_POST) ) {
+            $searchQuery = json_encode($_POST["get-course"]);
+            $hasPostData = True;
+        }
+    }
+?>
 <div class="body details secondary">
 <div class="loader"></div>	
 	
