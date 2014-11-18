@@ -23,7 +23,6 @@
         	<?php include('sidebar.php'); ?>
         </div>
         <div class="content">
-
         <?php if ($hasPostData): ?>
         	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
         <?php endif ?>    
