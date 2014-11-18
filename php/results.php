@@ -14,6 +14,11 @@
 ?>
 
 
+<!-- Invisible Div to store Metadata -->
+<?php if ($hasPostData): ?>
+	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
+<?php endif ?>   
+
 <!-- Begin of Body -->
 <div class="body results">
 <div class="loader"></div>
@@ -22,10 +27,7 @@
         <div class="sidebar">
         	<?php include('sidebar.php'); ?>
         </div>
-        <div class="content">
-        <?php if ($hasPostData): ?>
-        	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
-        <?php endif ?>    
+        <div class="content"> 
         	<h3 id="resultText"></h3>
         	<div class="realContent"></div>
         </div>

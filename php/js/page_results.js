@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
 	var queryTime, returnTime;
 	main();
 	
-	/* Attention: Instead of breaking the search query at client side, we can create a new "search" field in remote
+	/* Instead of breaking the search query at client side, we can create a new "search" field in remote
 	 * database that contains all possible search phrases.
 	 * For example, the search phrase for CS91 could be:
 	 * "cloudcomputing%cpsc%cs%computerscience%091%kevinwebb%"
@@ -27,14 +27,15 @@ jQuery(document).ready(function() {
 		// Extract search queries from DOM objects.
 		var searchString = $("#data-search-query").text();
 		
-		// Strip php json_encode() extra string.
+		// Strip php json_encode() extra quote.
 		searchString = searchString.substring(1, searchString.length-1);
 
-		queryParse(searchString);
+		// 
+		queryCoursesFromParse(searchString);
 	}
 
 
-	function queryParse(searchString) {
+	function queryCoursesFromParse(searchString) {
 		if (searchString) {
 			var searchComponents = processSearchString(searchString);
 			var query = new Parse.Query("Course");
@@ -56,7 +57,7 @@ jQuery(document).ready(function() {
 					returnTime = new Date().getTime();
 					$("#resultText").html("Courses Found");
 					console.log("query took " + (returnTime - queryTime) + "ms");
-					displayResults(results);
+					displaySearchResults(results);
 				},
 				error: function() {
 					console.log("search error!");
@@ -123,6 +124,7 @@ jQuery(document).ready(function() {
 		return searchComponents;
 	}
 
+
 	function formatSearchNum(component) {
 		var newComponent = "";
 		for (var i=0; i<component.length; i++) {
@@ -144,40 +146,50 @@ jQuery(document).ready(function() {
 		return newComponent
 	}
 
+
 	function formatSearchStr(component) {
 		return component.toLowerCase();
 	}
 
 
-	function displayResults(results) {
+	function displaySearchResults(results) {
 		if (!results) {
 			return;
 		}
 
 		for (i=0; i<results.length; i++) {
 			course = results[i];
-			$(".realContent").append(courseToContent(course));			
+			$(".realContent").append(parseToDOMObject(course));			
 		}
 	}
 
 	
 
-	function courseToContent(courseObject) {
-		content = "<form name='getcourse' id='getcourse' action='details.php' method='post'>";
-		content += "<input type='hidden' id='get-course' name='get-course' value='"+courseObject.id+"'>";
+	function parseToDOMObject(courseObject) {
+
+		content = "<form name='courseInfo' action='details.php' method='post'>";
+		content += "<input type='hidden' class='input-course-id' name='course-object-id' value='"+courseObject.id+"'>";
 		content += "<div class='list' style='cursor:pointer;'>\n<span>";
 		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + " </strong>");
 		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
 		content += "<p> "+ courseObject.get("division") + " | 9 Reviews | Rating: 3" + "</p>";
-		//content += "<p id='objectId' display='none'>" + courseObject.id + "</p>";
 		content += "\n</span>\n</div>\n</form>";
-		$('.list').click(function(){
-			console.log('inside function');
-			document.getElementById("getcourse").submit();
-		});
-		return content;
-	}
 
+		var parsedDOMs = $.parseHTML(content)
+		if (parsedDOMs.length < 1) {
+			return;
+		}
+
+		var courseDOMObject = parsedDOMs[0];
+		var courseJQueryObject = $(courseDOMObject);
+
+		courseJQueryObject.find(".list").click(function() {
+			console.log('inside click()');
+			courseJQueryObject.submit();
+		});
+
+		return courseDOMObject
+	}
 
 
 });

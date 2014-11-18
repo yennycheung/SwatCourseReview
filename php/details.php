@@ -7,41 +7,40 @@
 <?php
     $hasPostData = False;
     if(isset($_POST)) {
-        if (array_key_exists("get-course", $_POST) ) {
-            $searchQuery = json_encode($_POST["get-course"]);
+        if (array_key_exists("course-object-id", $_POST) ) {
+            $courseObjectId = json_encode($_POST["course-object-id"]);
             $hasPostData = True;
         }
     }
 ?>
+
+<!-- Invisible Div to store Metadata -->
+<?php if ($hasPostData): ?>
+    <div id="data-course-object-id" style="display: none;"><?php echo $courseObjectId ?></div>
+<?php endif ?>  
+
 <div class="body details secondary">
 <div class="loader"></div>	
-	
 	<div class="table">
-        <div class="sidebar">
-        	<?php include('sidebar.php'); ?>
-        </div>
         <div class="content">
         	<div class="deatlstext">
+
         		<div class="row top">
         			<div class="title">
-        				<h3>CPSC 91 Cloud Computing - Kevin Webb</h3>
-        				<p>CPSC 91 | 9 reviews</p>
+        				<h3 id="js-populate-name-prof">Cloud Computing - Kevin Webb</h3>
+        				<p id="js-populate-id-numreviews">CPSC 91 | 9 reviews</p>
         			</div>
         			<div class="ratingbigger">
         				<div class="ratingbigger" data-rating-max="5"></div>
         			</div>
-                    <!--
-        			<div class="right">
-    					<a href="#"><img src="img/iconheart.jpg" alt=""></a>
-    					<a href="#"><img src="img/iconplus.jpg" alt=""></a>
-        			</div>-->
         		</div>
+
         		<div class="row classdesc">
         			<div class="left">
         				<h4>Course Summary</h4>
         			</div>
         			<div class="right">
-	        			<p>On the Internet today, popular services like Google, Facebook, and
+	        			<p id="js-populate-summary">On the Internet today, popular services like Google, Facebook, and
 						many others are too large to be hosted by just a few servers.
 						Instead, service providers "scale out" across a coordinated set of
 						hundreds to thousands of machines.  Such clusters yield an interesting
@@ -62,23 +61,7 @@
         				<h4>Details</h4>
         			</div>
         			<div class="right">
-        				<div class="col">
-        					<div class="detail lab">
-        						<i><img src="img/Lab.png" width="50" height="55" alt=""></i>
-        						<p>Natural Sciences</p>
-        					</div>
-                            <div class="detail wcourse">
-                                <i><img src="img/writingcourse.png" width="50" height="55" alt=""></i>
-                                <p>Writing Course</p>
-                            </div>
-                            <div class="detail humanities">
-                                <i><img src="img/humanities.png" width="50" height="55" alt=""></i>
-                                <p>Humanities</p>
-                            </div>
-                            <div class="detail socialscience">
-                                <i><img src="img/socialscience.png" width="50" height="55" alt=""></i>
-                                <p>Social Science</p>
-                            </div>
+        				<div id="js-populate-division" class="col">
         				</div>
         			</div>	
         		</div>
@@ -116,6 +99,7 @@
 <script type="text/javascript" src="js/star-rating.min.js"></script>
 <script type="text/javascript" src="js/parse-1.3.1.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/auto_size.js"></script>
 <script type="text/javascript" src="js/page_details.js"></script>
 
 </body>
