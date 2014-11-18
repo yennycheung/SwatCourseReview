@@ -24,51 +24,51 @@ def populateDeptSearchKey():
 	global DEPT_SEARCH_KEY
 	DEPT_SEARCH_KEY["arth"] = ["arthistory"]
 	DEPT_SEARCH_KEY["stua"] = ["studioart"]
-	DEPT_SEARCH_KEY["asia"] = ["asianstudies", "asianstudy"]
+	DEPT_SEARCH_KEY["asia"] = ["asianstudies", "asian", "study"]
 	DEPT_SEARCH_KEY["biol"] = ["biology"]
-	DEPT_SEARCH_KEY["blst"] = ["blackstudies", "blackstudy"]
+	DEPT_SEARCH_KEY["blst"] = ["blackstudies", "black", "study"]
 	DEPT_SEARCH_KEY["chem"] = ["chemistry"]
 	DEPT_SEARCH_KEY["grek"] = ["greek", "classics"]
 	DEPT_SEARCH_KEY["latn"] = ["latin"]
-	DEPT_SEARCH_KEY["anch"] = ["ancienthistory"]
+	DEPT_SEARCH_KEY["anch"] = ["ancienthistory", "ancient", "history"]
 	DEPT_SEARCH_KEY["clst"] = ["classicalstudies"]
-	DEPT_SEARCH_KEY["cogs"] = ["cognitivescience", "cogscience"]
+	DEPT_SEARCH_KEY["cogs"] = ["cognitivescience", "cogsci"]
 	DEPT_SEARCH_KEY["cpsc"] = ["computerscience", "cs"]
-	DEPT_SEARCH_KEY["econ"] = ["economics", "finance"]
-	DEPT_SEARCH_KEY["educ"] = ["educationalstudies", "educationalstudy"]
+	DEPT_SEARCH_KEY["econ"] = ["economics"]
+	DEPT_SEARCH_KEY["educ"] = ["educationalstudies", "educational", "study"]
 	DEPT_SEARCH_KEY["engr"] = ["engineering"]
-	DEPT_SEARCH_KEY["engl"] = ["englishliterature"]
-	DEPT_SEARCH_KEY["envs"] = ["environmentalstudies", "environmentalstudy"]
-	DEPT_SEARCH_KEY["fmst"] = ["filmandmediastudies", "study", "filmmedia", "filmstudies"]
-	DEPT_SEARCH_KEY["gsst"] = ["genderandsexualitystudies", "study", "gendersexual", "genderstudy", "genderstudies"]
+	DEPT_SEARCH_KEY["engl"] = ["englishliterature", "english", "literature"]
+	DEPT_SEARCH_KEY["envs"] = ["environmentalstudies", "environmental", "study"]
+	DEPT_SEARCH_KEY["fmst"] = ["filmandmediastudies", "film", "media", "study"]
+	DEPT_SEARCH_KEY["gsst"] = ["genderandsexualitystudies", "gender", "sexual", "study"]
 	DEPT_SEARCH_KEY["hist"] = ["history"]
-	DEPT_SEARCH_KEY["intp"] = ["interpretationtheory"]
-	DEPT_SEARCH_KEY["islm"] = ["islamicstudies", "islamicstudy"]
-	DEPT_SEARCH_KEY["lasc"] = ["latinamericanstudies", "study", "latino", "latinstudy", "latinstudies"]
+	DEPT_SEARCH_KEY["intp"] = ["interpretationtheory", "interpretation", "theory"]
+	DEPT_SEARCH_KEY["islm"] = ["islamicstudies", "islamic", "study"]
+	DEPT_SEARCH_KEY["lasc"] = ["latinamericanstudies", "latin", "american", "study"]
 	DEPT_SEARCH_KEY["ling"] = ["linguistics"]
 	DEPT_SEARCH_KEY["math"] = ["mathematics"]
 	DEPT_SEARCH_KEY["stat"] = ["statistics", "stats"]
-	DEPT_SEARCH_KEY["litr"] = ["modernlanguagesandliteratures"]
+	DEPT_SEARCH_KEY["litr"] = ["modernlanguagesandliteratures", "literature", "language"]
 	DEPT_SEARCH_KEY["arab"] = ["arabics", "arabs"]
 	DEPT_SEARCH_KEY["chin"] = ["chinese", "china"]
-	DEPT_SEARCH_KEY["fren"] = ["frenchandfrancophonestudies", "study", "france"]
-	DEPT_SEARCH_KEY["gmst"] = ["germanstudies", "study"]
+	DEPT_SEARCH_KEY["fren"] = ["frenchandfrancophonestudies", "french", "francophone", "study", "france"]
+	DEPT_SEARCH_KEY["gmst"] = ["germanstudies", "german", "study"]
 	DEPT_SEARCH_KEY["jpns"] = ["japanese"]
 	DEPT_SEARCH_KEY["russ"] = ["russian"]
 	DEPT_SEARCH_KEY["span"] = ["spanish", "spain"]
 	DEPT_SEARCH_KEY["musi"] = ["music"]
 	DEPT_SEARCH_KEY["danc"] = ["dance", "dancing"]
-	DEPT_SEARCH_KEY["peac"] = ["peaceandconflictstudies", "study", "peaceconflict"]
+	DEPT_SEARCH_KEY["peac"] = ["peaceandconflictstudies", "peace", "conflict", "study"]
 	DEPT_SEARCH_KEY["phil"] = ["philosophy"]
 	DEPT_SEARCH_KEY["phys"] = ["physics"]
 	DEPT_SEARCH_KEY["astr"] = ["astronomy", "star"]
 	DEPT_SEARCH_KEY["pols"] = ["politicalscience", "polisci"]
-	DEPT_SEARCH_KEY["psyc"] = ["psychology"]
-	DEPT_SEARCH_KEY["relg"] = ["religions"]
+	DEPT_SEARCH_KEY["psyc"] = ["psychology", "psych"]
+	DEPT_SEARCH_KEY["relg"] = ["religion", "religions"]
 	DEPT_SEARCH_KEY["soci"] = ["sociology"]
 	DEPT_SEARCH_KEY["anth"] = ["anthropology"]
-	DEPT_SEARCH_KEY["soan"] = ["sociologyandanthropology"]
-	DEPT_SEARCH_KEY["thea"] = ["theaters", "theatre", ]
+	DEPT_SEARCH_KEY["soan"] = ["sociologyandanthropology", "sociology", "anthropology"]
+	DEPT_SEARCH_KEY["thea"] = ["theater", "theatre", "theaters"]
 
 
 """
@@ -135,6 +135,10 @@ class Course:
 		self.dept = courseRow[1].text
 		self.courseId = courseRow[2].text
 		self.courseName = courseRow[4].text
+
+		# Replace things like (W) (W) with (W)
+		self.courseName = re.compile(r'(\([A-Z]\)) *(\([A-Z]\))').sub(r'\1', self.courseName)
+
 		self.isFYS = ("FYS: " in self.courseName)
 		self.credit = float(courseRow[5].text)
 		self.courseType = courseRow[9].text
@@ -240,16 +244,18 @@ class Course:
 
 		for word in stripPunctuations(self.courseName.split()):
 			searchField += word.lower()
-		searchField += "%%"
+		searchField += "%"
+		if ("intro" in self.courseName.lower() ) and (not "introduction" in self.courseName.lower()):
+			searchField += "introduction%"
 
-		searchField += (self.dept.lower() + "%%")
+		searchField += (self.dept.lower() + "%")
 		for extraKey in DEPT_SEARCH_KEY[self.dept.lower()]:
 			searchField += extraKey
-			searchField += "%%"
+			searchField += "%"
 
-		searchField += (self.courseId.lower() + "%%" )
-		searchField += (self.profFirstName.lower() + self.profLastName.lower() + "%%")
-		searchField += (self.profLastName.lower() + self.profFirstName.lower() + "%%")
+		searchField += (self.courseId.lower() + "%" )
+		searchField += (self.profFirstName.lower() + self.profLastName.lower() + "%")
+		searchField += (self.profLastName.lower() + self.profFirstName.lower() + "%")
 
 		return searchField
 
