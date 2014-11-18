@@ -101,7 +101,7 @@ input:required:focus {
 }
 
 
-
+/*
 .rating {
 	float: left;
 }
@@ -114,7 +114,7 @@ input:required:focus {
 .rating > ul > li {
 	float: left;
 	margin-left: 2px;
-	background: url(../img/star.jpg) no-repeat left top;
+	background: url(../img/star.png) no-repeat left top;
 	width: 18px;
 	height: 18px;
 	cursor: pointer;
@@ -130,13 +130,13 @@ input:required:focus {
 }
 .rating > span.less {
 	cursor: pointer;
-	background: url(../img/star.jpg) no-repeat left bottom;
+	background: url(../img/star.png) no-repeat left bottom;
 	display: block;
 	float: left;
 	height: 18px;
 	width: 18px;
 }
-
+*/
 
 .ratingbigger {
 	float: left;
@@ -150,9 +150,9 @@ input:required:focus {
 .ratingbigger > ul > li {
 	float: left;
 	margin-left: 2px;
-	background: url(../img/star-big.png) no-repeat left top;
-	width: 32px;
-	height: 32px;
+	background: url(../img/star.png) no-repeat left top;
+	width: 18px;
+	height: 18px;
 	cursor: pointer;
 }
 .ratingbigger > ul > li:first-child {
@@ -166,9 +166,9 @@ input:required:focus {
 }
 .ratingbigger > span.less {
 	cursor: pointer;
-	background: url(../img/star-big.png) no-repeat left bottom;
+	background: url(../img/star.png) no-repeat left bottom;
 	display: block;
 	float: left;
-	height: 32px;
-	width: 32px;
+	height: 18px;
+	width: 18px;
 }

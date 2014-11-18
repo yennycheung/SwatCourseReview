@@ -22,10 +22,11 @@
         			<div class="ratingbigger">
         				<div class="ratingbigger" data-rating-max="5"></div>
         			</div>
+                    <!--
         			<div class="right">
     					<a href="#"><img src="img/iconheart.jpg" alt=""></a>
     					<a href="#"><img src="img/iconplus.jpg" alt=""></a>
-        			</div>
+        			</div>-->
         		</div>
         		<div class="row classdesc">
         			<div class="left">
@@ -82,8 +83,14 @@
         				<div id="reviews">
         			    </div>
                         <div class="review-textbox">
-                            <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>
-                            <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                            <div class="add-rating">
+                                <p class="tag ratingbigger">Overall Rating:</p>
+                                <div class="ratingbigger" id="ratingbigger" data-rating-max="5"></div>
+                            </div>
+                            <div class="add-review">
+                                <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>
+                                <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                            </div>
                         </div>
         		    </div>
         	    </div>
