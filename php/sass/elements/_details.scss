@@ -115,12 +115,18 @@
 						}
 					}*/
 				}
-				.review-textbox, .comment-textbox{
+				.review-textbox{
 					clear: both;
 					margin-bottom: 15px;
+					margin-top: 15px;
 					height: auto;
 					background: #eee;
-					overflow: auto;
+					padding: 15px;
+					
+					//overflow: auto;
+					.add-review{
+						height: 100px;
+					}
 					textarea{
 						@include span-columns(4 of 6);
 						clear:both;
@@ -128,24 +134,12 @@
 					}
 					input{
 						@include span-columns(2 of 6);
-						float: right;
+						//float: right;
 						height: auto;
 					}
 					.add-review-btn {
-						margin: 20px 10px 20px;
-						margin-right: 7px !important;
+						margin: 20px 30px 20px;
 					}
-					/*
-					.add-comment-btn {
-						margin-top: 10px;
-						margin-right: 7px !important;
-					}*/
-				}
-				.review-textbox{
-					overflow: hidden;
-					margin-top: 15px;
-					height: 135px;
-					padding: 15px;
 					.add-rating{
 						margin-top: 5px;
 						margin-bottom: 10px;
@@ -155,6 +149,11 @@
 							margin: 0 5px 0 0;
 						}
 					}
+					/*
+					.add-comment-btn {
+						margin-top: 10px;
+						margin-right: 7px !important;
+					}*/
 				}
 				/*
 				.comment-textbox{

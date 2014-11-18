@@ -13,7 +13,7 @@
 	}
 ?>
 
-
+<div id = "container-fluid">
 <!-- Invisible Div to store Metadata -->
 <?php if ($hasPostData): ?>
 	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
@@ -24,7 +24,7 @@
 <div class="loader"></div>
 
 	<div class="table">
-        <div class="sidebar">
+        <div class="hidden-xs hidden-sm sidebar">
         	<?php include('sidebar.php'); ?>
         </div>
         <div class="content"> 
@@ -35,7 +35,7 @@
 </div>
 
 <!-- End of Body -->
-
+</div>
 <?php require_once('footer.php'); ?>
 
 

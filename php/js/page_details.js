@@ -84,6 +84,7 @@ $(function() {
 
 		var idAndNumReviews = courseObject.get("dept");
 		idAndNumReviews += (" " + courseObject.get("courseId") );
+		idAndNumReview += (" " + "Rating: 5");
 		idAndNumReviews += (" | " + "9 Reviews");
 		$("#js-populate-id-numreviews").html(idAndNumReviews);
 

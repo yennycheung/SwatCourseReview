@@ -1,5 +1,8 @@
 .results {
 	height:100%;
+	#swatcore{
+		@include outer-container;
+	}
 	.content {
 		background:#fff;
 		h3 {
@@ -39,7 +42,7 @@
 			border-width: 3px;
 			border-style: solid;
 			border-color: rgba(00,66,55, 0.4);
-			margin: 20px 0;
+			margin: 10px 0;
 			span {
 				display: inline-block;
 				vertical-align: middle;
@@ -53,6 +56,7 @@
 				font-weight:300;
 				font-size: 15px;
 				margin-left: 10px;
+				margin-right: 10px;
 			}
 	    }
 

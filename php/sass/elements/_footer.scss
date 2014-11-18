@@ -4,6 +4,8 @@
 	background:#fff;
 	padding:20px 0;
 	border-top:1px solid #eee;
+	z-index:500;
+	
 	.left {
 		@include span-columns(5);
 	}

@@ -28,11 +28,11 @@
         		<div class="row top">
         			<div class="title">
         				<h3 id="js-populate-name-prof">Cloud Computing - Kevin Webb</h3>
-        				<p id="js-populate-id-numreviews">CPSC 91 | 9 reviews</p>
+        				<p id="js-populate-id-numreviews">CPSC 91 | Rating: 5 | 9 reviews</p>
         			</div>
-        			<div class="ratingbigger">
+        			<!--<div class="ratingbigger">
         				<div class="ratingbigger" data-rating-max="5"></div>
-        			</div>
+        			</div>-->
         		</div>
 
         		<div class="row classdesc">

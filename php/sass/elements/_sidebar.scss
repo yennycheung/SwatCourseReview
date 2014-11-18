@@ -1,8 +1,12 @@
 .sidebar {
 	background:#eee;
 	padding:100px 30px 50px;
+	z-index: -1;
+	form{
+		padding-left: 15px;
+	}
 	h3 {
-
+		margin-top: 0px;
 	}
 	.fixed {
 		position:fixed;

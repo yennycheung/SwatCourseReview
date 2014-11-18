@@ -743,7 +743,8 @@ form .row {
   height: 60px;
   background: #fff;
   padding: 20px 0;
-  border-top: 1px solid #eee; }
+  border-top: 1px solid #eee;
+  z-index: 500; }
   .footer .left {
     float: left;
     display: block;
@@ -965,7 +966,12 @@ form .row {
 
 .sidebar {
   background: #eee;
-  padding: 100px 30px 50px; }
+  padding: 100px 30px 50px;
+  z-index: -1; }
+  .sidebar form {
+    padding-left: 15px; }
+  .sidebar h3 {
+    margin-top: 0px; }
   .sidebar .fixed {
     position: fixed; }
   .sidebar .row {
@@ -981,6 +987,14 @@ form .row {
 
 .results {
   height: 100%; }
+  .results #swatcore {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto; }
+    .results #swatcore:after {
+      content: "";
+      display: table;
+      clear: both; }
   .results .content {
     background: #fff; }
     .results .content h3 {
@@ -1015,7 +1029,7 @@ form .row {
       border-width: 3px;
       border-style: solid;
       border-color: rgba(0, 66, 55, 0.4);
-      margin: 20px 0; }
+      margin: 10px 0; }
       .results .realContent .list span {
         display: inline-block;
         vertical-align: middle;
@@ -1023,7 +1037,8 @@ form .row {
       .results .realContent .list p {
         font-weight: 300;
         font-size: 15px;
-        margin-left: 10px; }
+        margin-left: 10px;
+        margin-right: 10px; }
         .results .realContent .list p strong {
           font-size: inherit;
           font-weight: 500; }
@@ -1130,43 +1145,39 @@ form .row {
         padding-right: 10px;
         color: #aaa;
         font-size: 12px; }
-    .details .content .two .right .review-textbox, .details .content .two .right .comment-textbox {
+    .details .content .two .right .review-textbox {
       clear: both;
       margin-bottom: 15px;
+      margin-top: 15px;
       height: auto;
       background: #eee;
-      overflow: auto;
+      padding: 15px;
       /*
       .add-comment-btn {
       	margin-top: 10px;
       	margin-right: 7px !important;
       }*/ }
-      .details .content .two .right .review-textbox textarea, .details .content .two .right .comment-textbox textarea {
+      .details .content .two .right .review-textbox .add-review {
+        height: 100px; }
+      .details .content .two .right .review-textbox textarea {
         float: left;
         display: block;
         margin-right: 4.82916%;
         width: 65.05695%;
         clear: both;
         margin: 10px 0 10px 0; }
-        .details .content .two .right .review-textbox textarea:last-child, .details .content .two .right .comment-textbox textarea:last-child {
+        .details .content .two .right .review-textbox textarea:last-child {
           margin-right: 0; }
-      .details .content .two .right .review-textbox input, .details .content .two .right .comment-textbox input {
+      .details .content .two .right .review-textbox input {
         float: left;
         display: block;
         margin-right: 4.82916%;
         width: 30.11389%;
-        float: right;
         height: auto; }
-        .details .content .two .right .review-textbox input:last-child, .details .content .two .right .comment-textbox input:last-child {
+        .details .content .two .right .review-textbox input:last-child {
           margin-right: 0; }
-      .details .content .two .right .review-textbox .add-review-btn, .details .content .two .right .comment-textbox .add-review-btn {
-        margin: 20px 10px 20px;
-        margin-right: 7px !important; }
-    .details .content .two .right .review-textbox {
-      overflow: hidden;
-      margin-top: 15px;
-      height: 135px;
-      padding: 15px; }
+      .details .content .two .right .review-textbox .add-review-btn {
+        margin: 20px 30px 20px; }
       .details .content .two .right .review-textbox .add-rating {
         margin-top: 5px;
         margin-bottom: 10px;

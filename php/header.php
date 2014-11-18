@@ -6,7 +6,9 @@
 	<title>Swat Course Review</title>
 
 	<!-- SASS INCLUDES -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 
 	<!--[if lt IE 9]>
 	   <script>

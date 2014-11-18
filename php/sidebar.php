@@ -9,10 +9,10 @@
 			<input type="checkbox" id="lab">
 			<label for="lab"><span></span>Has a lab.</label>
 		</div>
-		<div class="row">
+		<!--<div class="row">
 			<input type="checkbox" id="prereq">
 			<label for="prereq"><span></span>Has no prerequisites.</label>
-		</div>
+		</div>-->
 		<div class="row">
 			<input type="checkbox" id="firstyearsem">
 			<label for="firstyearsem"><span></span>Is a first-year seminar.</label>
