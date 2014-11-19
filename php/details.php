@@ -27,8 +27,8 @@
 
         		<div class="row top">
         			<div class="title">
-        				<h3 id="js-populate-name-prof">Cloud Computing - Kevin Webb</h3>
-        				<p id="js-populate-id-numreviews">CPSC 91 | Rating: 5 | 9 reviews</p>
+        				<h3 id="js-populate-name-prof"></h3>
+        				<p id="js-populate-id-numreviews"></p>
         			</div>
         			<!--<div class="ratingbigger">
         				<div class="ratingbigger" data-rating-max="5"></div>
@@ -40,7 +40,10 @@
         				<h4>Course Summary</h4>
         			</div>
         			<div class="right">
-	        			<p id="js-populate-summary">On the Internet today, popular services like Google, Facebook, and
+
+	        			<p id="js-populate-summary">
+                        <!--
+                        On the Internet today, popular services like Google, Facebook, and
 						many others are too large to be hosted by just a few servers.
 						Instead, service providers "scale out" across a coordinated set of
 						hundreds to thousands of machines.  Such clusters yield an interesting
@@ -53,6 +56,7 @@
 						providing cloud-based services, including many interesting problems in
 						distributed systems, networking, failure recovery, and OS
 						virtualization.
+                        -->
 						</p>
 					</div>
         		</div>
@@ -76,11 +80,13 @@
                         <div class="review-textbox">
                             <div class="add-rating">
                                 <p class="tag ratingbigger">Overall Rating:</p>
-                                <div class="ratingbigger" id="ratingbigger" data-rating-max="5"></div>
+                                <div class="ratingbigger" id="id-review-rating-bar" data-rating-max="5"></div>
                             </div>
                             <div class="add-review">
-                                <textarea rows="2" name="reviewText" id="reviewText" required placeholder="Add a Review..."></textarea>
-                                <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                                <form action="details.php" id="id-form-add-review" method="post">
+                                    <textarea rows="2" name="reviewText" id="id-review-text" required placeholder="Add a Review..."></textarea>
+                                    <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                                </form>
                             </div>
                         </div>
         		    </div>

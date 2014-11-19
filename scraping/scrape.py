@@ -36,7 +36,7 @@ def populateDeptSearchKey():
 	DEPT_SEARCH_KEY["cpsc"] = ["computerscience", "cs"]
 	DEPT_SEARCH_KEY["econ"] = ["economics"]
 	DEPT_SEARCH_KEY["educ"] = ["educationalstudies", "educational", "study"]
-	DEPT_SEARCH_KEY["engr"] = ["engineering"]
+	DEPT_SEARCH_KEY["engr"] = ["engineering", "e"]
 	DEPT_SEARCH_KEY["engl"] = ["englishliterature", "english", "literature"]
 	DEPT_SEARCH_KEY["envs"] = ["environmentalstudies", "environmental", "study"]
 	DEPT_SEARCH_KEY["fmst"] = ["filmandmediastudies", "film", "media", "study"]
@@ -229,7 +229,13 @@ class Course:
 		jsonObject["division"] = self.division
 		jsonObject["courseType"] = self.courseType
 		jsonObject["credit"] = self.credit
-		jsonObject["searchField"] = self.generateSearchField()
+		
+
+		#jsonObject["searchField"] = self.generateSearchField()
+
+		# It seems search array method gives more accurage results.
+		jsonObject["searchArray"] = self.generateSearchArray()
+
 		return jsonObject
 
 	
@@ -259,6 +265,26 @@ class Course:
 
 		return searchField
 
+	def generateSearchArray(self):
+		global DEPT_SEARCH_KEY
+		searchArray = []
+
+		for word in stripPunctuations(self.courseName.split()):
+			searchArray.append(word.lower())
+
+
+		searchArray.append(self.dept.lower())
+		for extraKey in DEPT_SEARCH_KEY[self.dept.lower()]:
+			searchArray.append(extraKey)
+
+		searchArray.append(self.courseId.lower())
+		searchArray.append(self.profFirstName.lower())
+		searchArray.append(self.profLastName.lower())
+
+		if self.isFYS:
+			searchArray.append("fys")
+
+		return searchArray
 
 """
 Structure that stores all course information. 
@@ -331,7 +357,7 @@ class CourseSummaryDB:
 		[("CPSC", "043")]           [("JPNS", "003"), ("JPNS", "004")]
 	"""
 	@staticmethod
-	def extractCourseInfo(titleText):
+	def extractCourseDeptId(titleText):
 		try:
 			rawWords = re.split(u'\u2013|-| ', titleText.split(".")[0])
 		except:
@@ -356,6 +382,20 @@ class CourseSummaryDB:
 
 
 	"""
+	The course names in schedule pdf is often simplified (such as "Tea in China: Cult/Envir Perspe")
+	Moreover, scraping PDF sometimes brings extra spaces (such as "Foundation Draw ing")
+	Turns out course title in website is a better choice for most courses.
+	"""
+	@staticmethod
+	def extractWebCourseName(titleText):
+		try:
+			courseName = titleText.split(".")[1].strip()
+		except:
+			return None
+
+		return string.replace(courseName, "First-Year Seminar:", "").strip()
+
+	"""
 	Given a node element, decide whether it represents a course title.
 	Typical course titles have the following structure:
 		<h5><a name="CPSC_043" id="CPSC_043"></a>CPSC 043. Computer Networks</h5>
@@ -364,16 +404,16 @@ class CourseSummaryDB:
 	def isCourseTitle(element):
 
 		if element.tag != "h5":
-			return -1
+			return False
 
 		titleText = CourseSummaryDB.extractTitleText(element)
 		if len(titleText) < 1:
-			return -2
+			return False
 		
-		if len(CourseSummaryDB.extractCourseInfo(titleText)) < 1:
-			return -3
+		if len(CourseSummaryDB.extractCourseDeptId(titleText)) < 1:
+			return False
 
-		return 0	
+		return True
 
 	"""
 	Given a list of information paragraphs (paragraphs that come after one course title and
@@ -459,7 +499,7 @@ class CourseSummaryDB:
 		if key in self.summaryDict:
 			return self.summaryDict[key]
 		else:
-			return None
+			return {"summary": None}
 
 
 	"""
@@ -472,10 +512,11 @@ class CourseSummaryDB:
 
 		courseSummary = CourseSummaryDB.extractCourseSummary(infoParagraphs)
 		titleText = CourseSummaryDB.extractTitleText(titleElement)
+		courseName = CourseSummaryDB.extractWebCourseName(titleText)
 
-		for courseInfo in CourseSummaryDB.extractCourseInfo(titleText):
-			if (courseInfo not in self.summaryDict) or ( len(courseSummary) > self.summaryDict[courseInfo] ):
-				self.summaryDict[courseInfo] = courseSummary
+		for courseDeptId in CourseSummaryDB.extractCourseDeptId(titleText):
+			if (courseDeptId not in self.summaryDict) or ( len(courseSummary) > self.summaryDict[courseDeptId] ):
+				self.summaryDict[courseDeptId] = {"summary": courseSummary, "name": courseName}
 
 
 """
@@ -565,7 +606,7 @@ def scrapeDeptPage(summaryDB, deptURL):
 		for element in courseBlock:
 
 
-			if (CourseSummaryDB.isCourseTitle(element) >= 0):
+			if (CourseSummaryDB.isCourseTitle(element)):
 				summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
 				courseElement = element
 				infoParagraphs = []
@@ -608,13 +649,20 @@ For every course in courseDB, look for summary in summaryDB.
 def combineDB(courseDB, summaryDB):
 	for dept in sorted(courseDB.deptDictionary.keys()):
 		for course in courseDB[dept]:
-			summary = summaryDB[(course.dept, course.courseId)]
+			summaryDBItem = summaryDB[(course.dept, course.courseId)]
+
+			summary = summaryDBItem["summary"]
 			if summary == None:
 				print " Summary for " + course.dept + " " + course.courseId + " not found!"
 			elif len(summary) < SHORT_SUMMARY_THRESHOLD:
 				print " Summary for " + course.dept + " " + course.courseId + " is too short!"
 			else:
 				course.summary = summary
+
+			if "name" in summaryDBItem:
+				#print "name of " + course.dept + " " + course.courseId + " updated from: " + course.courseName + " to: " + summaryDBItem["name"]
+				course.courseName = summaryDBItem["name"]
+
 
 """
 Save courseDB to a json file understandable by Parse import

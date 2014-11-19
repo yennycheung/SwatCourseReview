@@ -37,19 +37,26 @@ $(function() {
 		}
 
 				// If these data DOM components don't exist, then page didn't receive POST data.
-		if ( ! $("#data-course-object-id").length>0) {
+		if ( ! $("#data-course-object-id").length > 0) {
 			$("div.row.top").html("<div class='title'><h3>Post data not found! Did you reach here from search results?</h3></div>");
 			return;
 		} 
 
 		// Extract course id from DOM objects.
-		var courseObjectId = $("#data-course-object-id").text();
-
-		// Strip php json_encode() extra quotes.
-		courseObjectId = courseObjectId.substring(1, courseObjectId.length-1);
+		var courseObjectId = getCourseObjectId();
 
 		// Query parse about course info
 		queryCourseInfoFromParse(courseObjectId);
+	}
+
+
+	function getCourseObjectId() {
+		if ( ! $("#data-course-object-id").length>0) {
+			return null;
+		}
+
+		var rawId = $("#data-course-object-id").text();
+		return rawId.substring(1, rawId.length-1);
 	}
 
 
@@ -70,6 +77,7 @@ $(function() {
 				}
 				displayCourseInfo(results[0]);
 			},
+
 			error: function() {
 				console.log("search error!");
 			}
@@ -77,16 +85,17 @@ $(function() {
 	}
 
 	function displayCourseInfo(courseObject) {
-		var nameAndProf = courseObject.get("courseName");
-		nameAndProf += ("  by  " + courseObject.get("profFirstName") );
-		nameAndProf += (" " + courseObject.get("profLastName") );
-		$("#js-populate-name-prof").html(nameAndProf);
+		$("#js-populate-name-prof").html(
+			courseObject.get("courseName") + 
+			"  by  " + courseObject.get("profFirstName") +
+			" " + courseObject.get("profLastName") );
 
-		var idAndNumReviews = courseObject.get("dept");
-		idAndNumReviews += (" " + courseObject.get("courseId") );
-		idAndNumReview += (" " + "Rating: 5");
-		idAndNumReviews += (" | " + "9 Reviews");
-		$("#js-populate-id-numreviews").html(idAndNumReviews);
+		$("#js-populate-id-numreviews").html(
+			courseObject.get("dept") + 
+			" " + courseObject.get("courseId") +
+			" " + "Rating: 5" + 
+			" | " + "9 Reviews" );
+
 
 		$("#js-populate-summary").html(courseObject.get("summary"));
 
@@ -127,21 +136,33 @@ $(function() {
 	}
 
 
-	$(".add-review-btn").click(function(){
-		var content = document.getElementById('reviewText').value;
-		var rating = $('#ratingbigger').attr('data-val');
-		console.log(rating);
-		var newDate = new Date();
-		var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
-		var parsedDOMs = $.parseHTML("<div class='review'> <p class = 'tag rating'>Rating: "+rating+"</p><p>"+content+"</p><div class='actions'><p class='action' id='upvote'>Upvote</p><p class='action' id='timestamp'>"+datetime+"</p></div></div>")
-		if (parsedDOMs.length < 1) {
-			return;
-		}
+	// Add review functionality
+	$("#id-form-add-review").submit( function (event) {
+		event.preventDefault();
 
-		var newReviewDOM = parsedDOMs[0];
-		var newReviewJQuery = $(newReviewDOM);
+		var reviewParseObject = createReviewParseObject();
+		
+		reviewParseObject.save(null, {
+    		success: function(reviewParseObject) {
+      			// The save was successful.
+      			console.log(reviewParseObject);
+    		},
+    		error: function(reviewParseObject, error) {
+      			// The save failed.  Error is an instance of Parse.Error.
+    		}
+  		});
 
-		/*newReviewJQuery.find(".comment").click(function() {
+		//var parsedDOMs = $.parseHTML("<div class='review'> <p class = 'tag rating'>Rating: "+rating+"</p><p>"+content+"</p><div class='actions'><p class='action' id='upvote'>Upvote</p><p class='action' id='timestamp'>"+datetime+"</p></div></div>")
+		//if (parsedDOMs.length < 1) {
+		//	return;
+		//}
+
+
+		//var newReviewDOM = parsedDOMs[0];
+		//var newReviewJQuery = $(newReviewDOM);
+
+		/*
+		newReviewJQuery.find(".comment").click(function() {
 			newReviewJQuery.find(".comment-textbox").toggle();
 			newReviewJQuery.find(".comment-thread").toggle();
 		});
@@ -153,11 +174,48 @@ $(function() {
 			count++;
 		    newReviewJQuery.find(".comment").text("Comment ("+count+")");
 		    newReviewJQuery.find(".comment").attr("data-value", count);
-		});*/
-		$('#reviews').append(newReviewDOM);
-
+		});
+		*/
+		//$('#reviews').append(newReviewDOM);
+		
+		return false;
 	});
 
+	
+	function createReviewParseObject() {
+		var comment = $("#id-review-text").val();
+		var rating = $('#id-review-rating-bar').attr('data-val');
+		rating = rating? parseInt(rating) : 0;
+
+		//var newDate = new Date();
+		//var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
+		
+		var ReviewClass = Parse.Object.extend("Review", 
+	        {initialize: function(attrs, options) {
+	            this.set("overallRating", 0.0);
+	            this.set("difficultyRating", 0.0);
+	            this.set("workloadRating", 0.0);
+	            this.set("interestRating", 0.0);
+	            this.set("usefulRating", 0.0);
+	            this.set("numUpVote", 0);
+	            this.set("numDownVote", 0);
+	            this.set("comment", "");
+	        }},
+	        null
+	    );
+
+	    var reviewInstance = new ReviewClass();
+	    reviewInstance.set("comment", comment);
+	    reviewInstance.set("overallRating", rating);
+	    reviewInstance.set("difficultyRating", rating);
+	    reviewInstance.set("workloadRating", rating);
+	    reviewInstance.set("usefulRating", rating);
+	    reviewInstance.set("interestRating", rating);
+	    reviewInstance.set("courseObjectId", getCourseObjectId());
+	    reviewInstance.set("userObjectId", Parse.User.current().id);
+	    
+	    return reviewInstance;
+	}
 
 	main();
 });

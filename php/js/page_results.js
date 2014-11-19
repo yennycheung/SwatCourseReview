@@ -41,15 +41,16 @@ jQuery(document).ready(function() {
 			var query = new Parse.Query("Course");
 
 			// Use PERL regex to query one field multiple times.
-			
+			/*
 			perlRegex = ""
 			for (var i=0; i<searchComponents.length; i++) {
 				perlRegex += ( "(?=.*" + searchComponents[i] + ".*)" );
 			}
 			query.matches("searchField", perlRegex, "");
+			*/
 			
-
-			//query.containsAll("searchArray", searchComponents);
+			// Use search array method to find results. 
+			query.containsAll("searchArray", searchComponents);
 
 			// Query for results.
 			query.find({
