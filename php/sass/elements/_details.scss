@@ -11,6 +11,7 @@
 				}
 				border-bottom: 1px solid #eee;
 				padding:20px 40px;
+				padding-top: 0px;
 				.title {
 					h3 {
 						line-height: 40px;
@@ -45,6 +46,9 @@
 				float:left;
 				width:15%;
 				color:#777;
+				h4{
+					margin:0px;
+				}
 			}
 			.right {
 				float:left;
@@ -125,7 +129,7 @@
 					
 					//overflow: auto;
 					.add-review{
-						height: 100px;
+						overflow: auto;
 					}
 					textarea{
 						@include span-columns(4 of 6);

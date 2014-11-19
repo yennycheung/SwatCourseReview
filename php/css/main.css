@@ -401,6 +401,9 @@ h3 {
   font-weight: 500;
   font-size: 25px; }
 
+h4 {
+  font-size: 17px; }
+
 p {
   color: #888;
   font-size: 15px;
@@ -1053,7 +1056,8 @@ form .row {
     overflow: auto; }
     .details .content .row.top {
       border-bottom: 1px solid #eee;
-      padding: 20px 40px; }
+      padding: 20px 40px;
+      padding-top: 0px; }
       .details .content .row.top div {
         float: left; }
       .details .content .row.top .title h3 {
@@ -1080,6 +1084,8 @@ form .row {
       float: left;
       width: 15%;
       color: #777; }
+      .details .content .classdesc .left h4 {
+        margin: 0px; }
     .details .content .classdesc .right {
       float: left;
       width: 80%;
@@ -1158,7 +1164,7 @@ form .row {
       	margin-right: 7px !important;
       }*/ }
       .details .content .two .right .review-textbox .add-review {
-        height: 100px; }
+        overflow: auto; }
       .details .content .two .right .review-textbox textarea {
         float: left;
         display: block;

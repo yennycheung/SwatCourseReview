@@ -81,9 +81,6 @@
 				<p class="dev-title">Backend Developer</p>
 			</div>
 			<div class="col">
-				<img src="img/peng.jpg" alt="">
-				<p class="dev-name">Peng Zhao</p>
-				<p class="dev-title">Backend Developer</p>
 			</div>
 		</div>
 	</section>
