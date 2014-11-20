@@ -1104,7 +1104,8 @@ form .row {
       float: left;
       width: 85%; }
       .details .content .closedetails .right .detail {
-        margin-bottom: 20px; }
+        margin-bottom: 20px;
+        width: 85%; }
         .details .content .closedetails .right .detail i {
           display: inline-block;
           height: 100%;
