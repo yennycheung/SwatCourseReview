@@ -23,7 +23,7 @@
 			color:#333;
 			font-weight: 100;
 			font-size: 25px;
-			margin-top:18px;
+			margin-top:16px;
 			display:block;
 			strong {
 				font-size: inherit;
@@ -37,7 +37,7 @@
 		float:right;
 		height: auto;
 		margin-right:0;
-		margin-top: 14px;
+		margin-top: 13px;
 	}
 	.login {
 		@include span-columns(6);

@@ -619,9 +619,6 @@ textarea {
   	background-color: rgba(0,0,0,0.8);
   }*/ }
 
-input[type="email"], input[type="password"] {
-  opacity: 0.6; }
-
 input[type="checkbox"] {
   display: none; }
 
@@ -701,7 +698,7 @@ form .row {
       color: #333;
       font-weight: 100;
       font-size: 25px;
-      margin-top: 18px;
+      margin-top: 16px;
       display: block; }
       .header .logo span strong {
         font-size: inherit;
@@ -715,7 +712,7 @@ form .row {
     float: right;
     height: auto;
     margin-right: 0;
-    margin-top: 14px; }
+    margin-top: 13px; }
     .header #id-btn-logout:last-child {
       margin-right: 0; }
   .header .login {
@@ -939,7 +936,8 @@ form .row {
       width: 31.76157%;
       border-radius: 15px;
       background: #fff;
-      border: solid #eee 5px; }
+      border: solid #eee 5px;
+      overflow: hidden; }
       .body section.testimonial .col:last-child {
         margin-right: 0; }
       .body section.testimonial .col:hover {
@@ -1205,13 +1203,14 @@ form .row {
 .contactscontainer {
   width: 700px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.6); }
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  text-align: left; }
   .contactscontainer .top {
     height: 80px; }
     .contactscontainer .top span {
       display: block;
       text-transform: uppercase;
-      text-align: left;
       line-height: 58px;
       color: #006655;
       padding-left: 40px;

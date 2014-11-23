@@ -15,13 +15,13 @@
 			width: 700px;
 			margin: auto;
 			background: rgba(255,255,255,.6);
-			//float: center;
+			border-radius: 8px;
+			text-align:left;
 			.top {
 				height: 80px;
 				span {
 					display: block;
 					text-transform:uppercase;
-					text-align:left;
 					line-height: 58px;
 					color:$green;
 					padding-left:40px;
