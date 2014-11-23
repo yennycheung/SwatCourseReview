@@ -36,7 +36,6 @@
 
 <!-- End of Body -->
 </div>
-<?php require_once('footer.php'); ?>
 
 
 <!-- JS INCLUDES -->
