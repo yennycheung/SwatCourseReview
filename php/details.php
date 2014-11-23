@@ -6,9 +6,9 @@
 <!-- Begin of Body -->
 <?php
     $hasPostData = False;
-    if(isset($_POST)) {
-        if (array_key_exists("course-object-id", $_POST) ) {
-            $courseObjectId = json_encode($_POST["course-object-id"]);
+    if(isset($_GET)) {
+        if (array_key_exists("course-object-id", $_GET) ) {
+            $courseObjectId = json_encode($_GET["course-object-id"]);
             $hasPostData = True;
         }
     }
@@ -24,11 +24,10 @@
 	<div class="table">
         <div class="content">
         	<div class="deatlstext">
-
         		<div class="row top">
         			<div class="title">
-        				<h3 id="js-populate-name-prof"></h3>
-        				<p id="js-populate-id-numreviews"></p>
+        				<h3 id="js-populate-course-title"></h3>
+        				<p id="js-populate-review-summary"></p>
         			</div>
         			<!--<div class="ratingbigger">
         				<div class="ratingbigger" data-rating-max="5"></div>
@@ -40,29 +39,13 @@
         				<h4>Course Summary</h4>
         			</div>
         			<div class="right">
-
 	        			<p id="js-populate-summary">
-                        <!--
-                        On the Internet today, popular services like Google, Facebook, and
-						many others are too large to be hosted by just a few servers.
-						Instead, service providers "scale out" across a coordinated set of
-						hundreds to thousands of machines.  Such clusters yield an interesting
-						operating environment, the data center, in which a single
-						administrative entity owns a network at the scale that resembles the
-						Internet. To meet customer demands, administrators often face
-						stringent inter-machine coordination constraints.
-
-						In this course, we'll examine the current state of the art in
-						providing cloud-based services, including many interesting problems in
-						distributed systems, networking, failure recovery, and OS
-						virtualization.
-                        -->
 						</p>
 					</div>
         		</div>
         		<div class="row closedetails">
         			<div class="left">
-        				<h4>Details</h4>
+        				<h4>Division</h4>
         			</div>
         			<div class="right">
         				<div id="js-populate-division" class="col">
@@ -77,10 +60,23 @@
 
         				<div id="reviews">
         			    </div>
+
                         <div class="review-textbox">
                             <div class="add-rating">
-                                <p class="tag ratingbigger">Overall Rating:</p>
-                                <div class="ratingbigger" id="id-review-rating-bar" data-rating-max="5"></div>
+                                <p class="tag">Overall Rating:</p>
+                                <div class="ratingbigger" id="id-overall-rating-bar" data-rating-max="5"></div>
+                                <!--
+                                <br/>
+                                <p class="tag ratingbigger">Difficulty:</p>
+                                <div class="ratingbigger" id="id-difficulty-rating-bar" data-rating-max="5"></div>
+                                <p class="tag ratingbigger">Workload:</p>
+                                <div class="ratingbigger" id="id-workload-rating-bar" data-rating-max="5"></div>
+                                <br/>
+                                <p class="tag ratingbigger">Fun:</p>
+                                <div class="ratingbigger" id="id-fun-rating-bar" data-rating-max="5"></div>
+                                <p class="tag ratingbigger">Usefulness:</p>
+                                <div class="ratingbigger" id="id-useful-rating-bar" data-rating-max="5"></div>
+                                -->
                             </div>
                             <div class="add-review">
                                 <form action="details.php" id="id-form-add-review" method="post">
@@ -89,6 +85,8 @@
                                 </form>
                             </div>
                         </div>
+
+                        <input type="button" class="add-review-btn" id="id-update-button" value="You have already reviewed this class. Click to update Review"/>
         		    </div>
         	    </div>
             </div>

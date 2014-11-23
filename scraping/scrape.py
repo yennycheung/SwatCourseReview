@@ -33,7 +33,7 @@ def populateDeptSearchKey():
 	DEPT_SEARCH_KEY["anch"] = ["ancienthistory", "ancient", "history"]
 	DEPT_SEARCH_KEY["clst"] = ["classicalstudies"]
 	DEPT_SEARCH_KEY["cogs"] = ["cognitivescience", "cogsci"]
-	DEPT_SEARCH_KEY["cpsc"] = ["computerscience", "cs"]
+	DEPT_SEARCH_KEY["cpsc"] = ["computerscience", "cs", "compsci"]
 	DEPT_SEARCH_KEY["econ"] = ["economics"]
 	DEPT_SEARCH_KEY["educ"] = ["educationalstudies", "educational", "study"]
 	DEPT_SEARCH_KEY["engr"] = ["engineering", "e"]
@@ -125,24 +125,43 @@ The Course class.
 Populated from scraping and serialized to JSON.
 """
 class Course:
+	def __init__(self):
+		pass
+
+	def initFromJSON(self, jsonObject):
+		self.courseId = jsonObject["courseId"]
+		self.courseName = jsonObject["courseName"]
+		self.courseType = jsonObject["courseType"]
+		self.credit = float(jsonObject["credit"])
+		self.crossList = jsonObject["crossList"]
+		self.dept = jsonObject["dept"]
+		self.division = jsonObject["division"]
+		self.hasLab = jsonObject["hasLab"]
+		self.isFYS = jsonObject["isFYS"]
+		self.isWritingCourse = jsonObject["isWritingCourse"]
+		self.profFirstName = jsonObject["profFirstName"]
+		self.profLastName = jsonObject["profLastName"]
+		self.reviews = jsonObject["reviews"]
+		self.summary = jsonObject["summary"]
+
+
 
 	"""
 	Construct a course object from a course type row.
 	Only fills basic information. Other fields are populated from info rows / web scraping.
 	"""
-	def __init__(self, courseRow):
+	def initFromCourseRow(self, courseRow):
 		# Basic info
-		self.dept = courseRow[1].text
-		self.courseId = courseRow[2].text
-		self.courseName = courseRow[4].text
+		self.dept = courseRow[1].text.strip().replace(" ", "")
+		self.courseId = courseRow[2].text.strip().replace(" ", "")
+		self.courseName = courseRow[4].text.strip()
 
 		# Replace things like (W) (W) with (W)
 		self.courseName = re.compile(r'(\([A-Z]\)) *(\([A-Z]\))').sub(r'\1', self.courseName)
 
 		self.isFYS = ("FYS: " in self.courseName)
 		self.credit = float(courseRow[5].text)
-		self.courseType = courseRow[9].text
-		self.semester = SEMESTER
+		self.courseType = courseRow[9].text.strip().replace(" ", "")
 
 		# Sometimes prof name is not specified (such as directed reading classes)
 		profNames = courseRow[8].text.split(",")
@@ -150,12 +169,12 @@ class Course:
 			self.profFirstName = "STAFF"
 			self.profLastName = ""
 		else:
-			self.profFirstName = courseRow[8].text.split(',')[1]
-			self.profLastName = courseRow[8].text.split(',')[0]
+			self.profFirstName = courseRow[8].text.split(',')[1].strip().replace(" ", "")
+			self.profLastName = courseRow[8].text.split(',')[0].strip().replace(" ", "")
 
 		# Distributions
 		distributions = [x.strip() for x in courseRow[6].text.split(",")]
-		self.division = distributions[0]
+		self.division = distributions[0].strip()
 		self.isWritingCourse = ('W' in distributions)
 
 
@@ -169,6 +188,9 @@ class Course:
 			self.hasLab = True
 		else:
 			self.hasLab = False
+
+		# New course has no reviews
+		self.reviews = []
 		
 
 	"""
@@ -192,7 +214,21 @@ class Course:
 
 				for i in range(len(words)):
 					if words[i].isdigit():
-						self.crossList.append( (words[i-1], words[i]) )
+						self.crossList.append( ( words[i-1].strip() + "^" + words[i].strip() ) )
+
+
+	"""
+	For a course, we only care about it's dept + id + professor.
+	We don't care about it's semester / lab sections.
+	There is one instance in database for each unique key.
+	"""
+	def generateUniqueKey(self):
+		uniqueKey = ""
+		uniqueKey += (self.dept.lower() + "^") 
+		uniqueKey += (self.courseId.lower() + "^")
+		uniqueKey += (self.profFirstName.lower() + "^")
+		uniqueKey += (self.profLastName.lower() + "^")
+		return uniqueKey
 
 
 	"""
@@ -222,14 +258,14 @@ class Course:
 		jsonObject["profFirstName"] = self.profFirstName
 		jsonObject["profLastName"] = self.profLastName
 		jsonObject["summary"] = self.summary
-		jsonObject["semester"] = self.semester
 		jsonObject["isWritingCourse"] = self.isWritingCourse
 		jsonObject["hasLab"] = self.hasLab
 		jsonObject["isFYS"] = self.isFYS
 		jsonObject["division"] = self.division
 		jsonObject["courseType"] = self.courseType
 		jsonObject["credit"] = self.credit
-		
+		jsonObject["reviews"] = self.reviews
+		jsonObject["crossList"] = self.crossList
 
 		#jsonObject["searchField"] = self.generateSearchField()
 
@@ -265,13 +301,15 @@ class Course:
 
 		return searchField
 
+
 	def generateSearchArray(self):
 		global DEPT_SEARCH_KEY
 		searchArray = []
 
 		for word in stripPunctuations(self.courseName.split()):
 			searchArray.append(word.lower())
-
+			if (word.lower().startswith("introduction") ):
+				searchArray.append("intro");
 
 		searchArray.append(self.dept.lower())
 		for extraKey in DEPT_SEARCH_KEY[self.dept.lower()]:
@@ -291,35 +329,42 @@ Structure that stores all course information.
 """
 class CourseDB:
 	def __init__(self):
-		self.deptDictionary = {}
+		self.uniqueKeyDictionary = {}
 
 	"""
 	Supports dictionary-like retrieval, using square brackets [].
 	"""
 	def __getitem__(self, key):
-		if key in self.deptDictionary:
-			return self.deptDictionary[key]
-		else:
-			return []
+		return self.uniqueKeyDictionary[key];
 
+	"""
+	Supports dictionary-like in operator
+	"""
+	def __contains__(self, key):
+		return key in self.uniqueKeyDictionary
+
+	"""
+	Supports for ... in ... iteration
+	"""
+	def __iter__(self):
+		for course in self.uniqueKeyDictionary.values():
+			yield course
+
+	"""
+	Insert a new course into database, throwing exception if uniqueKey is already present.
+	"""
 	def insertCourse(self, course):
-		if course.dept in self.deptDictionary:
-			self.deptDictionary[course.dept].append(course)
+		uniqueKey = course.generateUniqueKey();
+		if uniqueKey in self.uniqueKeyDictionary:
+			raise Exception("CourseDB::insertCourse() - course is already in dictionary!")
 		else:
-			self.deptDictionary[course.dept] = [course]
+			self.uniqueKeyDictionary[uniqueKey] = course
 
-
-	def printSelf(self):
-		for dept in self.deptDictionary.keys():
-			print "\nCourses in " + dept + ": \n" + "*" * 40
-			for course in self.deptDictionary[dept]:
-				print course.toString()
 
 	def toJSON(self):
 		courseList = []
-		for dept in sorted(self.deptDictionary.keys()):
-			for course in self.deptDictionary[dept]:
-				courseList.append(course.toJSONObject())
+		for course in self.uniqueKeyDictionary.values():
+			courseList.append(course.toJSONObject())
 
 		jsonObject = {}
 		jsonObject["results"] = courseList
@@ -519,6 +564,25 @@ class CourseSummaryDB:
 				self.summaryDict[courseDeptId] = {"summary": courseSummary, "name": courseName}
 
 
+def readExportedData():
+	courseDB = CourseDB()
+
+	try:
+		exportedJSONFile = codecs.open('CourseExported.json', mode="r", encoding='utf-8')
+	except:
+		print "\nNo exported file. This is the first scraping\n"
+		return courseDB
+
+	print "\n Foudn exported file. Reading ... \n"
+	jsonArray = json.loads(exportedJSONFile.read().strip())["results"]
+	for jsonObject in jsonArray:
+		course = Course()
+		course.initFromJSON(jsonObject)
+		courseDB.insertCourse(course)
+
+	return courseDB
+
+
 """
 Read a html course schedule file.
 These files are obtained by uploadign course schedule PDFS to pdftables.com
@@ -529,13 +593,13 @@ def readScheduleFile(filename):
 	return scheduleTree
 
 
+
 """
 Given a list of page objects read from course shedule html,
 Return a CourseDB containing all course information in these pages.
 This is the only function for course schedule scraping (easy).
 """
-def extractCoursesFromPages(pages):
-	courseDB = CourseDB()
+def extractCoursesFromPages(pages, courseDB):
 	currentCourse = None
 
 	for page in pages:
@@ -549,15 +613,18 @@ def extractCoursesFromPages(pages):
 		for row in usefulRows:
 			if getRowType(row) == ROW_TYPE_COURSE:
 				# If we get a new course, insert the current course and create a new one
-				if currentCourse != None:
+				if currentCourse != None and currentCourse.generateUniqueKey() not in courseDB:
 					courseDB.insertCourse(currentCourse)
-				currentCourse = Course(row)
+				currentCourse = Course()
+				currentCourse.initFromCourseRow(row)
 			else:
 				# Else apply this info row to the current course.
 				if currentCourse != None:
 					currentCourse.applyInfoRow(row)
 
-	courseDB.insertCourse(currentCourse)
+	if currentCourse != None and currentCourse.generateUniqueKey() not in courseDB:
+		courseDB.insertCourse(currentCourse)
+
 	return courseDB
 
 
@@ -647,21 +714,21 @@ For every course in courseDB, look for summary in summaryDB.
 	Else, populate its "summary" field.
 """
 def combineDB(courseDB, summaryDB):
-	for dept in sorted(courseDB.deptDictionary.keys()):
-		for course in courseDB[dept]:
-			summaryDBItem = summaryDB[(course.dept, course.courseId)]
 
-			summary = summaryDBItem["summary"]
-			if summary == None:
-				print " Summary for " + course.dept + " " + course.courseId + " not found!"
-			elif len(summary) < SHORT_SUMMARY_THRESHOLD:
-				print " Summary for " + course.dept + " " + course.courseId + " is too short!"
-			else:
-				course.summary = summary
+	for course in courseDB:
+		summaryDBItem = summaryDB[(course.dept, course.courseId)]
 
-			if "name" in summaryDBItem:
-				#print "name of " + course.dept + " " + course.courseId + " updated from: " + course.courseName + " to: " + summaryDBItem["name"]
-				course.courseName = summaryDBItem["name"]
+		summary = summaryDBItem["summary"]
+		if summary == None:
+			print " Summary for " + course.dept + " " + course.courseId + " not found!"
+		elif len(summary) < SHORT_SUMMARY_THRESHOLD:
+			print " Summary for " + course.dept + " " + course.courseId + " is too short!"
+		else:
+			course.summary = summary
+
+		if "name" in summaryDBItem:
+			#print "name of " + course.dept + " " + course.courseId + " updated from: " + course.courseName + " to: " + summaryDBItem["name"]
+			course.courseName = summaryDBItem["name"]
 
 
 """
@@ -674,6 +741,9 @@ def saveToFile(courseDB, filename):
 
 
 def main():
+
+	# Read exported data from Parse (the courses scraped before)
+	courseDB = readExportedData()
 
 	# Read first 20 pages of course schedule.
 	scheduleTree = readScheduleFile("schedule-pdf-extract-1.html")
@@ -688,10 +758,10 @@ def main():
 	populateDeptSearchKey()
 
 	# Set global semester info from a page header.
-	setGlobalSemester(pages[0])
+	#setGlobalSemester(pages[0])
 
 	# Extract courses from these pages in schedule
-	courseDB = extractCoursesFromPages(pages)
+	extractCoursesFromPages(pages, courseDB)
 
 	# Scrape College Catalog
 	summaryDB = scrapeCatalog()
@@ -700,7 +770,7 @@ def main():
 	combineDB(courseDB, summaryDB)
 
 	# Save the DB to a json file
-	saveToFile(courseDB, "Course" + SEMESTER + ".json")
+	saveToFile(courseDB, "CourseScrape.json")
 
 
 if __name__ == "__main__":

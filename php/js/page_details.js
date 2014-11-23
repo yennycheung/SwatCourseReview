@@ -14,33 +14,37 @@ $(function() {
 	}
 
 
-	$(".rating").starRating({
-		//minus: true // step minus button
-	});
-
 	$(".ratingbigger").starRating({
 		//minus: true // step minus button
 	});
+
+	$("id-update-button").hide();
 
 	$(document).ready(function(){
 	    $('textarea').autosize();   
 	});
 
-
+	var courseParseObject = null;
+	var reviewArray = null;
+	var myReview = null;
 
 	/* Backend Stuff */
 	function main() {
+
 		// If not logged in, display the remind string.
 		if ( !Parse.User.current()) {
 			$("div.row.top").html("<div class='title'><h3>Please log in before visiting this page!</h3></div>");
+			hideAllLayouts();
 			return;
 		}
 
 				// If these data DOM components don't exist, then page didn't receive POST data.
 		if ( ! $("#data-course-object-id").length > 0) {
-			$("div.row.top").html("<div class='title'><h3>Post data not found! Did you reach here from search results?</h3></div>");
+			$("div.row.top").html("<div class='title'><h3>We are sorry, the page you are looking for is not found!</h3></div>");
+			hideAllLayouts();
 			return;
 		} 
+
 
 		// Extract course id from DOM objects.
 		var courseObjectId = getCourseObjectId();
@@ -49,6 +53,12 @@ $(function() {
 		queryCourseInfoFromParse(courseObjectId);
 	}
 
+	function hideAllLayouts() {
+		$("div.row.classdesc").hide();
+		$("div.row.closedetails").hide();
+		$("div.footer").hide()
+
+	}
 
 	function getCourseObjectId() {
 		if ( ! $("#data-course-object-id").length>0) {
@@ -67,37 +77,39 @@ $(function() {
 
 		var query = new Parse.Query("Course");
 		query.equalTo("objectId", courseObjectId);
+
+		// Include review contents in the results, instead of an array of pointers.
+		// This applies to the save() query as well.
+		query.include("reviews");
 		
 		// Query for results.
 		query.find({
 			success: function(results) {
 				if (results.length != 1) {
-					console.log("page_details.js: wronglength of course list!");
+					console.log("page_details.js: wrong length of course list!");
 					return;
 				}
+				courseParseObject = results[0];
 				displayCourseInfo(results[0]);
+				reviewArray = courseParseObject.get("reviews");
+				displayReviews(reviewArray);
+				updateLayoutBasedOnHasReview(reviewArray);
 			},
 
-			error: function() {
+			error: function(error) {
 				console.log("search error!");
 			}
 		});
 	}
 
 	function displayCourseInfo(courseObject) {
-		$("#js-populate-name-prof").html(
+		$("#js-populate-course-title").html(
+			courseObject.get("dept") + " " + courseObject.get("courseId") + ": " + 
 			courseObject.get("courseName") + 
-			"  by  " + courseObject.get("profFirstName") +
+			"&nbsp;&nbsp;&nbsp;by " + courseObject.get("profFirstName") +
 			" " + courseObject.get("profLastName") );
 
-		$("#js-populate-id-numreviews").html(
-			courseObject.get("dept") + 
-			" " + courseObject.get("courseId") +
-			" " + "Rating: 5" + 
-			" | " + "9 Reviews" );
-
-
-		$("#js-populate-summary").html(courseObject.get("summary"));
+		$("#js-populate-summary").html(courseObject.get("summary").replace(/\n/g, "<br/>"));
 
 
 		var division = courseObject.get("division");
@@ -133,78 +145,84 @@ $(function() {
             		"<p>Writing Course</p>" +
         		"</div>");
 		}
+
 	}
 
 
-	// Add review functionality
+
 	$("#id-form-add-review").submit( function (event) {
 		event.preventDefault();
-
-		var reviewParseObject = createReviewParseObject();
 		
-		reviewParseObject.save(null, {
-    		success: function(reviewParseObject) {
-      			// The save was successful.
-      			console.log(reviewParseObject);
-    		},
-    		error: function(reviewParseObject, error) {
-      			// The save failed.  Error is an instance of Parse.Error.
-    		}
-  		});
+		var reviewParseObject = getReviewParseOBject();
 
-		//var parsedDOMs = $.parseHTML("<div class='review'> <p class = 'tag rating'>Rating: "+rating+"</p><p>"+content+"</p><div class='actions'><p class='action' id='upvote'>Upvote</p><p class='action' id='timestamp'>"+datetime+"</p></div></div>")
-		//if (parsedDOMs.length < 1) {
-		//	return;
-		//}
+		if (myReview) {
+			$("div.review-textbox").hide();
+			$("#id-update-button").show();
 
+			reviewParseObject.save(null, {
+				success: function(newReviewObject) {
+					myReview.updatedAt = newReviewObject.updatedAt;
+					displayReviews(reviewArray);
+				},
+				error : function(error) {
+					console.log("save error!");
+				}
+			});
+		}
+		else {
+			myReview = reviewParseObject;
 
-		//var newReviewDOM = parsedDOMs[0];
-		//var newReviewJQuery = $(newReviewDOM);
+			// Construct the review Parse object.
+		 	courseParseObject.add("reviews", reviewParseObject);
 
-		/*
-		newReviewJQuery.find(".comment").click(function() {
-			newReviewJQuery.find(".comment-textbox").toggle();
-			newReviewJQuery.find(".comment-thread").toggle();
-		});
-
-		newReviewJQuery.find(".add-comment-btn").click(function(){
-			var comment = newReviewJQuery.find(".commentText").val();
-			newReviewJQuery.find(".comments").prepend('<div class="comment-thread"><p>'+comment+'</p></div>');
-			var count = newReviewJQuery.find(".comment").attr("data-value");
-			count++;
-		    newReviewJQuery.find(".comment").text("Comment ("+count+")");
-		    newReviewJQuery.find(".comment").attr("data-value", count);
-		});
-		*/
-		//$('#reviews').append(newReviewDOM);
+		 	// Add it to the review array of this course, and save the course.
+			// This will save the review object as well.
+			courseParseObject.save(null, {
+				success: function (newCourseParseObject) {
+					// save is successful. Display the updated reviews.
+					reviewArray = courseParseObject.get("reviews");
+					displayReviews(reviewArray);
+					updateLayoutBasedOnHasReview(reviewArray);
+				},
+				error : function (error) {
+					console.log("save error!");
+				}
+			});
+		}
 		
 		return false;
 	});
 
 	
-	function createReviewParseObject() {
+	function getReviewParseOBject() {
 		var comment = $("#id-review-text").val();
-		var rating = $('#id-review-rating-bar').attr('data-val');
+		var rating = $('#id-overall-rating-bar').attr('data-val');
 		rating = rating? parseInt(rating) : 0;
 
 		//var newDate = new Date();
 		//var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
 		
-		var ReviewClass = Parse.Object.extend("Review", 
-	        {initialize: function(attrs, options) {
-	            this.set("overallRating", 0.0);
-	            this.set("difficultyRating", 0.0);
-	            this.set("workloadRating", 0.0);
-	            this.set("interestRating", 0.0);
-	            this.set("usefulRating", 0.0);
-	            this.set("numUpVote", 0);
-	            this.set("numDownVote", 0);
-	            this.set("comment", "");
-	        }},
-	        null
-	    );
+		var reviewInstance;
+		if (myReview) {
+			reviewInstance = myReview;
+		}
+		else{
+			var ReviewClass = Parse.Object.extend("Review", 
+		        {initialize: function(attrs, options) {
+		            this.set("overallRating", 0.0);
+		            this.set("difficultyRating", 0.0);
+		            this.set("workloadRating", 0.0);
+		            this.set("interestRating", 0.0);
+		            this.set("usefulRating", 0.0);
+		            this.set("numUpVote", 0);
+		            this.set("numDownVote", 0);
+		            this.set("comment", "");
+		        }},
+		        null
+		    );
+		    reviewInstance = new ReviewClass();			
+		}
 
-	    var reviewInstance = new ReviewClass();
 	    reviewInstance.set("comment", comment);
 	    reviewInstance.set("overallRating", rating);
 	    reviewInstance.set("difficultyRating", rating);
@@ -217,5 +235,115 @@ $(function() {
 	    return reviewInstance;
 	}
 
+
+	function cleanReviewArray(reviewArray) {
+		if (!reviewArray) {
+			return [];
+		}
+
+		// If some of the reviews are deleted but the pointers in course's "review" array
+		// aren't deleted, the value of that review will be null. Clean them.
+		cleanedArray = []
+		for (var i=0; i<reviewArray.length; i++) {
+			if (reviewArray[i]) {
+				cleanedArray.push(reviewArray[i]);
+			}
+		} 
+
+		if (cleanedArray.length < reviewArray.length) {
+			console.log("Warning: " + (reviewArray.length - cleanedArray.length) + " reviews are null!");
+		}
+
+		return cleanedArray;
+	}
+
+
+	function displayReviews(reviewArray) {
+		if (!reviewArray) {
+			$("#js-populate-review-summary").html("0 Reviews");
+			return;
+		}
+
+		cleanedArray = cleanReviewArray(reviewArray);
+
+		// Sort array based on update time, decending.
+		cleanedArray.sort(function(review1, review2) {
+			return (review2.updatedAt.getTime() - review1.updatedAt.getTime() ) ;
+		});
+
+		// Display them in the reviews list.
+		$('#reviews').html("");
+		var sumRating = 0.0;
+		for (var i=0; i<cleanedArray.length; i++) {
+			var reviewParseObject = cleanedArray[i];
+
+			var rating = reviewParseObject.get("overallRating");
+			var comment = reviewParseObject.get("comment");
+			var datetime = reviewParseObject.updatedAt.toDateString() + "&nbsp;&nbsp;&nbsp;" +
+							reviewParseObject.updatedAt.toLocaleTimeString();
+			var parsedDOMs = $.parseHTML(
+				"<div class='review'> " + 
+					"<p class = 'tag rating'>Rating: "+rating+"</p>" + 
+					"<p>"+comment+"</p>" + 
+					"<div class='actions'>" + 
+						"<p class='action' >"+datetime+"</p>" +
+					"</div>" +
+				"</div>");
+
+			if (parsedDOMs.length < 1) {
+				return;
+			}
+
+			var newReviewDOM = parsedDOMs[0];
+			$('#reviews').append(newReviewDOM);
+
+			sumRating += rating;
+		}
+
+		// Display review summary
+		var reviewSummary = "" + cleanedArray.length + " Reviews";
+		if (cleanedArray.length > 0) {
+			var avgRating = sumRating / cleanedArray.length;
+			avgRating = Math.round(avgRating*100)/100;
+			reviewSummary += (" | Rating: " + (avgRating) );
+		}
+
+		$("#js-populate-review-summary").html(reviewSummary);
+
+	}
+
+	function updateLayoutBasedOnHasReview(reviewArray) {
+		if (!reviewArray) {
+			return;
+		}
+		
+		var cleanedArray = cleanReviewArray(reviewArray);	
+		for (var i=0; i<cleanedArray.length; i++) {
+			var reviewParseObject = cleanedArray[i];
+			if (reviewParseObject.get("userObjectId") == Parse.User.current().id) {
+				myReview = reviewParseObject;
+			}
+		}
+
+		if (myReview) {
+			$("div.review-textbox").hide();
+			$("#id-update-button").show();
+
+			$("#id-update-button").click(function() {
+				$("#id-update-button").hide();
+				$("div.review-textbox").show();	
+				$("#id-overall-rating-bar")[0].setRating(reviewParseObject.get("overallRating")-1);
+				$("#id-review-text").html(reviewParseObject.get("comment"));
+				$("#id-form-add-review>input").attr("value", "Update");
+			});
+		}
+		else {
+			$("div.review-textbox").show();
+			$("#id-overall-rating-bar")[0].setRating(0);
+			$("#id-update-button").hide();
+		}
+	}
+
 	main();
 });
+

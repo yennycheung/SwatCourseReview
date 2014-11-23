@@ -3,6 +3,8 @@ jQuery(document).ready(function() {
 
 	var TypeEnum = {STR:0, NUM:1, OTHER:2};
 	var queryTime, returnTime;
+	var originalSearchResults = null;
+
 	main();
 	
 	/* Instead of breaking the search query at client side, we can create a new "search" field in remote
@@ -12,15 +14,19 @@ jQuery(document).ready(function() {
 	 * ["cloud", "computing", "cpsc", "cs", "computer", "science", "091", "kevin", "webb"]
 	 */
 	function main() {
+		// Disable all advanced search options before we get search results.
+		configureAdvancedSearch(false);
+
 		// If not logged in, display the remind string.
 		if ( !Parse.User.current()) {
 			$("#resultText").html("Please login before visiting this page!");
+
 			return;
 		}
 
 		// If these data DOM components don't exist, then page didn't receive POST data.
 		if ( ! $("#data-search-query").length>0) {
-			$("#resultText").html("Post data not found! Did you reach here from home?");
+			$("#resultText").html("We are sorry, the page you are looking for is not found!");
 			return;
 		} 
 
@@ -30,10 +36,79 @@ jQuery(document).ready(function() {
 		// Strip php json_encode() extra quote.
 		searchString = searchString.substring(1, searchString.length-1);
 
-		// 
+		// Search for courses
 		queryCoursesFromParse(searchString);
+
+		var Mailgun = require('mailgun');
+		Mailgun.initialize('swatcoursereview.com', 'myAPIKey');
 	}
 
+
+	function configureAdvancedSearch(enable) {
+		if (!enable) {
+			$("input#id-write-course-checkbox").attr("disabled", true);
+			$("input#id-has-lab-checkbox").attr("disabled", true);
+			$("input#id-fys-checkbox").attr("disabled", true);
+			$("select#id-semester-select").attr("disabled", true);
+			$("select#id-division-select").attr("disabled", true);
+			$("select#id-course-type-select").attr("disabled", true);
+			$("select#id-rating-select").attr("disabled", true);
+		}
+		else {
+			$("input#id-write-course-checkbox").removeAttr("disabled");
+			$("input#id-has-lab-checkbox").removeAttr("disabled");
+			$("input#id-fys-checkbox").removeAttr("disabled");
+			$("select#id-division-select").removeAttr("disabled");
+			$("select#id-rating-select").removeAttr("disabled");
+
+			$("div.select-style>select, input[type='checkbox']").change(function() {
+				doAdvancedSearch();
+			});
+		}
+	}
+
+	function doAdvancedSearch() {
+		if (!originalSearchResults) {
+			return;
+		}
+
+		var filteredResultsList = []
+		for (var i=0; i<originalSearchResults.length; i++) {
+			var courseObject = originalSearchResults[i];
+
+			if ($("input#id-write-course-checkbox").is(":checked") && (!courseObject.get("isWritingCourse")) ) {
+				continue;
+			}
+
+			if ($("input#id-has-lab-checkbox").is(":checked") && (!courseObject.get("hasLab")) ) {
+				continue;
+			}
+
+			if ($("input#id-fys-checkbox").is(":checked") && (!courseObject.get("isFYS")) ) {
+				continue;
+			}
+
+			var selectedDivision = $("#id-division-select>option:selected").text();
+			if ((selectedDivision == "Natural Sciences" && courseObject.get("division") != "NS") ||
+			 	(selectedDivision == "Humanities" && courseObject.get("division") != "HU") ||
+			 	(selectedDivision == "Social Sciences" && courseObject.get("division") != "SS") ) {
+				continue;
+			}
+
+			var ratingThreshold = $("#id-rating-select>option:selected").text();
+			if (ratingThreshold != "All") {
+				ratingThreshold = parseInt(ratingThreshold.charAt(ratingThreshold.length -1));
+				if (courseObject.numberOfReviews <= 0 || courseObject.averageRating < ratingThreshold) {
+					continue;
+				}
+			}
+
+
+			filteredResultsList.push(courseObject);
+		}
+
+		displaySearchResults(filteredResultsList);
+	}
 
 	function queryCoursesFromParse(searchString) {
 		if (searchString) {
@@ -51,14 +126,21 @@ jQuery(document).ready(function() {
 			
 			// Use search array method to find results. 
 			query.containsAll("searchArray", searchComponents);
+			query.include("reviews");
 
 			// Query for results.
 			query.find({
 				success: function(results) {
+					
+					// Debugging log
 					returnTime = new Date().getTime();
-					$("#resultText").html("Courses Found");
 					console.log("query took " + (returnTime - queryTime) + "ms");
-					displaySearchResults(results);
+
+					// update layout
+					originalSearchResults = results;
+					generateReviewAttrs(originalSearchResults);
+					displaySearchResults(originalSearchResults);
+					configureAdvancedSearch(true);
 				},
 				error: function() {
 					console.log("search error!");
@@ -152,14 +234,70 @@ jQuery(document).ready(function() {
 		return component.toLowerCase();
 	}
 
+	function generateReviewAttrs(courseList) {
+		for (var i=0; i<courseList.length; i++) {
 
-	function displaySearchResults(results) {
-		if (!results) {
+			var courseObject = courseList[i];
+			var reviewArray = courseObject.get("reviews");
+
+			if (!reviewArray) {
+				courseObject.numberOfReviews = 0;
+				continue;
+			}
+
+			var numReviews = 0;
+			var sumRating = 0;
+
+			for (var j=0; j<reviewArray.length; j++) {
+				var reviewParseObject = reviewArray[j];
+
+				// If some of the reviews are deleted but the pointers in course's "review" array
+				// aren't deleted, the value of that review will be null. Clean them.		
+				if (reviewParseObject) {
+					numReviews += 1;
+					sumRating += reviewParseObject.get("overallRating");
+				}
+			} 
+
+			courseObject.numberOfReviews = numReviews;
+			if (numReviews > 0) {
+				var avgRating = sumRating / numReviews;
+				avgRating = Math.round(avgRating*100)/100;
+				courseObject.averageRating = avgRating;
+			}	
+		}
+	
+	}
+
+	function displaySearchResults(courseList) {
+		$("#resultText").html(courseList.length + " Courses Found");
+
+		if (!courseList) {
 			return;
 		}
 
-		for (i=0; i<results.length; i++) {
-			course = results[i];
+		courseList.sort(function (course1, course2) {
+			if ( course1.get("dept") > course2.get("dept") ) {
+				return 1;
+			}
+
+			if ( course1.get("dept") < course2.get("dept") ) {
+				return -1;
+			} 
+
+			if ( course1.get("courseId") > course2.get("courseId") ) {
+				return 1;
+			}
+
+			if ( course1.get("courseId") < course2.get("courseId")) {
+				return -1;
+			}
+			return 0;
+		});
+
+		$(".realContent").html("");
+		for (i=0; i<courseList.length; i++) {
+			course = courseList[i];
 			$(".realContent").append(parseToDOMObject(course));			
 		}
 	}
@@ -168,12 +306,12 @@ jQuery(document).ready(function() {
 
 	function parseToDOMObject(courseObject) {
 
-		content = "<form name='courseInfo' action='details.php' method='post'>";
+		content = "<form name='courseInfo' action='details.php' method='get'>";
 		content += "<input type='hidden' class='input-course-id' name='course-object-id' value='"+courseObject.id+"'>";
 		content += "<div class='list' style='cursor:pointer;'>\n<span>";
 		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + " </strong>");
 		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
-		content += "<p> "+ courseObject.get("division") + " | 9 Reviews | Rating: 3" + "</p>";
+		content += "<p> "+ courseObject.get("division") + getReviewSummary(courseObject) + "</p>";
 		content += "\n</span>\n</div>\n</form>";
 
 		var parsedDOMs = $.parseHTML(content)
@@ -185,7 +323,6 @@ jQuery(document).ready(function() {
 		var courseJQueryObject = $(courseDOMObject);
 
 		courseJQueryObject.find(".list").click(function() {
-			console.log('inside click()');
 			courseJQueryObject.submit();
 		});
 
@@ -193,4 +330,11 @@ jQuery(document).ready(function() {
 	}
 
 
+	function getReviewSummary(courseObject) {
+		var reviewSummary = " | " + courseObject.numberOfReviews + " Reviews";
+		if (courseObject.numberOfReviews > 0) {
+			reviewSummary += (" | Rating: " + courseObject.averageRating );
+		}
+		return reviewSummary;
+	}
 });

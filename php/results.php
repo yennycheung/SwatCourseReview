@@ -5,9 +5,9 @@
 
 <?php
 	$hasPostData = False;
-	if(isset($_POST)) {
-		if (array_key_exists("search-string", $_POST) ) {
-			$searchQuery = json_encode($_POST["search-string"]);
+	if(isset($_GET)) {
+		if (array_key_exists("search-string", $_GET) ) {
+			$searchQuery = json_encode($_GET["search-string"]);
 			$hasPostData = True;
 		}
 	}

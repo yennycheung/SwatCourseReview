@@ -12,7 +12,7 @@
 		<div class="wrapper">
 			<h1><strong>Swat</strong>CoRe</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
-			<form id="id-form-search" action="results.php" method="post">
+			<form id="id-form-search" action="results.php" method="get">
 				<!--<div class="icon-menu">
 					<div class="sel" data-value="course-id">
 						<img class="icon" src="img/CourseId.png">
@@ -33,7 +33,7 @@
 					<input type="hidden" id="search-criteria" name="search-criteria" value="">
 				</div>-->
 			    <div class="row-select">
-				    <input type="string" name="search-string" id="search" placeholder="Search for your class">
+				    <input type="string" required name="search-string" id="search" placeholder="Search for your class">
 			    </div>
 			</form>
 			<a href="signup.php" class="white btn searchbtn" id="signup-now" value="Sign Up Now!">Sign Up Now!</a>
