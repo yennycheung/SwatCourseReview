@@ -86,14 +86,14 @@ $(function() {
 		query.find({
 			success: function(results) {
 				if (results.length != 1) {
-					console.log("page_details.js: wrong length of course list!");
-					return;
+					hideAllLayouts();
+					$("div.row.top").html("<div class='title'><h3>We are sorry, the page you are looking for is not found!</h3></div>");
 				}
 				courseParseObject = results[0];
 				displayCourseInfo(results[0]);
 				reviewArray = courseParseObject.get("reviews");
 				displayReviews(reviewArray);
-				updateLayoutBasedOnHasReview(reviewArray);
+				initializeAddUpdateReview(reviewArray);
 			},
 
 			error: function(error) {
@@ -150,54 +150,11 @@ $(function() {
 
 
 
-	$("#id-form-add-review").submit( function (event) {
-		event.preventDefault();
-		
-		var reviewParseObject = getReviewParseOBject();
-
-		if (myReview) {
-			$("div.review-textbox").hide();
-			$("#id-update-button").show();
-
-			reviewParseObject.save(null, {
-				success: function(newReviewObject) {
-					myReview.updatedAt = newReviewObject.updatedAt;
-					displayReviews(reviewArray);
-				},
-				error : function(error) {
-					console.log("save error!");
-				}
-			});
-		}
-		else {
-			myReview = reviewParseObject;
-
-			// Construct the review Parse object.
-		 	courseParseObject.add("reviews", reviewParseObject);
-
-		 	// Add it to the review array of this course, and save the course.
-			// This will save the review object as well.
-			courseParseObject.save(null, {
-				success: function (newCourseParseObject) {
-					// save is successful. Display the updated reviews.
-					reviewArray = courseParseObject.get("reviews");
-					displayReviews(reviewArray);
-					updateLayoutBasedOnHasReview(reviewArray);
-				},
-				error : function (error) {
-					console.log("save error!");
-				}
-			});
-		}
-		
-		return false;
-	});
 
 	
 	function getReviewParseOBject() {
 		var comment = $("#id-review-text").val();
 		var rating = $('#id-overall-rating-bar').attr('data-val');
-		rating = rating? parseInt(rating) : 0;
 
 		//var newDate = new Date();
 		//var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
@@ -259,6 +216,7 @@ $(function() {
 
 
 	function displayReviews(reviewArray) {
+
 		if (!reviewArray) {
 			$("#js-populate-review-summary").html("0 Reviews");
 			return;
@@ -312,7 +270,14 @@ $(function() {
 
 	}
 
-	function updateLayoutBasedOnHasReview(reviewArray) {
+	function initializeAddUpdateReview(reviewArray) {
+
+		// Initialize popover for star rating
+		$("#id-overall-rating-bar").popover();
+		$("#id-overall-rating-bar").click(function() {
+			$(this).popover("hide");
+		});
+
 		if (!reviewArray) {
 			return;
 		}
@@ -339,10 +304,62 @@ $(function() {
 		}
 		else {
 			$("div.review-textbox").show();
-			$("#id-overall-rating-bar")[0].setRating(0);
 			$("#id-update-button").hide();
 		}
 	}
+
+
+
+	$("#id-form-add-review").submit( function (event) {
+		event.preventDefault();
+		
+		var rating = $('#id-overall-rating-bar').attr('data-val');
+		if (!rating || rating < 0) {
+			$("#id-overall-rating-bar").popover("show");
+			return;
+		}
+
+		var reviewParseObject = getReviewParseOBject();
+
+
+
+		if (myReview) {
+			$("div.review-textbox").hide();
+			$("#id-update-button").show();
+
+			reviewParseObject.save(null, {
+				success: function(newReviewObject) {
+					myReview.updatedAt = newReviewObject.updatedAt;
+					displayReviews(reviewArray);
+				},
+				error : function(error) {
+					console.log("save error!");
+				}
+			});
+		}
+		else {
+			myReview = reviewParseObject;
+
+			// Construct the review Parse object.
+		 	courseParseObject.add("reviews", reviewParseObject);
+
+		 	// Add it to the review array of this course, and save the course.
+			// This will save the review object as well.
+			courseParseObject.save(null, {
+				success: function (newCourseParseObject) {
+					// save is successful. Display the updated reviews.
+					reviewArray = courseParseObject.get("reviews");
+					displayReviews(reviewArray);
+					initializeAddUpdateReview(reviewArray);
+				},
+				error : function (error) {
+					console.log("save error!");
+				}
+			});
+		}
+		
+		return false;
+	});
 
 	main();
 });

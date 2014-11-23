@@ -64,7 +64,9 @@
                         <div class="review-textbox">
                             <div class="add-rating">
                                 <p class="tag">Overall Rating:</p>
-                                <div class="ratingbigger" id="id-overall-rating-bar" data-rating-max="5"></div>
+                                <div class="ratingbigger" id="id-overall-rating-bar" data-rating-max="5" 
+                                    data-container="body" data-toggle="popover" data-placement="right" 
+                                    data-trigger="manual" data-content="Please fill out this field"></div>
                                 <!--
                                 <br/>
                                 <p class="tag ratingbigger">Difficulty:</p>
@@ -99,6 +101,7 @@
 
 <!-- JS INCLUDES -->
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/ezValidation.js"></script>
 <script type="text/javascript" src="js/star-rating.min.js"></script>
 <script type="text/javascript" src="js/parse-1.3.1.js"></script>
