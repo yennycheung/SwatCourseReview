@@ -50,7 +50,8 @@
 					Want to let your peers to know more about your classes? 
 					Share your experience with us!
 					This website is built and maintained by Yenny Cheung and Peng Zhao. 
-					Feel free to reach us at swatcoreteam@gmail.com for any feedback.</p>
+					Feel free to reach us at <a href="mailto:swatcoreteam@gmail.com?Subject=Feedback">
+swatcoreteam@gmail.com</a> for any feedback.</p>
 			</div>
 		</div>
 	</section>

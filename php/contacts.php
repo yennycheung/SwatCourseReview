@@ -10,7 +10,8 @@
 				<div class="contactscontainer">
 					<div class="top"> <span>Contact Us</span> </div>
 					<div class="bottom">
-						<p>Swat CoRe is maintained by Yenny Cheung and Peng Zhao. If you have any questions, please email us at swatcoreteam@gmail.com. Thank you for using Swat CoRe!</p>	
+						<p>SwatCoRe is maintained by Yenny Cheung and Peng Zhao. We want SwatCoRe to give you the best course search and review experience, so we would love your help! If you have any feedback for us, please email us at <a href="mailto:swatcoreteam@gmail.com?Subject=Feedback">
+swatcoreteam@gmail.com</a>. Thank you for using SwatCoRe!</p>	
 					</div>
 				</div>
 			</div><!-- wrapper -->
