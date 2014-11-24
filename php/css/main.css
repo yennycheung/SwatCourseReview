@@ -510,11 +510,6 @@ input:required:focus {
   display: table-cell;
   vertical-align: top; }
 
-.rating {
-  float: left;
-  margin-top: 32px;
-  margin-left: 30px; }
-
 .rating > ul {
   list-style: none;
   float: left;
@@ -596,8 +591,7 @@ input[type="submit"] {
   border: 2px solid rgba(0, 66, 55, 0.4);
   border-radius: 3px;
   text-transform: uppercase;
-  background: none;
-  height: 60px; }
+  background: none; }
   input[type="submit"]:hover {
     border-color: #006655;
     color: #006655; }
@@ -751,7 +745,7 @@ form .row {
         width: 30.11389%; }
         .header .login form .col:last-child {
           margin-right: 0; }
-      .header .login form input[type=submit] {
+      .header .login form input[type="submit"] {
         height: auto; }
       .header .login form input {
         margin-top: 2px; }
@@ -1055,6 +1049,10 @@ form .row {
       .details .content .row.top .title p {
         font-size: 15px;
         line-height: 22px; }
+      .details .content .row.top .rating {
+        float: left;
+        margin-top: 32px;
+        margin-left: 30px; }
       .details .content .row.top .right {
         float: right;
         margin-top: 9px;
@@ -1102,6 +1100,8 @@ form .row {
   .details .content .two {
     background: white;
     margin-top: 55px; }
+    .details .content .two .left h4 {
+      margin-top: 20px; }
     .details .content .two .right {
       /*
       .comment-textbox{
@@ -1130,8 +1130,8 @@ form .row {
         
         						}
         					}*/ }
-        .details .content .two .right .review .tag {
-          margin-bottom: 10px; }
+        .details .content .two .right .review .rating {
+          padding-bottom: 20px; }
         .details .content .two .right .review .action {
           display: inline-block;
           margin-top: 15px;
@@ -1179,6 +1179,14 @@ form .row {
           overflow: auto; }
           .details .content .two .right .review-textbox .add-rating .ratingbigger {
             margin: 0 5px 0 0; }
+      .details .content .two .right input[type="submit"] {
+        margin-top: 20px;
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%; }
+        .details .content .two .right input[type="submit"]:last-child {
+          margin-right: 0; }
 
 .pagecontact {
   height: 700px !important; }

@@ -86,8 +86,7 @@
                                 </form>
                             </div>
                         </div>
-
-                        <input type="button" class="update-review-btn" id="id-update-button" value="You have already reviewed this class. Click to update Review"/>
+                        <input type="submit" class="update-review-btn" id="id-update-button" value="Update Your Review"/>
         		    </div>
         	    </div>
             </div>

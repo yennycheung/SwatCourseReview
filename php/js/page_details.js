@@ -110,18 +110,6 @@ $(function() {
 			" " + courseObject.get("profLastName") );
 
 		$("#js-populate-summary").html(courseObject.get("summary").replace(/\n/g, "<br/>"));
-		var rating = 4;
-		var ratingString = "<ul>"
-		for (var i=0; i<5; i++){
-			if (i<rating){
-				ratingString+="<li class='on'></li>";
-			}
-			else{
-				ratingString+="<li></li>";
-			}
-		}
-		ratingString+="</ul>"
-		$(".rating").html(ratingString);
 
 
 		var division = courseObject.get("division");
@@ -161,7 +149,20 @@ $(function() {
 	}
 
 
+	function getRatingStars(rating){
+		var ratingString = "<ul>"
+		for (var i=0; i<5; i++){
+			if (i<rating){
+				ratingString+="<li class='on'></li>";
+			}
+			else{
+				ratingString+="<li></li>";
+			}
+		}
+		ratingString+="</ul>"
+		return ratingString;
 
+	}
 
 	
 	function getReviewParseOBject() {
@@ -251,9 +252,10 @@ $(function() {
 			var comment = reviewParseObject.get("comment");
 			var datetime = reviewParseObject.updatedAt.toDateString() + "&nbsp;&nbsp;&nbsp;" +
 							reviewParseObject.updatedAt.toLocaleTimeString();
+			var ratingStars = getRatingStars(rating);
 			var parsedDOMs = $.parseHTML(
-				"<div class='review'> " + 
-					"<p class = 'tag rating'>Rating: "+rating+"</p>" + 
+				"<div class='review'> " + "<div class='rating'>" +
+					ratingStars + "</div><br>" +
 					"<p>"+comment+"</p>" + 
 					"<div class='actions'>" + 
 						"<p class='action' >"+datetime+"</p>" +
@@ -275,11 +277,11 @@ $(function() {
 		if (cleanedArray.length > 0) {
 			var avgRating = sumRating / cleanedArray.length;
 			avgRating = Math.round(avgRating*100)/100;
-			reviewSummary += (" | Rating: " + (avgRating) );
+			//reviewSummary += (" | Rating: " + (avgRating) );
+			var ratingStars = getRatingStars(avgRating);
+			$(".rating").html(ratingStars);
+			$("#js-populate-review-summary").html(reviewSummary);
 		}
-
-		$("#js-populate-review-summary").html(reviewSummary);
-
 	}
 
 	function initializeAddUpdateReview(reviewArray) {

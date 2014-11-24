@@ -55,7 +55,7 @@
 			.col {
 				@include span-columns(2 of 6);
 			}
-			input[type=submit] {
+			input[type="submit"] {
 				height:auto;
 			}
 			input {

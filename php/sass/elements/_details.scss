@@ -23,6 +23,11 @@
 						line-height: 22px;
 					}
 				}
+				.rating {
+					float: left;
+					margin-top: 32px;
+					margin-left: 30px;
+				}
 				.right {
 					float: right;
 					margin-top: 9px;
@@ -94,14 +99,22 @@
 		.two{
 			background:white;
 			margin-top: 55px;
+			.left{
+				h4{
+					margin-top: 20px;
+				}
+			}
 			.right{
 				.review{
 					padding: 20px 0 15px 0;
 					border-top: 1px solid #eee;
 					border-bottom: 1px solid #eee;
 					clear:both;
-					.tag{
-						margin-bottom: 10px;
+					// .tag{
+					// 	margin-bottom: 10px;
+					// }
+					.rating{
+						padding-bottom: 20px;
 					}
 					.action{
 						display: inline-block;
@@ -164,6 +177,10 @@
 						margin-top: 10px;
 						margin-right: 7px !important;
 					}*/
+				}
+				input[type="submit"]{
+					margin-top: 20px;
+					@include span-columns(3);
 				}
 				/*
 				.comment-textbox{
