@@ -166,7 +166,7 @@ $(function() {
 	
 	function getReviewParseOBject() {
 		var comment = $("#id-review-text").val();
-		var rating = $('#id-overall-rating-bar').attr('data-val');
+		var rating = parseInt($('#id-overall-rating-bar').attr('data-val'));
 
 		//var newDate = new Date();
 		//var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
@@ -325,11 +325,12 @@ $(function() {
 	$("#id-form-add-review").submit( function (event) {
 		event.preventDefault();
 		
-		var rating = $('#id-overall-rating-bar').attr('data-val');
+		var rating = parseInt($('#id-overall-rating-bar').attr('data-val'));
 		if (!rating || rating < 0) {
 			$("#id-overall-rating-bar").popover("show");
 			return;
 		}
+
 
 		var reviewParseObject = getReviewParseOBject();
 
@@ -344,7 +345,7 @@ $(function() {
 					myReview.updatedAt = newReviewObject.updatedAt;
 					displayReviews(reviewArray);
 				},
-				error : function(error) {
+				error : function(newReviewObject, error) {
 					console.log("save error!");
 				}
 			});
@@ -364,7 +365,7 @@ $(function() {
 					displayReviews(reviewArray);
 					initializeAddUpdateReview(reviewArray);
 				},
-				error : function (error) {
+				error : function (newReviewObject, error) {
 					console.log("save error!");
 				}
 			});
