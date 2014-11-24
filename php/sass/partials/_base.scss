@@ -100,10 +100,10 @@ input:required:focus {
     vertical-align: top;
 }
 
-
-/*
 .rating {
 	float: left;
+	margin-top: 30px;
+	margin-left: 30px;
 }
 .rating > ul {
 	list-style: none;
@@ -117,11 +117,14 @@ input:required:focus {
 	background: url(../img/star.png) no-repeat left top;
 	width: 18px;
 	height: 18px;
-	cursor: pointer;
 }
 .rating > ul > li:first-child {
 	margin-left: 0;
 }
+.rating > ul> .on{
+	background: url(../img/star.png) no-repeat left bottom;
+}
+/*
 .rating > ul > li.hover {
 	background-position: left bottom;
 }
@@ -137,6 +140,7 @@ input:required:focus {
 	width: 18px;
 }
 */
+
 
 .ratingbigger {
 	float: left;

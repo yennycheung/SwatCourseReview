@@ -55,8 +55,9 @@ input[type="checkbox"] + label span {
 }
 input[type="checkbox"] + label {
 	font-size:14px;
-	color:#333;
+	color:$gray;
 	height:39px;
+	font-weight:300;
 }
 input[type="checkbox"]:checked + label span {
     display:inline-block;
@@ -65,7 +66,6 @@ input[type="checkbox"]:checked + label span {
     background:url(../img/checkbox.png) left bottom no-repeat;
 }
 select {
-	
 	color:#777;
 }
 
@@ -102,4 +102,7 @@ form {
 .select label {
 	width:30%;
 	float:left;
+	font-size:14px;
+	color:$gray;
+	font-weight:500;
 }

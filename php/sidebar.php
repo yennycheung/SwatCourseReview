@@ -1,9 +1,9 @@
 <div class="fixed">
-	<h3>Advanced course search</h3><br>
+	<h3>Filter</h3><br>
 	<form action="#">
 		<div class="row">
 			<input type="checkbox" id="id-write-course-checkbox">
-			<label for="id-write-course-checkbox" ><span></span>Is a writing course.</label>
+			<label for="id-write-course-checkbox" ><span></span>Writing course.</label>
 		</div>
 		<div class="row">
 			<input type="checkbox" id="id-has-lab-checkbox">
@@ -15,17 +15,7 @@
 		</div>-->
 		<div class="row">
 			<input type="checkbox" id="id-fys-checkbox">
-			<label for="id-fys-checkbox"><span></span>Is a first-year seminar.</label>
-		</div>
-		<div class="row select" >
-			<label for="id-semester-select">Semester</label>
-			<div class="select-style">
-				<select name="" id="id-semester-select">
-					<option value="">All</option>
-					<option value="">Fall</option>
-					<option value="">Spring</option>
-				</select>
-			</div>
+			<label for="id-fys-checkbox"><span></span>First-year seminar.</label>
 		</div>
 		<div class="row select">
 			<label for="id-division-select">Division</label>
@@ -35,18 +25,6 @@
 					<option value="">Natural Sciences</option>
 					<option value="">Humanities</option>
 					<option value="">Social Sciences</option>
-				</select>
-			</div>
-		</div>
-		<div class="row select">
-			<label for="id-course-type-select">Course Type</label>
-			<div class="select-style">
-				<select name="" id="id-course-type-select">
-					<option value="">All</option>
-					<option value="">Lecture</option>
-					<option value="">Seminar</option>
-					<option value="">Studio</option>
-					<option value="">Others</option>
 				</select>
 			</div>
 		</div>

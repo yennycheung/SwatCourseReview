@@ -2,7 +2,9 @@
 	background: #fff;
 	.content {
 		.row {
+			padding: 45px 35px;
 			margin: 75px 0;
+			margin-bottom: 0px;
 			width: 100%;
 			overflow:auto;
 			&.top {
@@ -10,8 +12,8 @@
 					float:left;
 				}
 				border-bottom: 1px solid #eee;
-				padding:20px 40px;
-				padding-top: 0px;
+				padding:40px 35px;
+				padding-top:15px;
 				.title {
 					h3 {
 						line-height: 40px;
@@ -40,12 +42,22 @@
 				margin-top: 4px;
 			}
 		}
-		.classdesc {
-			padding:0 30px;
+
+		.classdesc, .closedetails{
+			background: #eee;
+			margin:0px;
 			.left {
 				float:left;
 				width:15%;
 				color:#777;
+			}
+			.right {
+				float:left;
+				width:80%;
+			}
+		}
+		.classdesc {
+			.left {
 				h4{
 					margin:0px;
 				}
@@ -62,17 +74,8 @@
 			}
 		}	
 		.closedetails {
-			padding:0 30px;
-			.left {
-				float:left;
-				width:15%;
-				color:#777;
-			}
 			.right {
-				float:left;
-				width:85%;
 				.detail {
-					margin-bottom: 20px;
 					width: 85%;
 					i {
 					display: inline-block;
@@ -89,6 +92,8 @@
 			}
 		}
 		.two{
+			background:white;
+			margin-top: 55px;
 			.right{
 				.review{
 					padding: 20px 0 15px 0;

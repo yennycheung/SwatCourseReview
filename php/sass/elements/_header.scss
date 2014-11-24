@@ -13,8 +13,7 @@
 	}
 
 	.logo {
-		@include span-columns(3);
-		//height:40px;
+		@include span-columns(2);
 		float:left;
 		a:hover {
 			text-decoration: none;
@@ -32,6 +31,13 @@
 			}
 		}
 	}
+	#id-form-header-search{
+			@include span-columns(6);
+			margin-left: 11%;
+			#header-search{
+				margin-top: 13px;
+			}
+		}
 	#id-btn-logout{
 		@include span-columns(2);
 		float:right;
@@ -41,7 +47,7 @@
 	}
 	.login {
 		@include span-columns(6);
-		@include shift(3);
+		@include shift(4);
 		margin-top:12px;
 
 		form {

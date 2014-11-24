@@ -30,6 +30,9 @@ jQuery(document).ready(function() {
 			return;
 		} 
 
+		var height = $(window).height();
+		$('.table').css('height', height);
+
 		// Extract search queries from DOM objects.
 		var searchString = $("#data-search-query").text();
 		

@@ -44,9 +44,11 @@ jQuery(document).ready(function() {
 	/* Login / Logout Control */
 	if (Parse.User.current()) {
 		updateHeaderOnLogin();
+		$('#footer-signup').hide();
 	}
 	else {
 		updateHeaderOnLogout();
+		$('#id-form-header-search').hide();
 	}
 
 	function updateHeaderOnLogin() {

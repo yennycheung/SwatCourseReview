@@ -1,6 +1,7 @@
 // Execute code without declaring global variables.
 jQuery(document).ready(function() {
      $(".intro-text").hide();
+     $("#id-form-header-search").hide();
     // Number increasing when scroll.
     var start = 0, 
     max = 30,

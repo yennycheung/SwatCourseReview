@@ -13,7 +13,6 @@
 	}
 ?>
 
-<div id = "container-fluid">
 <!-- Invisible Div to store Metadata -->
 <?php if ($hasPostData): ?>
 	<div id="data-search-query" style="display: none;"><?php echo $searchQuery ?></div>
@@ -32,7 +31,6 @@
         	<div class="realContent"></div>
         </div>
     </div>
-</div>
 
 <!-- End of Body -->
 </div>

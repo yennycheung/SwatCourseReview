@@ -27,6 +27,9 @@
 	<div class="header">
 		<div class="wrapper">
 			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CoRe</a></div>
+			<form id = 'id-form-header-search' action="results.php" method="get">
+				<input type='string' id='header-search' name='search-string' placeholder='Search for your class'>
+			</form>
 			<input id="id-btn-logout" type="submit" value="log out">
 			<div class="login">
 				<form action="#" id="id-form-login">

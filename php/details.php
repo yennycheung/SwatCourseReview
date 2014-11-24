@@ -29,9 +29,8 @@
         				<h3 id="js-populate-course-title"></h3>
         				<p id="js-populate-review-summary"></p>
         			</div>
-        			<!--<div class="ratingbigger">
-        				<div class="ratingbigger" data-rating-max="5"></div>
-        			</div>-->
+        			<div class="rating">
+        			</div>
         		</div>
 
         		<div class="row classdesc">
@@ -88,7 +87,7 @@
                             </div>
                         </div>
 
-                        <input type="button" class="add-review-btn" id="id-update-button" value="You have already reviewed this class. Click to update Review"/>
+                        <input type="button" class="update-review-btn" id="id-update-button" value="You have already reviewed this class. Click to update Review"/>
         		    </div>
         	    </div>
             </div>

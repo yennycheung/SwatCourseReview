@@ -106,10 +106,22 @@ $(function() {
 		$("#js-populate-course-title").html(
 			courseObject.get("dept") + " " + courseObject.get("courseId") + ": " + 
 			courseObject.get("courseName") + 
-			"&nbsp;&nbsp;&nbsp;by " + courseObject.get("profFirstName") +
+			"&nbsp;by " + courseObject.get("profFirstName") +
 			" " + courseObject.get("profLastName") );
 
 		$("#js-populate-summary").html(courseObject.get("summary").replace(/\n/g, "<br/>"));
+		var rating = 4;
+		var ratingString = "<ul>"
+		for (var i=0; i<5; i++){
+			if (i<rating){
+				ratingString+="<li class='on'></li>";
+			}
+			else{
+				ratingString+="<li></li>";
+			}
+		}
+		ratingString+="</ul>"
+		$(".rating").html(ratingString);
 
 
 		var division = courseObject.get("division");
