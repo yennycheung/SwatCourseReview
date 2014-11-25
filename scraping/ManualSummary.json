@@ -1,0 +1,16 @@
+{ "results": [
+	{
+        "LPMKey": "cpsc^091^kevin^webb",
+        "createdAt": "2014-11-25T18:38:26.709Z",
+        "objectId": "ntzQ3IDOIL",
+        "summary": "On the Internet today, popular services like Google, Facebook, and many others are too large to be hosted by just a few servers. Instead, service providers \"scale out\" across a coordinated set of hundreds to thousands of machines.  Such clusters yield an interesting operating environment, the data center, in which a single administrative entity owns a network at the scale that resembles the Internet. To meet customer demands, administrators often face stringent inter-machine coordination constraints.\n\nIn this course, we'll examine the current state of the art in providing cloud-based services, including many interesting problems in distributed systems, networking, failure recovery, and OS virtualization.\n\nPrerequisites: CS 31 and CS 35",
+        "updatedAt": "2014-11-25T20:13:16.264Z"
+    },
+	{
+        "LPMKey": "cpsc^091^sanjeev^khanna",
+        "createdAt": "2014-11-25T19:42:50.044Z",
+        "objectId": "CPK9r680qk",
+        "summary": "Pre-requisites: CS41 or CS35 with a strong mathematical background \n\n Over the past few decades, randomization has emerged as a powerful resource in algorithm design. This course is a comprehensive introduction to design and analysis of randomized algorithms. We will cover general techniques for designing and analyzing randomized algorithms as well as representative applications in various domains. Topics covered will include approximation algorithms, algebraic techniques for fingerprinting, interactive and probabilistically checkable proof systems, markov chains, primality testing, metric embeddings, and streaming algorithms.  We will use the textbook by Motwani and Raghavan, entitled \"Randomized Algorithms\", as well as some supplementary material.",
+        "updatedAt": "2014-11-25T20:13:05.482Z"
+    }
+] }

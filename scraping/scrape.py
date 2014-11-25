@@ -90,18 +90,6 @@ def stripPunctuations(rawWords):
 		words.append("".join(ch for ch in rawWord if ch not in punctuations))
 	return words
 
-"""
-Every page of course schedule contains a header with semester information.
-This function extracts that information and sets a global semester variable.
-"""
-def setGlobalSemester(page):
-	firstRow = page[0][0]
-	semesterInfo = firstRow[0].text.split()
-
-	global SEMESTER
-	SEMESTER = semesterInfo[0][0] + semesterInfo[1][2:]
-
-
 
 """
 There are two type of rows in the course schedule html:
@@ -149,7 +137,7 @@ class Course:
 		self.profLastName = jsonObject["profLastName"]
 		self.reviews = jsonObject["reviews"]
 		self.summary = jsonObject["summary"]
-
+		self.manuallyModified = jsonObject["manuallyModified"]
 
 
 	"""
@@ -199,6 +187,7 @@ class Course:
 		# New course has no reviews
 		self.reviews = []
 		
+		self.manuallyModified = False
 
 	"""
 	pdftables.com somtimes give bad professor names, such as "SUpneikdneol wKnirsten"  for "Speidel, Kirsten"
@@ -319,6 +308,10 @@ class Course:
 
 		# It seems search array method gives more accurage results.
 		jsonObject["searchArray"] = self.generateSearchArray()
+
+		# Indicates whether this course was manually modified. If yes, certain 
+		# Fields will not be overwritten (such as name / summary)
+		jsonObject["manuallyModified"] = self.manuallyModified
 
 		return jsonObject
 
@@ -560,6 +553,10 @@ class CourseSummaryDB:
 				continue
 
 			newLine = line.strip().lower()
+
+			if newLine.startswith("(see"):
+				continue
+
 			rawWords = newLine.split()
 			words = stripPunctuations(rawWords)
 
@@ -588,7 +585,7 @@ class CourseSummaryDB:
 			if ( words[0].startswith("writing") and words[1].startswith("course") ):
 				continue
 
-			cleanedSummary += (line + "\n\n") 
+			cleanedSummary += (line.strip() + "\n\n") 
 
 		return cleanedSummary
 
@@ -611,7 +608,7 @@ class CourseSummaryDB:
 	Given a html node that contains course title, and several paragraphs that
 	may contain course summary, insert this course->summary pair into DB.
 	"""
-	def insertCounrseSummary(self, titleElement, infoParagraphs):
+	def insertCourseSummary(self, titleElement, infoParagraphs):
 		if titleElement == None or len(infoParagraphs) < 1:
 			return
 
@@ -709,6 +706,41 @@ def extractCoursesFromPages(pages, courseDB):
 	return courseDB
 
 
+
+def longestPrefixMatch(uniqueKey, manualSummaryDict):
+	longestMatchLen = -1
+	longestMatchKey = None
+	for LPMKey in manualSummaryDict:
+		keyLen = LPMKey.split("^")
+		if uniqueKey.startswith(LPMKey) and keyLen > longestMatchLen:
+			longestMatchLen = keyLen
+			longestMatchKey = LPMKey
+	if longestMatchLen >= 0:
+		return longestMatchKey
+	else:
+		return None
+
+"""
+College catalog doesn't contain summaries for all courses. 
+Sometimes we need to manually add summaries.
+"""
+def addManualSummaries(courseDB):
+	manualSummaryJSONFile = codecs.open("ManualSummary.json", mode="r", encoding='utf-8')	
+	jsonArray = json.loads(manualSummaryJSONFile.read().strip())["results"]
+
+	manualSummaryDict = {}
+	for jsonObject in jsonArray:
+		manualSummaryDict[ jsonObject["LPMKey"] ] = jsonObject["summary"]
+
+	for course in courseDB:
+		uniqueKey = course.generateUniqueKey()
+		manualSummaryKey = longestPrefixMatch(uniqueKey, manualSummaryDict)
+		if manualSummaryKey != None:
+
+			course.summary = manualSummaryDict[manualSummaryKey]
+			course.manuallyModified = True
+
+
 """
 Scrape http://www.swarthmore.edu/college-catalog/ to find summaries for all courses.
 Works by finding links to department catalogs, and scraping them one by one.
@@ -755,7 +787,7 @@ def scrapeDeptPage(summaryDB, deptURL):
 
 
 			if (CourseSummaryDB.isCourseTitle(element)):
-				summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
+				summaryDB.insertCourseSummary(courseElement, infoParagraphs)
 				courseElement = element
 				infoParagraphs = []
 
@@ -763,7 +795,7 @@ def scrapeDeptPage(summaryDB, deptURL):
 				if (courseElement != None):
 					infoParagraphs.append(element)
 
-		summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
+		summaryDB.insertCourseSummary(courseElement, infoParagraphs)
 
 
 """
@@ -800,21 +832,20 @@ def combineDB(courseDB, summaryDB):
 
 	for course in courseDB:
 
-		if len(course.summary) > 0:
+		if course.manuallyModified:
 			continue
 
 		summaryDBItem = summaryDB[(course.dept, course.courseId)]
 
 		summary = summaryDBItem["summary"]
-		if summary == None:
-			#print " Summary for " + course.dept + " " + course.courseId + " not found!"
+
+		if summary == None or len(summary.strip()) == 0:
 			SUMMARY_NOT_FOUND.append(course)
 		else:
 			summary = summary.strip()
 
-			if len(summary) >= len(course.summary):
+			if len(summary) > 0:
 				if len(summary) < SHORT_SUMMARY_THRESHOLD:
-					#print " Summary for " + course.dept + " " + course.courseId + " is too short!"
 					SUMMARY_SHORT.append(course)
 
 				course.summary = summary
@@ -863,6 +894,7 @@ def logWarnings():
 
 	warningFile.close()
 
+
 def main():
 
 	# Read exported data from Parse (the courses scraped before)
@@ -881,11 +913,11 @@ def main():
 	# Populate department search array
 	populateDeptSearchKey()
 
-	# Set global semester info from a page header.
-	#setGlobalSemester(pages[0])
-
 	# Extract courses from these pages in schedule
 	extractCoursesFromPages(pages, courseDB)
+
+	# Add manually populated summaries
+	addManualSummaries(courseDB)
 
 	# Scrape College Catalog
 	summaryDB = scrapeCatalog()
