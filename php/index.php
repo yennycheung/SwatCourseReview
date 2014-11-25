@@ -2,6 +2,7 @@
 <html lang="en" >
 
 	<?php require_once('header.php'); ?>
+	<?php include_once("analyticstracking.php") ?>
 
 	<!-- Begin of Body -->
 
@@ -59,7 +60,7 @@ swatcoreteam@gmail.com</a> for any feedback.</p>
 	<section class = "stats bgParallax" data-speed="4">
 		<div class="wrapper">
 			<h1 id="num-reviews">0</h1>
-			<p>courses reviewed... and the number is on the rise!</p>
+			<p>courses reviewed... and still counting!</p>
 		</div>
 	</section>
 

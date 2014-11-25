@@ -776,7 +776,7 @@ form .row {
     width: 100%;
     height: 100%;
     padding-bottom: 220px;
-    background: url(../img/bg.jpg) no-repeat;
+    background: url(../img/bg.jpg) repeat-y;
     background-size: cover;
     background-attachment: fixed; }
     .body section.welcome .wrapper {
@@ -929,16 +929,12 @@ form .row {
         font-size: 35px;
         margin-bottom: 15px; }
     .body section.testimonial .col {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 31.76157%;
+      display: inline-block;
+      width: 300px;
       border-radius: 15px;
       background: #fff;
       border: solid #eee 5px;
       overflow: hidden; }
-      .body section.testimonial .col:last-child {
-        margin-right: 0; }
       .body section.testimonial .col:hover {
         cursor: pointer;
         border: solid #006655 5px; }
@@ -1171,7 +1167,7 @@ form .row {
           .details .content .two .right .review-textbox input:last-child {
             margin-right: 0; }
         .details .content .two .right .review-textbox .add-review-btn {
-          margin: 20px 30px 20px; }
+          margin: 2% 6%; }
         .details .content .two .right .review-textbox .add-rating {
           margin-top: 5px;
           margin-bottom: 10px;
@@ -1189,16 +1185,10 @@ form .row {
           margin-right: 0; }
 
 .pagecontact {
-  height: 700px !important; }
-  .pagecontact .wrapper {
-    margin-top: 70px;
-    margin-left: 25%;
-    margin-right: 25%; }
-    .pagecontact .wrapper .bottom {
-      padding-top: 15px; }
+  min-height: 700px; }
 
 .contactscontainer {
-  width: 700px;
+  width: 65%;
   margin: auto;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 8px;

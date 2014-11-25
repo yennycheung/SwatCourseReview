@@ -1,18 +1,9 @@
 .pagecontact {
-	height: 700px !important;
-	.wrapper {
-		margin-top: 70px;
-		margin-left: 25%;
-		margin-right: 25%;
-		.bottom {
-				padding-top: 15px;
-			}
-	}
+	min-height: 700px;
 }
 
-
 .contactscontainer {
-			width: 700px;
+			width: 65%;
 			margin: auto;
 			background: rgba(255,255,255,.6);
 			border-radius: 8px;
