@@ -4,6 +4,7 @@
 <?php require_once('header.php'); ?>
 
 <!-- Begin of Body -->
+<?php include_once("analyticstracking.php") ?>
 <?php
     $hasPostData = False;
     if(isset($_GET)) {

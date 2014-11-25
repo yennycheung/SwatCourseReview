@@ -2,6 +2,7 @@
 <html lang="en" >
 
 <?php require_once('header.php'); ?>
+<?php include_once("analyticstracking.php") ?>
 
 <?php
 	$hasPostData = False;
