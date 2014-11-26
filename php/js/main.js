@@ -1,3 +1,6 @@
+//define(["jquery", "ezValidation", "parse-1.3.1"], 
+//function(require_var_j, require_var_e, require_var_p) {
+
 jQuery(document).ready(function() {
 	//validation
 	ezValidation.init();
@@ -87,3 +90,8 @@ jQuery(document).ready(function() {
 
 
 });
+
+
+//});
+
+

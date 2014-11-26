@@ -99,13 +99,17 @@ swatcoreteam@gmail.com</a> for any feedback.</p>
 
 	<?php require_once('footer.php'); ?>
 
+	<!--<script data-main="js/page_index" src="js/require.js"></script>-->
+
 	<!-- JS INCLUDES -->
+
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/ezValidation.js"></script>
 	<script type="text/javascript" src="js/star-rating.min.js"></script>
 	<script type="text/javascript" src="js/parse-1.3.1.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/page_index.js"></script>
+
 
 </body>
 </html>

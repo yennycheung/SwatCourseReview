@@ -1,3 +1,5 @@
+//define(["jquery"], function(require_var_j) {
+
 /*!
  * Parse JavaScript SDK
  * Version: 1.3.1
@@ -9283,3 +9285,5 @@
     return request._thenRunCallbacks(options);
   };
 }(this));
+
+//});
