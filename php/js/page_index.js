@@ -44,4 +44,7 @@ jQuery(document).ready(function() {
         $(this).find($("img")).toggle();
     });
 
+
+    // Fade out loader
+    $('.loader').fadeOut(500);
 });

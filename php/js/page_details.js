@@ -33,15 +33,13 @@ $(function() {
 
 		// If not logged in, display the remind string.
 		if ( !Parse.User.current()) {
-			$("div.row.top").html("<div class='title'><h3>Please log in before visiting this page!</h3></div>");
-			hideAllLayouts();
+			displayError("Please log in before visiting this page!")
 			return;
 		}
 
 				// If these data DOM components don't exist, then page didn't receive POST data.
 		if ( ! $("#data-course-object-id").length > 0) {
-			$("div.row.top").html("<div class='title'><h3>We are sorry, the page you are looking for is not found!</h3></div>");
-			hideAllLayouts();
+			displayError(">We are sorry, the page you are looking for does not exist")
 			return;
 		} 
 
@@ -51,6 +49,12 @@ $(function() {
 
 		// Query parse about course info
 		queryCourseInfoFromParse(courseObjectId);
+	}
+
+	function displayError(msg) {
+		$("div.row.top").html("<div class='title'><h3>" + msg + "</h3></div>");
+		hideAllLayouts();
+		$('.loader').fadeOut(500);
 	}
 
 	function hideAllLayouts() {
@@ -86,18 +90,22 @@ $(function() {
 		query.find({
 			success: function(results) {
 				if (results.length != 1) {
-					hideAllLayouts();
-					$("div.row.top").html("<div class='title'><h3>We are sorry, the page you are looking for is not found!</h3></div>");
+					displayError("We are sorry, the page you are looking for is not found!");
+					return;
 				}
 				courseParseObject = results[0];
 				displayCourseInfo(results[0]);
 				reviewArray = courseParseObject.get("reviews");
 				displayReviews(reviewArray);
 				initializeAddUpdateReview(reviewArray);
+
+				// Fade out loader
+				$('.loader').fadeOut(500);
 			},
 
 			error: function(error) {
-				console.log("search error!");
+				displayError("We are sorry, our database gave an error. Come back later ...");
+				return;
 			}
 		});
 	}
@@ -165,7 +173,7 @@ $(function() {
 	}
 
 	
-	function getReviewParseOBject() {
+	function getReviewParseObject() {
 		var comment = $("#id-review-text").val();
 		var rating = parseInt($('#id-overall-rating-bar').attr('data-val'));
 
@@ -199,9 +207,19 @@ $(function() {
 	    reviewInstance.set("workloadRating", rating);
 	    reviewInstance.set("usefulRating", rating);
 	    reviewInstance.set("interestRating", rating);
-	    reviewInstance.set("courseObjectId", getCourseObjectId());
 	    reviewInstance.set("userObjectId", Parse.User.current().id);
-	    
+	    reviewInstance.set("courseUniqueKey", 
+	    	courseParseObject.get("dept").toLowerCase() + "^" +
+	    	courseParseObject.get("courseId").toLowerCase() + "^" +
+	    	courseParseObject.get("profFirstName").toLowerCase() + "^" +
+	    	courseParseObject.get("profLastName").toLowerCase()
+	    	);
+
+	    var acl = new Parse.ACL();
+	    acl.setPublicReadAccess(true);
+	    acl.setPublicWriteAccess(false);
+	    acl.setWriteAccess(Parse.User.current().id, true);
+	    reviewInstance.setACL(acl);
 	    return reviewInstance;
 	}
 
@@ -313,7 +331,7 @@ $(function() {
 				$("div.review-textbox").show();	
 				$("#id-overall-rating-bar")[0].setRating(reviewParseObject.get("overallRating")-1);
 				$("#id-review-text").html(reviewParseObject.get("comment"));
-				$("#id-form-add-review>input").attr("value", "Update");
+				$("#id-form-add-review>input.add-review-btn").attr("value", "Update");
 			});
 		}
 		else {
@@ -333,19 +351,20 @@ $(function() {
 			return;
 		}
 
+		// Disable the button so user cannot click it while it's loading. 
+		$("#id-form-add-review>input.add-review-btn").attr("disabled", true);
 
-		var reviewParseObject = getReviewParseOBject();
-
-
-
+		var reviewParseObject = getReviewParseObject();
 		if (myReview) {
-			$("div.review-textbox").hide();
-			$("#id-update-button").show();
 
+			$("#id-form-add-review>input.add-review-btn").attr("value", "Updating ...");
 			reviewParseObject.save(null, {
 				success: function(newReviewObject) {
 					myReview.updatedAt = newReviewObject.updatedAt;
+					$("div.review-textbox").hide();
+					$("#id-update-button").show();
 					displayReviews(reviewArray);
+					$("#id-form-add-review>input.add-review-btn").removeAttr("disabled");
 				},
 				error : function(newReviewObject, error) {
 					console.log("save error!");
@@ -353,6 +372,9 @@ $(function() {
 			});
 		}
 		else {
+
+			$("#id-form-add-review>input.add-review-btn").attr("value", "Adding ...");
+
 			myReview = reviewParseObject;
 
 			// Construct the review Parse object.
@@ -366,6 +388,7 @@ $(function() {
 					reviewArray = courseParseObject.get("reviews");
 					displayReviews(reviewArray);
 					initializeAddUpdateReview(reviewArray);
+					$("#id-form-add-review>input.add-review-btn").removeAttr("disabled");
 				},
 				error : function (newReviewObject, error) {
 					console.log("save error!");

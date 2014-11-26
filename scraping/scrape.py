@@ -9,13 +9,19 @@ import json
 
 SEMEMSTER = None
 SCHEDULE_TABLE_TOTAL_COLS = 13
-SHORT_SUMMARY_THRESHOLD = 130
+SHORT_SUMMARY_THRESHOLD = 200
 
 ROW_TYPE_COURSE = "course"
 ROW_TYPE_INFO = "info"
 
 
 DEPT_SEARCH_KEY = {}
+
+
+BAD_PROF_NAME = []
+INSERTED_COURSE = []
+SUMMARY_NOT_FOUND = []
+SUMMARY_SHORT = []
 
 """
 strings to add to search phrase for each department
@@ -84,18 +90,6 @@ def stripPunctuations(rawWords):
 		words.append("".join(ch for ch in rawWord if ch not in punctuations))
 	return words
 
-"""
-Every page of course schedule contains a header with semester information.
-This function extracts that information and sets a global semester variable.
-"""
-def setGlobalSemester(page):
-	firstRow = page[0][0]
-	semesterInfo = firstRow[0].text.split()
-
-	global SEMESTER
-	SEMESTER = semesterInfo[0][0] + semesterInfo[1][2:]
-
-
 
 """
 There are two type of rows in the course schedule html:
@@ -143,7 +137,7 @@ class Course:
 		self.profLastName = jsonObject["profLastName"]
 		self.reviews = jsonObject["reviews"]
 		self.summary = jsonObject["summary"]
-
+		self.manuallyModified = jsonObject["manuallyModified"]
 
 
 	"""
@@ -154,6 +148,7 @@ class Course:
 		# Basic info
 		self.dept = courseRow[1].text.strip().replace(" ", "")
 		self.courseId = courseRow[2].text.strip().replace(" ", "")
+		self.section = courseRow[3].text.strip().replace(" ", "")
 		self.courseName = courseRow[4].text.strip()
 
 		# Replace things like (W) (W) with (W)
@@ -165,12 +160,12 @@ class Course:
 
 		# Sometimes prof name is not specified (such as directed reading classes)
 		profNames = courseRow[8].text.split(",")
-		if len(profNames) < 2:
-			self.profFirstName = "STAFF"
-			self.profLastName = ""
+		if len(profNames) != 2:
+			self.profFirstName = "unknown"
+			self.profLastName = "unknown"
 		else:
-			self.profFirstName = courseRow[8].text.split(',')[1].strip().replace(" ", "")
-			self.profLastName = courseRow[8].text.split(',')[0].strip().replace(" ", "")
+			self.profFirstName = courseRow[8].text.split(',')[1].strip()
+			self.profLastName = courseRow[8].text.split(',')[0].strip()
 
 		# Distributions
 		distributions = [x.strip() for x in courseRow[6].text.split(",")]
@@ -179,7 +174,7 @@ class Course:
 
 
 		# Infomation initialized here and populated later.
-		self.summary = "Summary not available."
+		self.summary = ""
 		self.crossList = []
 
 		# Handle occasional mislabeling of Lab:
@@ -192,7 +187,39 @@ class Course:
 		# New course has no reviews
 		self.reviews = []
 		
+		self.manuallyModified = False
 
+	"""
+	pdftables.com somtimes give bad professor names, such as "SUpneikdneol wKnirsten"  for "Speidel, Kirsten"
+	This function detects it. We need to fix them manually            
+	"""
+	def badProfName(self):
+		if len(self.profFirstName) < 1 or len(self.profLastName) < 1:
+			return True
+
+		if (not self.profFirstName.isalpha() ) or (not self.profLastName.isalpha()):
+			return True
+
+		if self.profFirstName[0].islower() or self.profLastName[0].islower():
+			return True
+
+		upperCaseLetters = 0
+		for letter in self.profFirstName:
+			if letter.isupper():
+				upperCaseLetters += 1
+
+		if upperCaseLetters > 1:
+			return True
+
+		upperCaseLetters = 0
+		for letter in self.profLastName:
+			if letter.isupper():
+				upperCaseLetters += 1	
+
+		if upperCaseLetters > 1:
+			return True
+
+		return False
 	"""
 	One course row may have multiple info rows following it.
 	This function applies an info row to a constructed course object.
@@ -214,7 +241,7 @@ class Course:
 
 				for i in range(len(words)):
 					if words[i].isdigit():
-						self.crossList.append( ( words[i-1].strip() + "^" + words[i].strip() ) )
+						self.crossList.append( ( words[i-1].strip() + " " + words[i].strip() ) )
 
 
 	"""
@@ -235,6 +262,10 @@ class Course:
 	Print course information for debugging purposes.
 	"""
 	def toString(self):
+
+		return "%-5s %-5s   by   %-15s   %-15s" %(self.dept, self.courseId, self.profLastName, self.profFirstName)
+
+		"""
 		description = self.dept + " " + self.courseId + ": " + self.courseName 
 		if self.profFirstName != None:
 			description += (" by prof. " + self.profLastName + ", " + self.profFirstName + " ")
@@ -246,6 +277,7 @@ class Course:
 		description += ( "\n    Lab: " + str(self.hasLab) + " cross-list: " + str(self.crossList) )
 
 		return description
+		"""
 
 	"""
 	Serialize this class to a JSON string.
@@ -257,7 +289,12 @@ class Course:
 		jsonObject["courseId"] = self.courseId
 		jsonObject["profFirstName"] = self.profFirstName
 		jsonObject["profLastName"] = self.profLastName
-		jsonObject["summary"] = self.summary
+
+		if len(self.summary) <= 0:
+			jsonObject["summary"] = "We are sorry, we didn't find a summary for this course."
+		else:
+			jsonObject["summary"] = self.summary
+
 		jsonObject["isWritingCourse"] = self.isWritingCourse
 		jsonObject["hasLab"] = self.hasLab
 		jsonObject["isFYS"] = self.isFYS
@@ -271,6 +308,10 @@ class Course:
 
 		# It seems search array method gives more accurage results.
 		jsonObject["searchArray"] = self.generateSearchArray()
+
+		# Indicates whether this course was manually modified. If yes, certain 
+		# Fields will not be overwritten (such as name / summary)
+		jsonObject["manuallyModified"] = self.manuallyModified
 
 		return jsonObject
 
@@ -316,8 +357,20 @@ class Course:
 			searchArray.append(extraKey)
 
 		searchArray.append(self.courseId.lower())
+
 		searchArray.append(self.profFirstName.lower())
+		pieces = re.split(" |-", self.profFirstName)
+		if len(pieces) > 1:
+			for piece in pieces:
+				searchArray.append(piece.lower())
+			searchArray.append(re.sub(" |-", "", self.profFirstName).lower())
+
 		searchArray.append(self.profLastName.lower())
+		pieces = re.split(" |-", self.profLastName)
+		if len(pieces) > 1:
+			for piece in pieces:
+				searchArray.append(piece.lower())
+			searchArray.append(re.sub(" |-", "", self.profLastName).lower())
 
 		if self.isFYS:
 			searchArray.append("fys")
@@ -368,7 +421,7 @@ class CourseDB:
 
 		jsonObject = {}
 		jsonObject["results"] = courseList
-		return json.dumps(jsonObject)
+		return json.dumps(jsonObject, indent=4, sort_keys=True)
 
 
 """
@@ -500,6 +553,10 @@ class CourseSummaryDB:
 				continue
 
 			newLine = line.strip().lower()
+
+			if newLine.startswith("(see"):
+				continue
+
 			rawWords = newLine.split()
 			words = stripPunctuations(rawWords)
 
@@ -528,7 +585,7 @@ class CourseSummaryDB:
 			if ( words[0].startswith("writing") and words[1].startswith("course") ):
 				continue
 
-			cleanedSummary += (line + "\n\n") 
+			cleanedSummary += (line.strip() + "\n\n") 
 
 		return cleanedSummary
 
@@ -551,7 +608,7 @@ class CourseSummaryDB:
 	Given a html node that contains course title, and several paragraphs that
 	may contain course summary, insert this course->summary pair into DB.
 	"""
-	def insertCounrseSummary(self, titleElement, infoParagraphs):
+	def insertCourseSummary(self, titleElement, infoParagraphs):
 		if titleElement == None or len(infoParagraphs) < 1:
 			return
 
@@ -600,7 +657,11 @@ Return a CourseDB containing all course information in these pages.
 This is the only function for course schedule scraping (easy).
 """
 def extractCoursesFromPages(pages, courseDB):
-	currentCourse = None
+	global INSERTED_COURSE
+	global BAD_PROF_NAME
+
+	prevCourse = None
+	sameCourseDiffSection = []
 
 	for page in pages:
 		# Skip empty pages (if there are any).
@@ -612,20 +673,72 @@ def extractCoursesFromPages(pages, courseDB):
 		usefulRows = table[2:(len(table)-2)]
 		for row in usefulRows:
 			if getRowType(row) == ROW_TYPE_COURSE:
-				# If we get a new course, insert the current course and create a new one
-				if currentCourse != None and currentCourse.generateUniqueKey() not in courseDB:
-					courseDB.insertCourse(currentCourse)
-				currentCourse = Course()
-				currentCourse.initFromCourseRow(row)
+				
+				# Initialize the new course
+				newCourse = Course()
+				newCourse.initFromCourseRow(row)
+
+				# If the course has same dept, id, but different section, prof, then group them together
+				if (prevCourse != None and prevCourse.dept == newCourse.dept and prevCourse.courseId == newCourse.courseId
+					and prevCourse.section != newCourse.section and (prevCourse.profFirstName != newCourse.profFirstName or
+					 prevCourse.profLastName != newCourse.profLastName) ):
+
+					sameCourseDiffSection.append(newCourse)
+				else:
+					sameCourseDiffSection = [ newCourse ]
+
+
+				# Insert it if not in DB and has a valid professor.
+				if newCourse.badProfName():
+					BAD_PROF_NAME.append(newCourse)
+
+				if newCourse.generateUniqueKey() not in courseDB:
+					courseDB.insertCourse(newCourse)
+					INSERTED_COURSE.append(newCourse)
+
+				prevCourse = newCourse
+
 			else:
 				# Else apply this info row to the current course.
-				if currentCourse != None:
-					currentCourse.applyInfoRow(row)
-
-	if currentCourse != None and currentCourse.generateUniqueKey() not in courseDB:
-		courseDB.insertCourse(currentCourse)
+				for course in sameCourseDiffSection:
+					course.applyInfoRow(row)
 
 	return courseDB
+
+
+
+def longestPrefixMatch(uniqueKey, manualSummaryDict):
+	longestMatchLen = -1
+	longestMatchKey = None
+	for LPMKey in manualSummaryDict:
+		keyLen = LPMKey.split("^")
+		if uniqueKey.startswith(LPMKey) and keyLen > longestMatchLen:
+			longestMatchLen = keyLen
+			longestMatchKey = LPMKey
+	if longestMatchLen >= 0:
+		return longestMatchKey
+	else:
+		return None
+
+"""
+College catalog doesn't contain summaries for all courses. 
+Sometimes we need to manually add summaries.
+"""
+def addManualSummaries(courseDB):
+	manualSummaryJSONFile = codecs.open("ManualSummary.json", mode="r", encoding='utf-8')	
+	jsonArray = json.loads(manualSummaryJSONFile.read().strip())["results"]
+
+	manualSummaryDict = {}
+	for jsonObject in jsonArray:
+		manualSummaryDict[ jsonObject["LPMKey"] ] = jsonObject["summary"]
+
+	for course in courseDB:
+		uniqueKey = course.generateUniqueKey()
+		manualSummaryKey = longestPrefixMatch(uniqueKey, manualSummaryDict)
+		if manualSummaryKey != None:
+
+			course.summary = manualSummaryDict[manualSummaryKey]
+			course.manuallyModified = True
 
 
 """
@@ -674,7 +787,7 @@ def scrapeDeptPage(summaryDB, deptURL):
 
 
 			if (CourseSummaryDB.isCourseTitle(element)):
-				summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
+				summaryDB.insertCourseSummary(courseElement, infoParagraphs)
 				courseElement = element
 				infoParagraphs = []
 
@@ -682,7 +795,7 @@ def scrapeDeptPage(summaryDB, deptURL):
 				if (courseElement != None):
 					infoParagraphs.append(element)
 
-		summaryDB.insertCounrseSummary(courseElement, infoParagraphs)
+		summaryDB.insertCourseSummary(courseElement, infoParagraphs)
 
 
 """
@@ -714,17 +827,28 @@ For every course in courseDB, look for summary in summaryDB.
 	Else, populate its "summary" field.
 """
 def combineDB(courseDB, summaryDB):
+	global SUMMARY_NOT_FOUND
+	global SUMMARY_SHORT
 
 	for course in courseDB:
+
+		if course.manuallyModified:
+			continue
+
 		summaryDBItem = summaryDB[(course.dept, course.courseId)]
 
 		summary = summaryDBItem["summary"]
-		if summary == None:
-			print " Summary for " + course.dept + " " + course.courseId + " not found!"
-		elif len(summary) < SHORT_SUMMARY_THRESHOLD:
-			print " Summary for " + course.dept + " " + course.courseId + " is too short!"
+
+		if summary == None or len(summary.strip()) == 0:
+			SUMMARY_NOT_FOUND.append(course)
 		else:
-			course.summary = summary
+			summary = summary.strip()
+
+			if len(summary) > 0:
+				if len(summary) < SHORT_SUMMARY_THRESHOLD:
+					SUMMARY_SHORT.append(course)
+
+				course.summary = summary
 
 		if "name" in summaryDBItem:
 			#print "name of " + course.dept + " " + course.courseId + " updated from: " + course.courseName + " to: " + summaryDBItem["name"]
@@ -740,28 +864,60 @@ def saveToFile(courseDB, filename):
 	jsonFile.close()
 
 
+def logWarnings():
+	global SUMMARY_SHORT
+	global SUMMARY_NOT_FOUND
+	global INSERTED_COURSE
+	global BAD_PROF_NAME
+
+	warningFile = codecs.open("warnings", mode="w", encoding='utf-8')
+
+	for course in BAD_PROF_NAME:
+		warningFile.write("Suspicious Prof Name :   "  + course.toString() + "\n")
+
+	warningFile.write("\n\n\n")
+
+	for course in SUMMARY_NOT_FOUND:
+		warningFile.write("No Summary    :   "  + course.toString() + "\n")
+
+	warningFile.write("\n\n\n")
+
+	for course in SUMMARY_SHORT:
+		warningFile.write("-"*60 + "\n")
+		warningFile.write("Summary Short :   "  + course.toString() + "\n\n")
+		warningFile.write(course.summary + "\n\n")
+
+	warningFile.write("\n\n")
+
+	for course in INSERTED_COURSE:
+		warningFile.write("Inserted      :   "  + course.toString() + "\n")
+
+	warningFile.close()
+
+
 def main():
 
 	# Read exported data from Parse (the courses scraped before)
 	courseDB = readExportedData()
 
-	# Read first 20 pages of course schedule.
-	scheduleTree = readScheduleFile("schedule-pdf-extract-1.html")
+	# Read fall 2014 schedule
+	scheduleTree = readScheduleFile("schedule-f14.html")
 	pages = scheduleTree.getroot().findall(".//page")
 
-	# Read pages 20-40 of course schedule.
-	scheduleTree = readScheduleFile("schedule-pdf-extract-2.html")
+	# Read spring 2014 schedule
+	scheduleTree = readScheduleFile("schedule-s14.html")
 	for page in scheduleTree.getroot().findall(".//page"):
 		pages.append(page)
+	
 
 	# Populate department search array
 	populateDeptSearchKey()
 
-	# Set global semester info from a page header.
-	#setGlobalSemester(pages[0])
-
 	# Extract courses from these pages in schedule
 	extractCoursesFromPages(pages, courseDB)
+
+	# Add manually populated summaries
+	addManualSummaries(courseDB)
 
 	# Scrape College Catalog
 	summaryDB = scrapeCatalog()
@@ -770,8 +926,9 @@ def main():
 	combineDB(courseDB, summaryDB)
 
 	# Save the DB to a json file
-	saveToFile(courseDB, "CourseScrape.json")
+	saveToFile(courseDB, "CourseScraped.json")
 
+	logWarnings()
 
 if __name__ == "__main__":
 	main()

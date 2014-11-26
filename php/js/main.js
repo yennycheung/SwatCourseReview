@@ -31,12 +31,6 @@ jQuery(document).ready(function() {
 		});
 	});
 
-
-	// loader
-	$(window).load(function() {
-	  $('.loader').fadeOut(500);
-	});
-
 	// Initialize Parse
 	Parse.initialize("rxgRS4EuA2QMKJX6ptoz6jcAdUOa0IwJD7jFWjXG", "MbqgQljkBjOWK6mFlQTnKB612dsE7cbVPSKkEPJU");
 
@@ -72,7 +66,7 @@ jQuery(document).ready(function() {
 
 		Parse.User.logIn(userName, password, {
 			success: function(user) {
-				updateHeaderOnLogin();
+    			window.location.replace("index.php");
   			},
 			error: function(user, error) {
 				alert("Invalid username or password. Please try again.");
@@ -90,5 +84,6 @@ jQuery(document).ready(function() {
     	// redirect to home page because logged out users can't search.
     	window.location.replace("index.php");
     });
+
 
 });

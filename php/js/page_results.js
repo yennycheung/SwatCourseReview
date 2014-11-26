@@ -19,14 +19,13 @@ jQuery(document).ready(function() {
 
 		// If not logged in, display the remind string.
 		if ( !Parse.User.current()) {
-			$("#resultText").html("Please login before visiting this page!");
-
+			displayError("Please login before visiting this page!");
 			return;
 		}
 
 		// If these data DOM components don't exist, then page didn't receive POST data.
 		if ( ! $("#data-search-query").length>0) {
-			$("#resultText").html("We are sorry, the page you are looking for is not found!");
+			displayError("We are sorry, the page you are looking for is not found!");
 			return;
 		} 
 
@@ -38,14 +37,20 @@ jQuery(document).ready(function() {
 		
 		// Strip php json_encode() extra quote.
 		searchString = searchString.substring(1, searchString.length-1);
-
+		$('#header-search').attr("value", searchString);
+		
 		// Search for courses
 		queryCoursesFromParse(searchString);
 
-		var Mailgun = require('mailgun');
-		Mailgun.initialize('swatcoursereview.com', 'myAPIKey');
+		//var Mailgun = require('mailgun');
+		//Mailgun.initialize('swatcoursereview.com', 'myAPIKey');
 	}
 
+
+	function displayError(msg) {
+		$("#resultText").html(msg);
+		$('.loader').fadeOut(500);
+	}
 
 	function configureAdvancedSearch(enable) {
 		if (!enable) {
@@ -111,13 +116,15 @@ jQuery(document).ready(function() {
 		}
 
 		displaySearchResults(filteredResultsList);
+
 	}
 
 	function queryCoursesFromParse(searchString) {
+		var searchComponents = processSearchString(searchString);
+		var query = new Parse.Query("Course");
+		query.include("reviews");
+		query.limit(1000);
 		if (searchString) {
-			var searchComponents = processSearchString(searchString);
-			var query = new Parse.Query("Course");
-
 			// Use PERL regex to query one field multiple times.
 			/*
 			perlRegex = ""
@@ -129,33 +136,32 @@ jQuery(document).ready(function() {
 			
 			// Use search array method to find results. 
 			query.containsAll("searchArray", searchComponents);
-			query.include("reviews");
-
-			// Query for results.
-			query.find({
-				success: function(results) {
-					
-					// Debugging log
-					returnTime = new Date().getTime();
-					console.log("query took " + (returnTime - queryTime) + "ms");
-
-					// update layout
-					originalSearchResults = results;
-					generateReviewAttrs(originalSearchResults);
-					displaySearchResults(originalSearchResults);
-					configureAdvancedSearch(true);
-				},
-				error: function() {
-					console.log("search error!");
-				}
-			});
-			$("#resultText").html("Searching Database ...");
-			queryTime = new Date().getTime();
-
 		}
-		else {
-			$("#resultText").html("Search Query cannot be empty!");
-		}
+
+
+		// Query for results.
+		query.find({
+			success: function(results) {
+				
+				// Debugging log
+				returnTime = new Date().getTime();
+				console.log("query took " + (returnTime - queryTime) + "ms");
+
+				// update layout
+				originalSearchResults = results;
+				generateReviewAttrs(originalSearchResults);
+				displaySearchResults(originalSearchResults);
+				configureAdvancedSearch(true);
+
+				// Fade out loader
+				$('.loader').fadeOut(500);
+			},
+			error: function() {
+				console.log("search error!");
+			}
+		});
+		$("#resultText").html("Searching Database ...");
+		queryTime = new Date().getTime();
 	}
 
 
@@ -173,7 +179,7 @@ jQuery(document).ready(function() {
 
 			// Handle letter
 			if (/^[a-zA-Z]$/.test(ch)) {
-				if (componentType == TypeEnum.NUM) {
+				if (componentType == TypeEnum.NUM ) {
 					searchComponents.push(formatSearchNum(component));
 					component = ch;
 				}
