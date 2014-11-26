@@ -1236,32 +1236,6 @@ form .row {
     width: 45%; } }
 @media (max-width: 568px) {
   /* Smartphones (landscape) ----------- */ }
-@media only screen and (max-width: 568px) and (min-width: 321px) {
-  .details h4 {
-    font-size: 15px; }
-  .details .title h3 {
-    font-size: 20px; }
-  .details .classdesc .right {
-    margin-left: 30px; }
-    .details .classdesc .right p {
-      margin-top: 20px; }
-  .details .closedetails .right {
-    margin-left: 30px; }
-  .details .closedetails .detail {
-    margin-top: 20px;
-    float: right;
-    width: 80%;
-    overflow: hidden; }
-  .details .two .right {
-    margin-left: 30px; }
-  .details .two .review, .details .two .review-textbox {
-    margin-top: 20px; }
-  .details .two input {
-    font-size: 8px;
-    padding: 8px;
-    height: 38px; } }
-@media (max-width: 568px) {
-  /* Smartphones (landscape) ----------- */ }
 @media only screen and (max-width: 568px) and (min-width: 320px) {
   /* Styles */
   .header .logo span {
@@ -1289,5 +1263,31 @@ form .row {
       font-size: 30px; }
   .body section.testimonial .col {
     text-align: left; } }
+@media (max-width: 568px) {
+  /* Smartphones (landscape) ----------- */ }
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+  .details h4 {
+    font-size: 15px; }
+  .details .title h3 {
+    font-size: 20px; }
+  .details .classdesc .right {
+    margin-left: 30px; }
+    .details .classdesc .right p {
+      margin-top: 20px; }
+  .details .closedetails .right {
+    margin-left: 30px; }
+  .details .closedetails .detail {
+    margin-top: 20px;
+    float: right;
+    width: 80%;
+    overflow: hidden; }
+  .details .two .right {
+    margin-left: 30px; }
+  .details .two .review, .details .two .review-textbox {
+    margin-top: 20px; }
+  .details .two input {
+    font-size: 8px;
+    padding: 8px;
+    height: 38px; } }
 
 /*# sourceMappingURL=main.css.map */

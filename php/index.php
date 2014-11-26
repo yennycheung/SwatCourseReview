@@ -78,7 +78,7 @@ swatcoreteam@gmail.com</a> for any feedback.</p>
 			</div>
 			<div class="col dev">
 				<img src="img/peng.jpg" alt="">
-				<p class = "desc">I believe that more academic resources should be more transparent to students. SwatCoRe has a clean interface for searching and reviewing courses, helping students pick the right classes, so that we can get the most out of our 4-year Swat experience.</p>
+				<p class = "desc">Taking on this project gives me hands-on experience in working with the database. It is a fascinating task designing and implementing the backend of SwatCoRe. I think the data on SwatCoRe will be useful for students in the coming years.</p>
 				<p class="dev-name">Peng Zhao</p>
 				<p class="dev-title">Backend Developer</p>
 			</div>
