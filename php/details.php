@@ -67,18 +67,6 @@
                                 <div class="ratingbigger" id="id-overall-rating-bar" data-rating-max="5" 
                                     data-container="body" data-toggle="popover" data-placement="right" 
                                     data-trigger="manual" data-content="Please fill out this field"></div>
-                                <!--
-                                <br/>
-                                <p class="tag ratingbigger">Difficulty:</p>
-                                <div class="ratingbigger" id="id-difficulty-rating-bar" data-rating-max="5"></div>
-                                <p class="tag ratingbigger">Workload:</p>
-                                <div class="ratingbigger" id="id-workload-rating-bar" data-rating-max="5"></div>
-                                <br/>
-                                <p class="tag ratingbigger">Fun:</p>
-                                <div class="ratingbigger" id="id-fun-rating-bar" data-rating-max="5"></div>
-                                <p class="tag ratingbigger">Usefulness:</p>
-                                <div class="ratingbigger" id="id-useful-rating-bar" data-rating-max="5"></div>
-                                -->
                             </div>
                             <div class="add-review">
                                 <form action="details.php" id="id-form-add-review" method="post">
