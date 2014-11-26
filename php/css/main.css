@@ -1005,7 +1005,6 @@ form .row {
       margin-top: 100px; }
   .results .realContent {
     margin: 0 auto;
-    overflow: scroll;
     width: 90%;
     padding-bottom: 30px; }
     .results .realContent a {
