@@ -994,14 +994,11 @@ form .row {
     float: right; }
 
 .results {
-  min-height: 100%;
   position: relative; }
   .results .table {
-    margin-bottom: 0px;
-    overflow: hidden; }
+    margin-bottom: 0px; }
   .results .content {
-    background: #fff;
-    min-height: 100%; }
+    background: #fff; }
     .results .content h3 {
       margin-bottom: 20px;
       margin-left: 47px;
