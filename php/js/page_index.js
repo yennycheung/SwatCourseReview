@@ -1,3 +1,6 @@
+//define(["jquery", "ezValidation", "star-rating.min", "parse-1.3.1", "main"], 
+//function(require_var_j, require_var_e, require_var_s, require_var_p, require_var_m) {
+
 // Execute code without declaring global variables.
 jQuery(document).ready(function() {
      $(".intro-text").hide();
@@ -7,11 +10,11 @@ jQuery(document).ready(function() {
     max = 30,
     scrollPos = $(window).scrollTop();
     $(window).scroll(function() {  
-    	if (scrollPos > 550 && scrollPos < 1655 && start < max) {
-    		start += 1 
-       		$("#num-reviews").text(start);
-    	} 
-    	scrollPos = $(window).scrollTop();
+        if (scrollPos > 550 && scrollPos < 1655 && start < max) {
+            start += 1 
+            $("#num-reviews").text(start);
+        } 
+        scrollPos = $(window).scrollTop();
     });
 
     var start = 0, 
@@ -48,3 +51,7 @@ jQuery(document).ready(function() {
     // Fade out loader
     $('.loader').fadeOut(500);
 });
+
+
+//});
+

@@ -1,5 +1,5 @@
 // Execute code without declaring global variables.
-$(function() {	
+jQuery(document).ready(function() {
 	
 	/* Layout stuff */
 

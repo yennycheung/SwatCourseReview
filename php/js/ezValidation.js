@@ -1,3 +1,5 @@
+//define(["jquery"], function(require_var_j) {
+
 ezValidation = {
 
   form: '.requiredFields',
@@ -55,3 +57,5 @@ ezValidation = {
 
 
 ezValidation.init();
+
+//});
