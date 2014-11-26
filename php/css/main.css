@@ -1190,36 +1190,31 @@ form .row {
           margin-right: 0; }
 
 .pagecontact {
-  min-height: 700px; }
-
-.contactscontainer {
-  width: 65%;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
-  text-align: left; }
-  .contactscontainer .top {
-    height: 80px; }
-    .contactscontainer .top span {
-      display: block;
-      text-transform: uppercase;
-      line-height: 58px;
-      color: #006655;
-      padding-left: 40px;
-      padding-top: 20px;
-      font-size: 25px;
-      margin-top: 20px;
-      font-weight: 500; }
-    .contactscontainer .top .bottom {
-      padding-bottom: 20px; }
-    .contactscontainer .top .active {
-      background: #fff; }
-  .contactscontainer .bottom {
-    padding: 40px; }
-    .contactscontainer .bottom p {
-      font-weight: 300;
-      color: #777;
-      line-height: 1.5; }
+  height: auto; }
+  .pagecontact .wrapper {
+    margin-top: 180px !important; }
+    .pagecontact .wrapper .contactscontainer {
+      width: 80%;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      text-align: left; }
+      .pagecontact .wrapper .contactscontainer .top {
+        height: 80px; }
+        .pagecontact .wrapper .contactscontainer .top h3 {
+          text-transform: uppercase;
+          line-height: 58px;
+          font-weight: 500;
+          color: #006655;
+          padding-left: 30px;
+          padding-top: 30px;
+          margin-top: 30px; }
+      .pagecontact .wrapper .contactscontainer .bottom {
+        padding: 30px; }
+        .pagecontact .wrapper .contactscontainer .bottom p {
+          font-weight: 300;
+          color: #777;
+          line-height: 1.5; }
 
 @media (max-width: 1024px) {
   .home .banner {

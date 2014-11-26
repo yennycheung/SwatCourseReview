@@ -34,7 +34,7 @@
 					<input type="hidden" id="search-criteria" name="search-criteria" value="">
 				</div>-->
 			    <div class="row-select">
-				    <input type="string" required name="search-string" id="search" placeholder="Search for your class">
+				    <input type="string" name="search-string" id="search" placeholder="Search for your class">
 			    </div>
 			</form>
 			<a href="signup.php" class="white btn searchbtn" id="signup-now" value="Sign Up Now!">Sign Up Now!</a>
