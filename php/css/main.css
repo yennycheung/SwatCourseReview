@@ -1265,10 +1265,9 @@ form .row {
     margin-left: 30px; }
   .details .two .review, .details .two .review-textbox {
     margin-top: 20px; }
-  .details .two .review-textbox .add-review-btn {
-    margin-top: 10px; }
   .details .two input {
     font-size: 8px;
+    padding: 8px;
     height: 38px; } }
 @media (max-width: 568px) {
   /* Smartphones (landscape) ----------- */ }
