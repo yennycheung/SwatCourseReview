@@ -26,7 +26,7 @@
 <body>
 	<div class="header">
 		<div class="wrapper">
-			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CoRe</a></div>
+			<div class="logo"><a href="index.php"><span><strong>Swat</strong>CoRe</a></span></div>
 			<form id = 'id-form-header-search' action="results.php" method="get">
 				<input type='string' id='header-search' name='search-string' placeholder='Search for your class'>
 			</form>

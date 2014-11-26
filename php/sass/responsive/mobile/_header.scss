@@ -1,0 +1,23 @@
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 320px) {
+/* Styles */
+	.header{
+		.logo{
+			span{
+				font-size:20px;
+				line-height: 65px;
+				margin:0;
+			}
+		}
+		input{
+			width: 95%;
+			margin-left: 20px;
+		}
+		#id-btn-logout{
+		height: 38px;
+		margin-right:0;
+		font-size: 8px;
+		padding: 8px;
+		}
+	}
+}
