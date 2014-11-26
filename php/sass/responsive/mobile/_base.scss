@@ -1,0 +1,53 @@
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+	.details{
+		h4{
+			font-size: 15px;
+		}
+		.title{
+			h3{
+				font-size: 20px;
+			}
+		}
+		.classdesc{
+			.right{
+				margin-left: 30px;
+				p{
+					margin-top: 20px;
+					// float: right;
+					// width: 90%;
+				}
+			}
+		}
+		.closedetails{
+			.right{
+				margin-left: 30px;
+			}
+			.detail{
+				margin-top: 20px;
+				float: right;
+				width: 80%;
+				overflow:hidden;
+			}
+		}
+		.two{
+			.right{
+				margin-left: 30px;
+			}
+			.review, .review-textbox{
+				margin-top: 20px;
+				// width: 90%;
+				// float: right;
+			}
+			.review-textbox{
+				.add-review-btn {
+						margin-top: 10px;
+					}
+			}
+			input{
+				font-size: 8px;
+				height: 38px;
+			}
+		}
+	}
+}

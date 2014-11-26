@@ -32,7 +32,7 @@
 				text-shadow:1px 0px 1px #666;
 			}
 
-			.icon-menu{
+			/*.icon-menu{
 				margin-top: 15px;
 				.sel{
 					cursor:pointer;
@@ -80,7 +80,7 @@
 						font-weight: 500;
 					}
 				}
-			}
+			}*/
 			
 			.row-select {
 				margin-top: 18px;
@@ -156,13 +156,13 @@
 		h1{
 			font-size: 70px;
 			color:$white;
-			text-shadow:1px 0px 1px #666;
+			text-shadow:1px 0px 1px #eee;
 			font-weight: 400;
 		}
 		p{
 			font-size: 20px;
 			color:$white;
-			text-shadow:1px 0px 1px #666;
+			text-shadow:1px 0px 1px #eee;
 			font-weight: 100;
 		}
 	}

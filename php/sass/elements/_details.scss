@@ -1,5 +1,7 @@
 .details {
 	background: #fff;
+	min-height:1000px;
+	overflow:hidden;
 	.content {
 		.row {
 			padding: 45px 35px;
@@ -18,10 +20,10 @@
 					h3 {
 						line-height: 40px;
 					}
-					p {
-						font-size: 15px;
-						line-height: 22px;
-					}
+					// p {
+					// 	font-size: 15px;
+					// 	line-height: 22px;
+					// }
 				}
 				.rating {
 					float: left;

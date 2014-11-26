@@ -781,7 +781,56 @@ form .row {
     background-attachment: fixed; }
     .body section.welcome .wrapper {
       margin-top: 240px;
-      text-align: center; }
+      text-align: center;
+      /*.icon-menu{
+      	margin-top: 15px;
+      	.sel{
+      		cursor:pointer;
+      		display: inline-block;
+      		border: solid rgba(255,255,255,0.6);
+      		border-width: 2px;
+      		border-radius: 3px;
+      		width: 90px;
+      		height: 90px;
+      		margin: 10px;
+      		.icon{
+      			width:50px;
+      			height:50px;
+      			padding: 6px 10px 6px 10px;
+      			margin: 15px;
+      			margin-top: 5px;
+      			text-align: middle;
+      			opacity: 0.7
+      	 	}
+      	 	p{
+      			font-size: 13px;
+      			color:rgba(255,255,255,0.7);
+      			text-shadow:1px 0px 1px #666;
+      			font-weight: 100;
+      			line-height: 0px;
+      		}
+      		&:hover {
+      				border-color:$white;
+      				.icon{
+      					opacity: 1;
+      				}
+      				p{
+      					color:$white;
+      				}
+      		}
+      	}
+      	.sel-clicked{
+      		border-color:$white;
+      		border-width: 3px;
+      		.icon{
+      			opacity:1;
+      		}
+      		p{
+      			color:$white;
+      			font-weight: 500;
+      		}
+      	}
+      }*/ }
       .body section.welcome .wrapper h1 {
         font-size: 80px;
         color: #fff;
@@ -796,45 +845,6 @@ form .row {
         font-size: 20px;
         font-weight: lighter;
         text-shadow: 1px 0px 1px #666; }
-      .body section.welcome .wrapper .icon-menu {
-        margin-top: 15px; }
-        .body section.welcome .wrapper .icon-menu .sel {
-          cursor: pointer;
-          display: inline-block;
-          border: solid rgba(255, 255, 255, 0.6);
-          border-width: 2px;
-          border-radius: 3px;
-          width: 90px;
-          height: 90px;
-          margin: 10px; }
-          .body section.welcome .wrapper .icon-menu .sel .icon {
-            width: 50px;
-            height: 50px;
-            padding: 6px 10px 6px 10px;
-            margin: 15px;
-            margin-top: 5px;
-            text-align: middle;
-            opacity: 0.7; }
-          .body section.welcome .wrapper .icon-menu .sel p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            text-shadow: 1px 0px 1px #666;
-            font-weight: 100;
-            line-height: 0px; }
-          .body section.welcome .wrapper .icon-menu .sel:hover {
-            border-color: #fff; }
-            .body section.welcome .wrapper .icon-menu .sel:hover .icon {
-              opacity: 1; }
-            .body section.welcome .wrapper .icon-menu .sel:hover p {
-              color: #fff; }
-        .body section.welcome .wrapper .icon-menu .sel-clicked {
-          border-color: #fff;
-          border-width: 3px; }
-          .body section.welcome .wrapper .icon-menu .sel-clicked .icon {
-            opacity: 1; }
-          .body section.welcome .wrapper .icon-menu .sel-clicked p {
-            color: #fff;
-            font-weight: 500; }
       .body section.welcome .wrapper .row-select {
         margin-top: 18px;
         text-align: center;
@@ -887,12 +897,12 @@ form .row {
     .body section.stats h1 {
       font-size: 70px;
       color: #fff;
-      text-shadow: 1px 0px 1px #666;
+      text-shadow: 1px 0px 1px #eee;
       font-weight: 400; }
     .body section.stats p {
       font-size: 20px;
       color: #fff;
-      text-shadow: 1px 0px 1px #666;
+      text-shadow: 1px 0px 1px #eee;
       font-weight: 100; }
   .body section.intro {
     background: #fff; }
@@ -1027,7 +1037,9 @@ form .row {
       border-color: #006655; }
 
 .details {
-  background: #fff; }
+  background: #fff;
+  min-height: 1000px;
+  overflow: hidden; }
   .details .content .row {
     padding: 45px 35px;
     margin: 75px 0;
@@ -1042,9 +1054,6 @@ form .row {
         float: left; }
       .details .content .row.top .title h3 {
         line-height: 40px; }
-      .details .content .row.top .title p {
-        font-size: 15px;
-        line-height: 22px; }
       .details .content .row.top .rating {
         float: left;
         margin-top: 32px;
@@ -1234,5 +1243,61 @@ form .row {
     margin-top: 10px; }
   .home .corporate img {
     width: 45%; } }
+@media (max-width: 568px) {
+  /* Smartphones (landscape) ----------- */ }
+@media only screen and (max-width: 568px) and (min-width: 321px) {
+  .details h4 {
+    font-size: 15px; }
+  .details .title h3 {
+    font-size: 20px; }
+  .details .classdesc .right {
+    margin-left: 30px; }
+    .details .classdesc .right p {
+      margin-top: 20px; }
+  .details .closedetails .right {
+    margin-left: 30px; }
+  .details .closedetails .detail {
+    margin-top: 20px;
+    float: right;
+    width: 80%;
+    overflow: hidden; }
+  .details .two .right {
+    margin-left: 30px; }
+  .details .two .review, .details .two .review-textbox {
+    margin-top: 20px; }
+  .details .two .review-textbox .add-review-btn {
+    margin-top: 10px; }
+  .details .two input {
+    font-size: 8px;
+    height: 38px; } }
+@media (max-width: 568px) {
+  /* Smartphones (landscape) ----------- */ }
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+  /* Styles */
+  .header .logo span {
+    font-size: 20px;
+    line-height: 65px;
+    margin: 0; }
+  .header input {
+    width: 95%;
+    margin-left: 20px; }
+  .header #id-btn-logout {
+    height: 38px;
+    margin-right: 0;
+    font-size: 8px;
+    padding: 8px; } }
+@media only screen and (max-width: 568px) and (min-width: 320px) {
+  .body section.welcome .wrapper h1 {
+    font-size: 50px; }
+  .body section.welcome .wrapper h2 {
+    font-size: 15px; }
+  .body section.hello h3 {
+    font-size: 30px; }
+  .body section.testimonial .wrapper {
+    text-align: center; }
+    .body section.testimonial .wrapper h3 {
+      font-size: 30px; }
+  .body section.testimonial .col {
+    text-align: left; } }
 
 /*# sourceMappingURL=main.css.map */
