@@ -1,42 +1,27 @@
-.login {
-	height: 700px !important;
-	.wrapper {
-		margin-top: 50px;
-		margin-left: 25%;
-		margin-right: 25%;
-		.bottom {
-				padding-top: 15px;
-			}
-	}
-}
-
-
-.contactscontainer {
-			width: 700px;
+.signup {
+	height: auto;
+	.wrapper{
+		margin-top: 180px !important;
+		.contactscontainer {
+			width: 50%;
 			margin: auto;
 			background: rgba(255,255,255,.6);
-			//float: center;
+			border-radius: 8px;
+			text-align:left;
+
 			.top {
 				height: 80px;
 				span {
 					display: block;
 					text-transform:uppercase;
 					text-align:left;
-					line-height: 58px;
+					line-height: 48px;
 					color:$green;
 					padding-left:40px;
 					padding-top: 20px;
 					font-size:25px;
 					margin-top: 20px;
 					font-weight:500;
-				}
-
-				.bottom{
-					padding-bottom: 20px;
-					
-				}
-				.active {
-					background: #fff;
 				}
 			}
 			.bottom {
