@@ -1078,7 +1078,7 @@ form .row {
       border-bottom: 1px solid #eee;
       padding: 40px 35px;
       padding-top: 15px; }
-      .details .content .row.top div {
+      .details .content .row.top > div {
         float: left; }
       .details .content .row.top .title h3 {
         line-height: 40px; }

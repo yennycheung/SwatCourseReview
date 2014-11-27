@@ -10,7 +10,7 @@
 			width: 100%;
 			overflow:auto;
 			&.top {
-				div {
+				> div {
 					float:left;
 				}
 				border-bottom: 1px solid #eee;
