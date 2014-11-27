@@ -13,6 +13,7 @@
 		var defaults = {
 			/** String vars **/
 			bigStarsPath : 'img/jrating_star_big.png', // path of the icon stars.png
+			bigGreyStarsPath: 'img/jrating_star_big_grey.png',
 			smallStarsPath : 'img/jrating_star_small.png', // path of the icon small.png
 			phpPath : 'jRating.php', // path of the php file jRating.php
 			type : 'big', // can be set to 'small' or 'big'
@@ -31,6 +32,7 @@
 			rateInfosX : -45, // relative position in X axis of the info box when mouseover
 			rateInfosY : 5, // relative position in Y axis of the info box when mouseover
 			nbRates : 1,
+			infiniteRate : false,
 
 			/** Functions **/
 			onSuccess : null, // Fires when the server response is ok
@@ -48,7 +50,8 @@
 			bgPath = '',
 			hasRated = false,
 			globalWidth = 0,
-			nbOfRates = opts.nbRates;
+			nbOfRates = opts.nbRates,
+			infiniteRate = opts.infiniteRate;
 
 			if($(this).hasClass('jDisabled') || opts.isDisabled)
 				var jDisabled = true;
@@ -63,12 +66,15 @@
 			widthRatingContainer = starWidth*opts.length, // Width of the Container
 			widthColor = average/opts.rateMax*widthRatingContainer, // Width of the color Container
 
-			quotient =
+			jstar =
 			$('<div>',
 			{
-				'class' : 'jRatingColor',
+				'class' : 'jStar',
 				css:{
-					width:widthColor
+					width:widthRatingContainer,
+					height:starHeight,
+					top:0,
+					background: 'url('+bgPath+') repeat-x'
 				}
 			}).appendTo($(this)),
 
@@ -78,21 +84,23 @@
 				'class' : 'jRatingAverage',
 				css:{
 					width:0,
+					height:starHeight,
 					top:- starHeight
 				}
 			}).appendTo($(this)),
 
-			 jstar =
+			quotient =
 			$('<div>',
 			{
-				'class' : 'jStar',
+				'class' : 'jRatingColor',
 				css:{
-					width:widthRatingContainer,
+					width:widthColor,
 					height:starHeight,
-					top:- (starHeight*2),
-					background: 'url('+bgPath+') repeat-x'
+					top:- (starHeight*2)
 				}
 			}).appendTo($(this));
+
+
 
 
 			$(this).css({width: widthRatingContainer,overflow:'hidden',zIndex:1,position:'relative'});
@@ -143,9 +151,11 @@
 					/*set vars*/
 					hasRated = true;
 					globalWidth = newWidth;
-					nbOfRates--;
 
-					if(!opts.canRateAgain || parseInt(nbOfRates) <= 0) $(this).unbind().css('cursor','default').addClass('jDisabled');
+					if (!infiniteRate) {
+						nbOfRates--;
+						if(!opts.canRateAgain || parseInt(nbOfRates) <= 0) $(this).unbind().css('cursor','default').addClass('jDisabled');
+					}
 
 					if (opts.showRateInfo) $("p.jRatingInfos").fadeOut('fast',function(){$(this).remove();});
 					e.preventDefault();
@@ -159,6 +169,7 @@
 					/** END ONLY FOR THE DEMO **/
 
 					if(opts.onClick) opts.onClick( element, rate );
+					$(this).attr("data-val", ""+rate);
 
 					if(opts.sendRequest) {
 						$.post(opts.phpPath,{
@@ -206,12 +217,31 @@
 				return note;
 			};
 
+			
+			this.setRating = function(rating) {
+				var dec=Math.pow(10,parseInt(opts.decimalLength));	
+				var note = Math.round(rating*dec)/dec;
+				var relativeX = (note*100/parseInt(opts.rateMax) )*widthRatingContainer/100;
+				newWidth = relativeX;
+				globalWidth = newWidth;
+				average.width(newWidth);
+
+				hasRated = true;
+				$(this).attr("data-val", ""+note);
+			}
+			
+
 			function getStarWidth(){
 				switch(opts.type) {
 					case 'small' :
 						starWidth = 12; // width of the picture small.png
 						starHeight = 10; // height of the picture small.png
 						bgPath = opts.smallStarsPath;
+					break;
+					case 'big-grey' :
+						starWidth = 23;
+						starHeight = 20;
+						bgPath = opts.bigGreyStarsPath;
 					break;
 					default :
 						starWidth = 23; // width of the picture stars.png

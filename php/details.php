@@ -30,11 +30,7 @@
         				<h3 id="js-populate-course-title"></h3>
         				<p id="js-populate-review-summary"></p>
         			</div>
-                    <div id="id-avg-rating-bar" data-average="10" data-id="1" class="rating"></div>
-                    <!--
-        			<div id="id-avg-rating-bar" class="rating">
-        			</div>
-                    -->
+                    <div id="id-avg-rating-bar" data-average="0" class="rating"></div>
         		</div>
 
         		<div class="row classdesc">
@@ -67,9 +63,10 @@
                         <div class="review-textbox">
                             <div class="add-rating">
                                 <p class="tag">Overall Rating:</p>
-                                <div class="ratingbigger" id="id-overall-rating-bar" data-rating-max="5" 
+                                <div class="rating" id="id-overall-rating-bar" data-average="0" 
                                     data-container="body" data-toggle="popover" data-placement="right" 
-                                    data-trigger="manual" data-content="Please fill out this field"></div>
+                                    data-trigger="manual" data-content="Please fill out this field"
+                                    data-rating-max="5", data-val="-1"></div>
                             </div>
                             <div class="add-review">
                                 <form action="details.php" id="id-form-add-review" method="post">

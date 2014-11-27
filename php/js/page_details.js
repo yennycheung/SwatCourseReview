@@ -14,15 +14,9 @@ jQuery(document).ready(function() {
 	}
 
 
-	$(".ratingbigger").starRating({
+	//$(".ratingbigger").starRating({
 		//minus: true // step minus button
-	});
-
-	$("id-update-button").hide();
-
-	$(document).ready(function(){
-	    $('textarea').autosize();   
-	});
+	//});
 
 	var courseReviewObject_closure = null;
 	var reviewArray_closure = null;
@@ -43,6 +37,7 @@ jQuery(document).ready(function() {
 			return;
 		} 
 
+		initializeLayouts();
 
 		// Extract course id from DOM objects.
 		var courseObjectId = getCourseObjectId();
@@ -50,6 +45,7 @@ jQuery(document).ready(function() {
 		// Query parse about course info
 		queryCourseInfoFromParse(courseObjectId);
 	}
+
 
 	function displayError(msg) {
 		$("div.row.top").html("<div class='title'><h3>" + msg + "</h3></div>");
@@ -61,7 +57,14 @@ jQuery(document).ready(function() {
 		$("div.row.classdesc").hide();
 		$("div.row.closedetails").hide();
 		$("div.footer").hide()
+	}
 
+
+	function initializeLayouts() {
+		$("id-update-button").hide();
+		$('textarea').autosize(); 
+		$('#id-avg-rating-bar').hide();
+		$('#id-overall-rating-bar').hide();
 	}
 
 	function getCourseObjectId() {
@@ -153,22 +156,6 @@ jQuery(document).ready(function() {
             		"<p>Writing Course</p>" +
         		"</div>");
 		}
-
-	}
-
-
-	function getRatingStars(rating){
-		var ratingString = "<ul>"
-		for (var i=0; i<5; i++){
-			if (i<rating){
-				ratingString+="<li class='on'></li>";
-			}
-			else{
-				ratingString+="<li></li>";
-			}
-		}
-		ratingString+="</ul>"
-		return ratingString;
 
 	}
 
@@ -270,10 +257,10 @@ jQuery(document).ready(function() {
 			var comment = reviewParseObject.get("comment");
 			var datetime = reviewParseObject.updatedAt.toDateString() + "&nbsp;&nbsp;&nbsp;" +
 							reviewParseObject.updatedAt.toLocaleTimeString();
-			var ratingStars = getRatingStars(rating);
+
 			var parsedDOMs = $.parseHTML(
-				"<div class='review'> " + "<div class='rating'>" +
-					ratingStars + "</div><br>" +
+				"<div class='review'> " + 
+					"<div class=\"rating\" data-average=\"" + rating + "\"/><br>" +
 					"<p>"+comment+"</p>" + 
 					"<div class='actions'>" + 
 						"<p class='action' >"+datetime+"</p>" +
@@ -281,11 +268,14 @@ jQuery(document).ready(function() {
 				"</div>");
 
 			if (parsedDOMs.length < 1) {
+				console.log("error in parsing review DOM!");
 				return;
 			}
 
 			var newReviewDOM = parsedDOMs[0];
-			$('#reviews').append(newReviewDOM);
+			var newReviewJQuery = $(newReviewDOM);
+			newReviewJQuery.find("div.rating").jRating({rateMax:5, isDisabled:true});
+			$('#reviews').append(newReviewJQuery);
 
 			sumRating += rating;
 		}
@@ -298,29 +288,28 @@ jQuery(document).ready(function() {
 			var avgRating = sumRating / cleanedArray.length;
 			avgRating = Math.round(avgRating*100)/100;
 			
-			$('#id-avg-rating-bar').jRating();
-
-			//reviewSummary += (" | Rating: " + (avgRating) );
-			//var ratingStars = getRatingStars(avgRating);
-			//$("#id-avg-rating-bar").html(ratingStars);
-
-
-
+			$("#id-avg-rating-bar").show();
+			$("#id-avg-rating-bar").attr("data-average", ""+avgRating);
+			$('#id-avg-rating-bar').jRating({rateMax:5, isDisabled:true});
 		}
 	}
 
 	function initializeAddUpdateReview(inReviewArray) {
 
-		// Initialize popover for star rating
-		$("#id-overall-rating-bar").popover();
-		$("#id-overall-rating-bar").click(function() {
-			$(this).popover("hide");
-		});
-
 		if (!inReviewArray) {
 			return;
 		}
-		
+
+		// Initialize popover for star rating
+		$("#id-overall-rating-bar").show();
+		$("#id-overall-rating-bar").popover();
+
+		$("#id-overall-rating-bar").jRating({rateMax:5, infiniteRate: true, step:true, type:'big-grey', sendRequest:false, 
+			onClick: function(element, rate) { 
+			$(element).popover("hide"); 
+			} 
+		});
+
 		var cleanedArray = cleanReviewArray(inReviewArray);	
 		for (var i=0; i<cleanedArray.length; i++) {
 			var reviewParseObject = cleanedArray[i];
@@ -336,7 +325,10 @@ jQuery(document).ready(function() {
 			$("#id-update-button").click(function() {
 				$("#id-update-button").hide();
 				$("div.review-textbox").show();	
-				$("#id-overall-rating-bar")[0].setRating(myReview_closure.get("overallRating")-1);
+
+
+				$("#id-overall-rating-bar")[0].setRating(myReview_closure.get("overallRating"));
+				//$("#id-overall-rating-bar")[0].setRating(3);
 				$("#id-review-text").html(myReview_closure.get("comment"));
 				$("#id-form-add-review>input.add-review-btn").attr("value", "Update");
 			});

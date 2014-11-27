@@ -2,9 +2,15 @@
 /** jRating CSS **/
 /*********************/
 
+.rating {
+	background-color:#bbeebb;
+}
+
+
 /**Div containing the color of the stars */
 .jRatingAverage {
-	background-color:#f62929;
+	/**background-color:#f62929;*/
+	background-color:#f4c239;
 	position:relative;
 	top:0;
 	left:0;
