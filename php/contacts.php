@@ -24,7 +24,6 @@ swatcoreteam@gmail.com</a>. Thank you for using SwatCoRe!</p>
 <!-- JS INCLUDES -->
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/ezValidation.js"></script>
-<script type="text/javascript" src="js/star-rating.min.js"></script>
 <script type="text/javascript" src="js/parse-1.3.1.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/page_contacts.js"></script>

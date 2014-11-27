@@ -90,10 +90,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/ezValidation.js"></script>
-<script type="text/javascript" src="js/star-rating.min.js"></script>
+<script type="text/javascript" src="js/jRating.jquery.js"></script>
 <script type="text/javascript" src="js/parse-1.3.1.js"></script>
 <script type="text/javascript" src="js/auto_size.js"></script>
-<script type="text/javascript" src="js/jRating.jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/page_details.js"></script>
 
