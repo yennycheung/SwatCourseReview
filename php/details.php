@@ -30,7 +30,7 @@
         				<h3 id="js-populate-course-title"></h3>
         				<p id="js-populate-review-summary"></p>
         			</div>
-        			<div class="rating">
+        			<div id="id-avg-rating-bar" class="rating">
         			</div>
         		</div>
 

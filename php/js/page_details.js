@@ -24,9 +24,9 @@ jQuery(document).ready(function() {
 	    $('textarea').autosize();   
 	});
 
-	var courseParseObject = null;
-	var reviewArray = null;
-	var myReview = null;
+	var courseReviewObject_closure = null;
+	var reviewArray_closure = null;
+	var myReview_closure = null;
 
 	/* Backend Stuff */
 	function main() {
@@ -93,11 +93,11 @@ jQuery(document).ready(function() {
 					displayError("We are sorry, the page you are looking for is not found!");
 					return;
 				}
-				courseParseObject = results[0];
+				courseReviewObject_closure = results[0];
 				displayCourseInfo(results[0]);
-				reviewArray = courseParseObject.get("reviews");
-				displayReviews(reviewArray);
-				initializeAddUpdateReview(reviewArray);
+				reviewArray_closure = courseReviewObject_closure.get("reviews");
+				displayReviews(reviewArray_closure);
+				initializeAddUpdateReview(reviewArray_closure);
 
 				// Fade out loader
 				$('.loader').fadeOut(500);
@@ -181,8 +181,8 @@ jQuery(document).ready(function() {
 		//var datetime = "     Posted on " + newDate.today() + " at " + newDate.timeNow();
 		
 		var reviewInstance;
-		if (myReview) {
-			reviewInstance = myReview;
+		if (myReview_closure) {
+			reviewInstance = myReview_closure;
 		}
 		else{
 			var ReviewClass = Parse.Object.extend("Review", 
@@ -209,10 +209,10 @@ jQuery(document).ready(function() {
 	    reviewInstance.set("interestRating", rating);
 	    reviewInstance.set("userObjectId", Parse.User.current().id);
 	    reviewInstance.set("courseUniqueKey", 
-	    	courseParseObject.get("dept").toLowerCase() + "^" +
-	    	courseParseObject.get("courseId").toLowerCase() + "^" +
-	    	courseParseObject.get("profFirstName").toLowerCase() + "^" +
-	    	courseParseObject.get("profLastName").toLowerCase()
+	    	courseReviewObject_closure.get("dept").toLowerCase() + "^" +
+	    	courseReviewObject_closure.get("courseId").toLowerCase() + "^" +
+	    	courseReviewObject_closure.get("profFirstName").toLowerCase() + "^" +
+	    	courseReviewObject_closure.get("profLastName").toLowerCase()
 	    	);
 
 	    var acl = new Parse.ACL();
@@ -224,36 +224,36 @@ jQuery(document).ready(function() {
 	}
 
 
-	function cleanReviewArray(reviewArray) {
-		if (!reviewArray) {
+	function cleanReviewArray(inReviewArray) {
+		if (!inReviewArray) {
 			return [];
 		}
 
 		// If some of the reviews are deleted but the pointers in course's "review" array
 		// aren't deleted, the value of that review will be null. Clean them.
 		cleanedArray = []
-		for (var i=0; i<reviewArray.length; i++) {
-			if (reviewArray[i]) {
-				cleanedArray.push(reviewArray[i]);
+		for (var i=0; i<inReviewArray.length; i++) {
+			if (inReviewArray[i]) {
+				cleanedArray.push(inReviewArray[i]);
 			}
 		} 
 
-		if (cleanedArray.length < reviewArray.length) {
-			console.log("Warning: " + (reviewArray.length - cleanedArray.length) + " reviews are null!");
+		if (cleanedArray.length < inReviewArray.length) {
+			console.log("Warning: " + (inReviewArray.length - cleanedArray.length) + " reviews are null!");
 		}
 
 		return cleanedArray;
 	}
 
 
-	function displayReviews(reviewArray) {
+	function displayReviews(inReviewArray) {
 
-		if (!reviewArray) {
+		if (!inReviewArray) {
 			$("#js-populate-review-summary").html("0 Reviews");
 			return;
 		}
 
-		cleanedArray = cleanReviewArray(reviewArray);
+		cleanedArray = cleanReviewArray(inReviewArray);
 
 		// Sort array based on update time, decending.
 		cleanedArray.sort(function(review1, review2) {
@@ -297,12 +297,12 @@ jQuery(document).ready(function() {
 			avgRating = Math.round(avgRating*100)/100;
 			//reviewSummary += (" | Rating: " + (avgRating) );
 			var ratingStars = getRatingStars(avgRating);
-			$(".rating").html(ratingStars);
+			$("#id-avg-rating-bar").html(ratingStars);
 			$("#js-populate-review-summary").html(reviewSummary);
 		}
 	}
 
-	function initializeAddUpdateReview(reviewArray) {
+	function initializeAddUpdateReview(inReviewArray) {
 
 		// Initialize popover for star rating
 		$("#id-overall-rating-bar").popover();
@@ -310,27 +310,27 @@ jQuery(document).ready(function() {
 			$(this).popover("hide");
 		});
 
-		if (!reviewArray) {
+		if (!inReviewArray) {
 			return;
 		}
 		
-		var cleanedArray = cleanReviewArray(reviewArray);	
+		var cleanedArray = cleanReviewArray(inReviewArray);	
 		for (var i=0; i<cleanedArray.length; i++) {
 			var reviewParseObject = cleanedArray[i];
 			if (reviewParseObject.get("userObjectId") == Parse.User.current().id) {
-				myReview = reviewParseObject;
+				myReview_closure = reviewParseObject;
 			}
 		}
 
-		if (myReview) {
+		if (myReview_closure) {
 			$("div.review-textbox").hide();
 			$("#id-update-button").show();
 
 			$("#id-update-button").click(function() {
 				$("#id-update-button").hide();
 				$("div.review-textbox").show();	
-				$("#id-overall-rating-bar")[0].setRating(reviewParseObject.get("overallRating")-1);
-				$("#id-review-text").html(reviewParseObject.get("comment"));
+				$("#id-overall-rating-bar")[0].setRating(myReview_closure.get("overallRating")-1);
+				$("#id-review-text").html(myReview_closure.get("comment"));
 				$("#id-form-add-review>input.add-review-btn").attr("value", "Update");
 			});
 		}
@@ -355,15 +355,15 @@ jQuery(document).ready(function() {
 		$("#id-form-add-review>input.add-review-btn").attr("disabled", true);
 
 		var reviewParseObject = getReviewParseObject();
-		if (myReview) {
+		if (myReview_closure) {
 
 			$("#id-form-add-review>input.add-review-btn").attr("value", "Updating ...");
 			reviewParseObject.save(null, {
 				success: function(newReviewObject) {
-					myReview.updatedAt = newReviewObject.updatedAt;
+					myReview_closure.updatedAt = newReviewObject.updatedAt;
 					$("div.review-textbox").hide();
 					$("#id-update-button").show();
-					displayReviews(reviewArray);
+					displayReviews(reviewArray_closure);
 					$("#id-form-add-review>input.add-review-btn").removeAttr("disabled");
 				},
 				error : function(newReviewObject, error) {
@@ -375,19 +375,19 @@ jQuery(document).ready(function() {
 
 			$("#id-form-add-review>input.add-review-btn").attr("value", "Adding ...");
 
-			myReview = reviewParseObject;
+			myReview_closure = reviewParseObject;
 
 			// Construct the review Parse object.
-		 	courseParseObject.add("reviews", reviewParseObject);
+		 	courseReviewObject_closure.add("reviews", reviewParseObject);
 
 		 	// Add it to the review array of this course, and save the course.
 			// This will save the review object as well.
-			courseParseObject.save(null, {
+			courseReviewObject_closure.save(null, {
 				success: function (newCourseParseObject) {
 					// save is successful. Display the updated reviews.
-					reviewArray = courseParseObject.get("reviews");
-					displayReviews(reviewArray);
-					initializeAddUpdateReview(reviewArray);
+					reviewArray_closure = courseReviewObject_closure.get("reviews");
+					displayReviews(reviewArray_closure);
+					initializeAddUpdateReview(reviewArray_closure);
 					$("#id-form-add-review>input.add-review-btn").removeAttr("disabled");
 				},
 				error : function (newReviewObject, error) {
