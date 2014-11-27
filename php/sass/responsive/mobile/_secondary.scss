@@ -31,10 +31,15 @@
 			}
 		}
 		.two{
+			.left{
+				h4{
+					margin-bottom: 30px;
+				}
+			}
 			.right{
 				margin-left: 30px;
 			}
-			.review, .review-textbox{
+			.review-textbox{
 				margin-top: 20px;
 			}
 			input{

@@ -100,74 +100,55 @@ input:required:focus {
     vertical-align: top;
 }
 
-.rating > ul {
-	list-style: none;
-	float: left;
-	padding: 0;
-	margin: 0;
+/*********************/
+/** jRating CSS **/
+/*********************/
+
+.rating {
+	background-color: $lightgreen;
 }
-.rating > ul > li {
-	float: left;
-	margin-left: 2px;
-	background: url(../img/star.png) no-repeat left top;
-	width: 18px;
-	height: 18px;
-}
-.rating > ul > li:first-child {
-	margin-left: 0;
-}
-.rating > ul> .on{
-	background: url(../img/star.png) no-repeat left bottom;
-}
-/*
-.rating > ul > li.hover {
-	background-position: left bottom;
-}
-.rating > ul > li.active {
-	background-position: left bottom;
-}
-.rating > span.less {
-	cursor: pointer;
-	background: url(../img/star.png) no-repeat left bottom;
-	display: block;
-	float: left;
-	height: 18px;
-	width: 18px;
-}
-*/
 
 
-.ratingbigger {
-	float: left;
+/**Div containing the color of the stars */
+.jRatingAverage {
+	/**background-color:#f62929;*/
+	background-color:$green;
+	position:relative;
+	top:0;
+	left:0;
+	z-index:2;
+	height:100%;
 }
-.ratingbigger > ul {
-	list-style: none;
-	float: left;
-	padding: 0;
-	margin: 0;
+.jRatingColor {
+	background-color:$green; /* bgcolor of the stars*/
+	position:relative;
+	top:0;
+	left:0;
+	z-index:2;
+	height:100%;
 }
-.ratingbigger > ul > li {
-	float: left;
-	margin-left: 2px;
-	background: url(../img/star.png) no-repeat left top;
-	width: 18px;
-	height: 18px;
-	cursor: pointer;
+
+/** Div containing the stars **/
+.jStar {
+	position:relative;
+	left:0;
+	z-index:3;
 }
-.ratingbigger > ul > li:first-child {
-	margin-left: 0;
+
+/** P containing the rate informations **/
+p.jRatingInfos {
+	position:		absolute;
+	z-index:9999;
+	background:	transparent url('../img/jrating_info_bg.png') no-repeat;
+	color:			$green;
+	display:		none;
+	width:			91px;
+	height:			33px;	
+	font-size:14px;
+	text-align:center;
+	padding-top:6px;
 }
-.ratingbigger > ul > li.hover {
-	background-position: left bottom;
-}
-.ratingbigger > ul > li.active {
-	background-position: left bottom;
-}
-.ratingbigger > span.less {
-	cursor: pointer;
-	background: url(../img/star.png) no-repeat left bottom;
-	display: block;
-	float: left;
-	height: 18px;
-	width: 18px;
-}
+	p.jRatingInfos span.maxRate {
+		color:$gray;
+		font-size:14px;
+	}
