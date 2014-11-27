@@ -30,8 +30,11 @@
         				<h3 id="js-populate-course-title"></h3>
         				<p id="js-populate-review-summary"></p>
         			</div>
+                    <div id="id-avg-rating-bar" data-average="10" data-id="1" class="rating"></div>
+                    <!--
         			<div id="id-avg-rating-bar" class="rating">
         			</div>
+                    -->
         		</div>
 
         		<div class="row classdesc">
@@ -92,8 +95,9 @@
 <script type="text/javascript" src="js/ezValidation.js"></script>
 <script type="text/javascript" src="js/star-rating.min.js"></script>
 <script type="text/javascript" src="js/parse-1.3.1.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/auto_size.js"></script>
+<script type="text/javascript" src="js/jRating.jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/page_details.js"></script>
 
 </body>

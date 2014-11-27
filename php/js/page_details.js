@@ -292,13 +292,20 @@ jQuery(document).ready(function() {
 
 		// Display review summary
 		var reviewSummary = "" + cleanedArray.length + " Reviews";
+		$("#js-populate-review-summary").html(reviewSummary);
+
 		if (cleanedArray.length > 0) {
 			var avgRating = sumRating / cleanedArray.length;
 			avgRating = Math.round(avgRating*100)/100;
+			
+			$('#id-avg-rating-bar').jRating();
+
 			//reviewSummary += (" | Rating: " + (avgRating) );
-			var ratingStars = getRatingStars(avgRating);
-			$("#id-avg-rating-bar").html(ratingStars);
-			$("#js-populate-review-summary").html(reviewSummary);
+			//var ratingStars = getRatingStars(avgRating);
+			//$("#id-avg-rating-bar").html(ratingStars);
+
+
+
 		}
 	}
 
