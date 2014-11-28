@@ -289,6 +289,7 @@ jQuery(document).ready(function() {
 			avgRating = Math.round(avgRating*100)/100;
 			
 			$("#id-avg-rating-bar").show();
+			$("#id-avg-rating-bar").empty();
 			$("#id-avg-rating-bar").attr("data-average", ""+avgRating);
 			$('#id-avg-rating-bar').jRating({rateMax:5, isDisabled:true});
 		}
