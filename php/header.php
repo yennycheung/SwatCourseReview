@@ -8,7 +8,6 @@
 	<!-- SASS INCLUDES -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/jRating.jquery.css">
 	<link rel="shortcut icon" href="img/favicon.ico">
 
 
@@ -41,7 +40,7 @@
 						<input type="password" class="password" placeholder="Password" required>	
 					</div>	
 					<div class="col">
-						<input type="submit" value="login">
+						<input type="submit" value="login" data-toggle="popover">
 					</div>
 				</form>
 			</div><!-- end login -->

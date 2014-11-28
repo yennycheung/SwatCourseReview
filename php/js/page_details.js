@@ -303,12 +303,13 @@ jQuery(document).ready(function() {
 		// Initialize popover for star rating
 		$("#id-overall-rating-bar").show();
 		$("#id-overall-rating-bar").popover();
-
-		$("#id-overall-rating-bar").jRating({rateMax:5, infiniteRate: true, step:true, type:'big-grey', sendRequest:false, 
-			onClick: function(element, rate) { 
-			$(element).popover("hide"); 
-			} 
-		});
+		$("#id-overall-rating-bar").jRating({rateMax:5, infiniteRate: true, step:true, type:'big-grey', sendRequest:false});
+		$('body').on('click', function (e) {
+	    	console.log($("#popoverTrigger").next('div.popover:visible').length);
+	    	if($(e.target).attr("id") !== "id-add-review-btn") {
+	    		$('[data-toggle="popover"]').popover('hide');
+	    	}
+	    });
 
 		var cleanedArray = cleanReviewArray(inReviewArray);	
 		for (var i=0; i<cleanedArray.length; i++) {

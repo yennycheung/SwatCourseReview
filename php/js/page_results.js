@@ -221,7 +221,7 @@ jQuery(document).ready(function() {
 		var newComponent = "";
 		for (var i=0; i<component.length; i++) {
 			ch = component.charAt(i);
-			if (ch != 0) {
+			if (ch != 0 || newComponent.length >= 0) {
 				newComponent += ch;
 			}
 		}

@@ -3,8 +3,9 @@
 
 // Execute code without declaring global variables.
 jQuery(document).ready(function() {
-     $(".intro-text").hide();
-     $("#id-form-header-search").hide();
+    $(".intro-text").hide();
+    $("#id-form-header-search").hide();
+
     // Number increasing when scroll.
     var start = 0, 
     max = 30,
@@ -37,7 +38,7 @@ jQuery(document).ready(function() {
     $("#id-form-search").submit( function (event) {
         // If not logged in, prevent submitting form.
         if (!Parse.User.current()) {
-            alert('Must login before search');
+            $("#id-form-login>div.col>input[type='submit']").popover("show");
             return false;
         }
     }); 
@@ -47,6 +48,18 @@ jQuery(document).ready(function() {
         $(this).find($("img")).toggle();
     });
 
+
+    $("#id-form-login>div.col>input[type='submit']").popover({
+        container:"body",
+        content:"Please login before search",
+        placement:"bottom",
+        trigger:"manual",
+        delay: {show: 0, hide: 1000}
+    });
+
+    $('body').on('click', function (e) {
+         $('[data-toggle="popover"]').popover('hide');
+    });
 
     // Fade out loader
     $('.loader').fadeOut(500);

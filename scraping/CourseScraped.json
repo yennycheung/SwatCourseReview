@@ -404,7 +404,13 @@
             "manuallyModified": false, 
             "profFirstName": "Nora", 
             "profLastName": "Johnson", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "8JPvwD1w4q"
+                }
+            ], 
             "searchArray": [
                 "shakespeare", 
                 "engl", 
@@ -417,6 +423,38 @@
                 "johnson"
             ], 
             "summary": "Study of Shakespeare as a dramatist. The emphasis is on the major plays, with a more rapid reading of much of the remainder of the canon. Students are advised to read widely among the plays before entering the seminar. Students who have taken ENGL 020 may take this seminar for 2 credits."
+        }, 
+        {
+            "courseId": "011", 
+            "courseName": "Intermediate Microeconomics", 
+            "courseType": "Course", 
+            "credit": 1.0, 
+            "crossList": [], 
+            "dept": "ECON", 
+            "division": "SS", 
+            "hasLab": false, 
+            "isFYS": false, 
+            "isWritingCourse": false, 
+            "manuallyModified": false, 
+            "profFirstName": "Ellen", 
+            "profLastName": "Magenheim", 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "NBwJlLtbZ7"
+                }
+            ], 
+            "searchArray": [
+                "intermediate", 
+                "microeconomics", 
+                "econ", 
+                "economics", 
+                "011", 
+                "ellen", 
+                "magenheim"
+            ], 
+            "summary": "Provides a thorough grounding in intermediate-level microeconomics. The standard topics are covered: behavior of consumers and firms, structure and performance of markets, income distribution, general equilibrium, and welfare analysis. Students do extensive problem solving both to facilitate learning microeconomic theory and its applications.\n\nPrerequisites: ECON 001 and MATH 015."
         }, 
         {
             "courseId": "039", 
@@ -673,7 +711,13 @@
             "manuallyModified": false, 
             "profFirstName": "Peter", 
             "profLastName": "Collings", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "yh1TIZx4GR"
+                }
+            ], 
             "searchArray": [
                 "the", 
                 "earth\u2019s", 
@@ -2829,33 +2873,30 @@
             "summary": "This is an introductory course on reading one of the world\u2019s great classical languages. Classical Chinese includes both the language of China\u2019s classical literature as well as the literary language used for writing in China for well over 2 millennia until earlier this century. Complemented with readings in English about Chinese characters and classical Chinese, this course imparts the principal structures of the classical language through an analytical presentation of the rudiments of the language and close reading of original texts. It is not a lecture course and requires active, regular participation on the part of the student, with precise translation into English an integral component. The course is conducted in English. The course is open to all interested students and has no prerequisites; no previous preparation in Chinese is required."
         }, 
         {
-            "courseId": "008", 
-            "courseName": "Spanish Conversation and Composition", 
-            "courseType": "Course", 
+            "courseId": "096", 
+            "courseName": "Research Thesis", 
+            "courseType": "ResearchProject", 
             "credit": 1.0, 
             "crossList": [], 
-            "dept": "SPAN", 
-            "division": "HU", 
+            "dept": "CHEM", 
+            "division": "NS", 
             "hasLab": false, 
             "isFYS": false, 
-            "isWritingCourse": true, 
+            "isWritingCourse": false, 
             "manuallyModified": false, 
-            "profFirstName": "Elena", 
-            "profLastName": "Valdez", 
+            "profFirstName": "Jessica", 
+            "profLastName": "Sarver", 
             "reviews": [], 
             "searchArray": [
-                "spanish", 
-                "conversation", 
-                "and", 
-                "composition", 
-                "span", 
-                "spanish", 
-                "spain", 
-                "008", 
-                "elena", 
-                "valdez"
+                "research", 
+                "thesis", 
+                "chem", 
+                "chemistry", 
+                "096", 
+                "jessica", 
+                "sarver"
             ], 
-            "summary": "Recommended for students who have finished SPAN 004, have received a 5 in the AP/IB exam or want to improve Spanish oral and written expression. This is a practical course for writing and rewriting in a variety of contexts, and it will prepare the student to write at an academic level of Spanish. It includes a review of grammar and spelling, methods for vocabulary expansion, and attention to common errors of students of Spanish living in an English-speaking society. Films and literary texts will serve as a stimulus for advanced conversation with the goal of improving fluency and comprehension in Spanish.\n\nPrerequisite: SPAN 004 or the equivalent or permission of the instructor.\n\nOffered each semester."
+            "summary": "Chemistry and biochemistry majors will be provided with an option of writing a senior research thesis as part of their comprehensive requirement. Thesis students are strongly urged to participate in on-campus research during the summer between their junior and senior years. A minimum of 2 credits of CHEM 096 must be taken during the last three semesters of the student\u2019s residence at Swarthmore.\n\nEach semester. Staff."
         }, 
         {
             "courseId": "001", 
@@ -4580,32 +4621,6 @@
             "summary": "Intermediate classical mechanics. Motion of a particle in one, two, and three dimensions; Kepler\u2019s laws and planetary motion; phase space; oscillatory motion; Lagrange equations and variational principles; systems of particles; collisions and cross sections; motion of a rigid body; Euler\u2019s equations; rotating frames of reference; small oscillations; normal modes; and wave phenomena.\n\nPrerequisites: PHYS 005, 007, 008, and 017."
         }, 
         {
-            "courseId": "096", 
-            "courseName": "Research Thesis", 
-            "courseType": "ResearchProject", 
-            "credit": 1.0, 
-            "crossList": [], 
-            "dept": "CHEM", 
-            "division": "NS", 
-            "hasLab": false, 
-            "isFYS": false, 
-            "isWritingCourse": false, 
-            "manuallyModified": false, 
-            "profFirstName": "Jessica", 
-            "profLastName": "Sarver", 
-            "reviews": [], 
-            "searchArray": [
-                "research", 
-                "thesis", 
-                "chem", 
-                "chemistry", 
-                "096", 
-                "jessica", 
-                "sarver"
-            ], 
-            "summary": "Chemistry and biochemistry majors will be provided with an option of writing a senior research thesis as part of their comprehensive requirement. Thesis students are strongly urged to participate in on-campus research during the summer between their junior and senior years. A minimum of 2 credits of CHEM 096 must be taken during the last three semesters of the student\u2019s residence at Swarthmore.\n\nEach semester. Staff."
-        }, 
-        {
             "courseId": "063", 
             "courseName": "Water Quality and Pollution Control", 
             "courseType": "Course", 
@@ -4647,7 +4662,7 @@
             "hasLab": false, 
             "isFYS": false, 
             "isWritingCourse": true, 
-            "manuallyModified": false, 
+            "manuallyModified": true, 
             "profFirstName": "Thomas", 
             "profLastName": "Whitman", 
             "reviews": [
@@ -4669,7 +4684,7 @@
                 "thomas", 
                 "whitman"
             ], 
-            "summary": "An introduction to Beethoven\u2019s compositions in various genres. We will consider the artistic, political, and social context in which he lived and examine his legacy among composers later in the 19th century (Berlioz, Chopin, the Schumanns, Brahms, Wagner, and Mahler).\n\nMUSI 008: Music and Gender in Fin-de-siecle Europe\n\n\u201cKill this woman!\u201d So ends Salome, the opera that launched modern music. Women are onstage everywhere in fin de si\u00e8cle European art music: seducing, redeeming, and dying. In this course we will examine these monstrous and beautiful representations and the discourses that surrounded them, interspersed with examinations of the real historical women who performed, listened to, and sometimes even wrote this music. Topics include Carmen, Madame Bovary, Salome, Lulu, women\u2019s orchestras, and Ethel Smyth.\n\nNo pre-requisite. Eligible for GSST or German Studies credit."
+            "summary": "An introduction to Beethoven\u2019s compositions in various genres. We will consider the artistic, political, and social context in which he lived and examine his legacy among composers later in the 19th century (Berlioz, Chopin, the Schumanns, Brahms, Wagner, and Mahler)."
         }, 
         {
             "courseId": "011", 
@@ -6252,7 +6267,13 @@
             "manuallyModified": false, 
             "profFirstName": "Don", 
             "profLastName": "Shimamoto", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "QsW6a8WW2r"
+                }
+            ], 
             "searchArray": [
                 "discrete", 
                 "mathematics", 
@@ -6954,7 +6975,13 @@
             "manuallyModified": false, 
             "profFirstName": "Rachel", 
             "profLastName": "Epstein", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "bFG5DzP8Zl"
+                }
+            ], 
             "searchArray": [
                 "severalvariable", 
                 "calculus", 
@@ -8047,7 +8074,13 @@
             "manuallyModified": false, 
             "profFirstName": "Kevin", 
             "profLastName": "Webb", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "t7sN1tr9lC"
+                }
+            ], 
             "searchArray": [
                 "introduction", 
                 "intro", 
@@ -9224,6 +9257,11 @@
                     "__type": "Pointer", 
                     "className": "Review", 
                     "objectId": "BYRF61KEyW"
+                }, 
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "WvIk3rwDj5"
                 }
             ], 
             "searchArray": [
@@ -10045,30 +10083,33 @@
             "summary": "We are sorry, we didn't find a summary for this course."
         }, 
         {
-            "courseId": "011", 
-            "courseName": "Intermediate Microeconomics", 
+            "courseId": "008", 
+            "courseName": "Spanish Conversation and Composition", 
             "courseType": "Course", 
             "credit": 1.0, 
             "crossList": [], 
-            "dept": "ECON", 
-            "division": "SS", 
+            "dept": "SPAN", 
+            "division": "HU", 
             "hasLab": false, 
             "isFYS": false, 
-            "isWritingCourse": false, 
+            "isWritingCourse": true, 
             "manuallyModified": false, 
-            "profFirstName": "Ellen", 
-            "profLastName": "Magenheim", 
+            "profFirstName": "Elena", 
+            "profLastName": "Valdez", 
             "reviews": [], 
             "searchArray": [
-                "intermediate", 
-                "microeconomics", 
-                "econ", 
-                "economics", 
-                "011", 
-                "ellen", 
-                "magenheim"
+                "spanish", 
+                "conversation", 
+                "and", 
+                "composition", 
+                "span", 
+                "spanish", 
+                "spain", 
+                "008", 
+                "elena", 
+                "valdez"
             ], 
-            "summary": "Provides a thorough grounding in intermediate-level microeconomics. The standard topics are covered: behavior of consumers and firms, structure and performance of markets, income distribution, general equilibrium, and welfare analysis. Students do extensive problem solving both to facilitate learning microeconomic theory and its applications.\n\nPrerequisites: ECON 001 and MATH 015."
+            "summary": "Recommended for students who have finished SPAN 004, have received a 5 in the AP/IB exam or want to improve Spanish oral and written expression. This is a practical course for writing and rewriting in a variety of contexts, and it will prepare the student to write at an academic level of Spanish. It includes a review of grammar and spelling, methods for vocabulary expansion, and attention to common errors of students of Spanish living in an English-speaking society. Films and literary texts will serve as a stimulus for advanced conversation with the goal of improving fluency and comprehension in Spanish.\n\nPrerequisite: SPAN 004 or the equivalent or permission of the instructor.\n\nOffered each semester."
         }, 
         {
             "courseId": "046", 
@@ -11330,6 +11371,45 @@
             "summary": "The transformation of the Roman Republic into the monarchy of Augustus and the emperors was accompanied by a similar transformation in Roman poetry. In place of the staunch independence of Lucretius and the outrageous irreverence of Catullus, the new poets Propertius, Horace, and Vergil wrote poetry that responded directly or indirectly to the new political world. This course will explore one or more of these poets in depth, both within their political context and within the broader literary tradition. Students will read modern scholarly criticism, and develop their own critical approaches to writing about Latin poetry. They will also review basic Latin morphology and syntax, and build a stronger Latin vocabulary. The course is suitable for those with 3-4 years of High School Latin, or 1-2 years of Latin in college.\n\nHumanities. 1 credit."
         }, 
         {
+            "courseId": "021", 
+            "courseName": "Special Project in Production Dramaturgy", 
+            "courseType": "Course", 
+            "credit": 1.0, 
+            "crossList": [], 
+            "dept": "THEA", 
+            "division": "HU", 
+            "hasLab": false, 
+            "isFYS": false, 
+            "isWritingCourse": false, 
+            "manuallyModified": false, 
+            "profFirstName": "James", 
+            "profLastName": "Magruder", 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "MEeBXiiA50"
+                }
+            ], 
+            "searchArray": [
+                "special", 
+                "project", 
+                "in", 
+                "production", 
+                "dramaturgy", 
+                "thea", 
+                "theater", 
+                "theatre", 
+                "theaters", 
+                "drama", 
+                "performance", 
+                "021", 
+                "james", 
+                "magruder"
+            ], 
+            "summary": "Production dramaturgy in connection with a production completed on or off campus. To be taken concurrently with or following THEA 001: Fundamentals of Dramaturgy. By individual arrangement between the student and the department faculty.\n\nPrerequisite: THEA 001\n\n0.5 or 1 credit.\n\nFall and spring semesters. Staff."
+        }, 
+        {
             "courseId": "126", 
             "courseName": "Biomechanics", 
             "courseType": "Seminar1", 
@@ -12022,37 +12102,35 @@
             "summary": "This course will consider the development of political thought in the ancient and medieval periods and the emergence of a distinctively modern political outlook. Special attention will be paid to the differences between the way the ancients and the moderns thought about ethics, reason, wisdom, politics, democracy, law, power, justice, the individual, and the community. Key philosophers include Plato, Aristotle, and Hobbes."
         }, 
         {
-            "courseId": "021", 
-            "courseName": "Special Project in Production Dramaturgy", 
+            "courseId": "075", 
+            "courseName": "Electromagnetic Theory I and II", 
             "courseType": "Course", 
             "credit": 1.0, 
             "crossList": [], 
-            "dept": "THEA", 
-            "division": "HU", 
-            "hasLab": false, 
+            "dept": "ENGR", 
+            "division": "NS", 
+            "hasLab": true, 
             "isFYS": false, 
             "isWritingCourse": false, 
             "manuallyModified": false, 
-            "profFirstName": "James", 
-            "profLastName": "Magruder", 
+            "profFirstName": "Lynne", 
+            "profLastName": "Molter", 
             "reviews": [], 
             "searchArray": [
-                "special", 
-                "project", 
-                "in", 
-                "production", 
-                "dramaturgy", 
-                "thea", 
-                "theater", 
-                "theatre", 
-                "theaters", 
-                "drama", 
-                "performance", 
-                "021", 
-                "james", 
-                "magruder"
+                "electromagnetic", 
+                "theory", 
+                "i", 
+                "and", 
+                "ii", 
+                "engr", 
+                "engineering", 
+                "e", 
+                "engin", 
+                "075", 
+                "lynne", 
+                "molter"
             ], 
-            "summary": "Production dramaturgy in connection with a production completed on or off campus. To be taken concurrently with or following THEA 001: Fundamentals of Dramaturgy. By individual arrangement between the student and the department faculty.\n\nPrerequisite: THEA 001\n\n0.5 or 1 credit.\n\nFall and spring semesters. Staff."
+            "summary": "The static and dynamic treatment of engineering applications of Maxwell\u2019s equations will be explored. Topics include macroscopic field treatment of interactions with dielectric, conducting, and magnetic materials; analysis of forces and energy storage as the basis of circuit theory; electromagnetic waves in free space and guidance within media; plane waves and modal propagation; and polarization, reflection, refraction, diffraction, and interference. Offered in the fall semester of alternate years.\n\nENGR 076 will include advanced topics in optics and microwaves, such as laser operation, resonators, Gaussian beams, interferometry, anisotropy, nonlinear optics, modulation and detection. Laboratories for both courses will be oriented toward optical applications using lasers, fiber and integrated optical devices, modulators, nonlinear materials, and solid-state detectors."
         }, 
         {
             "courseId": "021", 
@@ -12180,34 +12258,35 @@
             "summary": "This course is designed to fulfill the physics major advanced laboratory requirement for students who have already had sufficient experience with digital electronics (ENGR 072 or the equivalent). Students will perform experiments chosen from among the areas of thermal and statistical physics, solid state, atomic, plasma, nuclear, biophysics, condensed matter physics, and advanced optics.\n\nEach semester. Staff.\n\nAstronomy Courses"
         }, 
         {
-            "courseId": "020", 
-            "courseName": "Computational Linguistics: Natural Language Processing", 
+            "courseId": "001", 
+            "courseName": "Chemistry in Context: Applying Chemistry to Society", 
             "courseType": "Course", 
             "credit": 1.0, 
             "crossList": [], 
-            "dept": "LING", 
-            "division": "SS", 
+            "dept": "CHEM", 
+            "division": "NS", 
             "hasLab": true, 
             "isFYS": false, 
             "isWritingCourse": false, 
             "manuallyModified": false, 
-            "profFirstName": "Richard", 
-            "profLastName": "Wicentowski", 
+            "profFirstName": "Alison", 
+            "profLastName": "Holliday", 
             "reviews": [], 
             "searchArray": [
-                "computational", 
-                "linguistics", 
-                "natural", 
-                "language", 
-                "processing", 
-                "ling", 
-                "linguistics", 
-                "language", 
-                "020", 
-                "richard", 
-                "wicentowski"
+                "chemistry", 
+                "in", 
+                "context", 
+                "applying", 
+                "chemistry", 
+                "to", 
+                "society", 
+                "chem", 
+                "chemistry", 
+                "001", 
+                "alison", 
+                "holliday"
             ], 
-            "summary": "Prerequisites: CPSC 035 (or the equivalent)."
+            "summary": "This course covers a series of real-world issues with significant chemical content. Topics will be drawn from areas such as environmental chemistry, energy sources, materials, and human health. The course seeks to develop in students the ability to make informed decisions about issues that intersect with technology. Students may not receive credit for CHEM 001 if they have previously received credit for CHEM 010 or CHEM 010 HN.\n\nOne laboratory period every second week.\n\nNatural sciences and engineering practicum."
         }, 
         {
             "courseId": "070E", 
@@ -12436,7 +12515,13 @@
             "manuallyModified": false, 
             "profFirstName": "Timothy", 
             "profLastName": "Burke", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "DzFBMSWq8i"
+                }
+            ], 
             "searchArray": [
                 "networks", 
                 "simulations", 
@@ -16672,37 +16757,6 @@
             "summary": "EDUC 014 is required to receive Educational Studies Department credit for this course."
         }, 
         {
-            "courseId": "075", 
-            "courseName": "Electromagnetic Theory I and II", 
-            "courseType": "Course", 
-            "credit": 1.0, 
-            "crossList": [], 
-            "dept": "ENGR", 
-            "division": "NS", 
-            "hasLab": true, 
-            "isFYS": false, 
-            "isWritingCourse": false, 
-            "manuallyModified": false, 
-            "profFirstName": "Lynne", 
-            "profLastName": "Molter", 
-            "reviews": [], 
-            "searchArray": [
-                "electromagnetic", 
-                "theory", 
-                "i", 
-                "and", 
-                "ii", 
-                "engr", 
-                "engineering", 
-                "e", 
-                "engin", 
-                "075", 
-                "lynne", 
-                "molter"
-            ], 
-            "summary": "The static and dynamic treatment of engineering applications of Maxwell\u2019s equations will be explored. Topics include macroscopic field treatment of interactions with dielectric, conducting, and magnetic materials; analysis of forces and energy storage as the basis of circuit theory; electromagnetic waves in free space and guidance within media; plane waves and modal propagation; and polarization, reflection, refraction, diffraction, and interference. Offered in the fall semester of alternate years.\n\nENGR 076 will include advanced topics in optics and microwaves, such as laser operation, resonators, Gaussian beams, interferometry, anisotropy, nonlinear optics, modulation and detection. Laboratories for both courses will be oriented toward optical applications using lasers, fiber and integrated optical devices, modulators, nonlinear materials, and solid-state detectors."
-        }, 
-        {
             "courseId": "035C", 
             "courseName": "Social Movements and Nonviolent Power", 
             "courseType": "Course", 
@@ -17982,35 +18036,34 @@
             "summary": "This course will provide an introduction to sound design concepts for live performance. Course work will emphasize research, design development, collaboration, and the creative process. Laboratory work will focus on basic audio engineering, software, field recording, and documentation in a theatrical context. The course is designed to serve all students regardless of prior experience in theater production.\n\nFulfills a general requirement for all theater majors and minors."
         }, 
         {
-            "courseId": "001", 
-            "courseName": "Chemistry in Context: Applying Chemistry to Society", 
+            "courseId": "020", 
+            "courseName": "Computational Linguistics: Natural Language Processing", 
             "courseType": "Course", 
             "credit": 1.0, 
             "crossList": [], 
-            "dept": "CHEM", 
-            "division": "NS", 
+            "dept": "LING", 
+            "division": "SS", 
             "hasLab": true, 
             "isFYS": false, 
             "isWritingCourse": false, 
             "manuallyModified": false, 
-            "profFirstName": "Alison", 
-            "profLastName": "Holliday", 
+            "profFirstName": "Richard", 
+            "profLastName": "Wicentowski", 
             "reviews": [], 
             "searchArray": [
-                "chemistry", 
-                "in", 
-                "context", 
-                "applying", 
-                "chemistry", 
-                "to", 
-                "society", 
-                "chem", 
-                "chemistry", 
-                "001", 
-                "alison", 
-                "holliday"
+                "computational", 
+                "linguistics", 
+                "natural", 
+                "language", 
+                "processing", 
+                "ling", 
+                "linguistics", 
+                "language", 
+                "020", 
+                "richard", 
+                "wicentowski"
             ], 
-            "summary": "This course covers a series of real-world issues with significant chemical content. Topics will be drawn from areas such as environmental chemistry, energy sources, materials, and human health. The course seeks to develop in students the ability to make informed decisions about issues that intersect with technology. Students may not receive credit for CHEM 001 if they have previously received credit for CHEM 010 or CHEM 010 HN.\n\nOne laboratory period every second week.\n\nNatural sciences and engineering practicum."
+            "summary": "Prerequisites: CPSC 035 (or the equivalent)."
         }, 
         {
             "courseId": "015", 
@@ -18061,7 +18114,13 @@
             "manuallyModified": false, 
             "profFirstName": "Joseph", 
             "profLastName": "Hargadon", 
-            "reviews": [], 
+            "reviews": [
+                {
+                    "__type": "Pointer", 
+                    "className": "Review", 
+                    "objectId": "RJ2fHyKgIT"
+                }
+            ], 
             "searchArray": [
                 "financial", 
                 "accounting", 

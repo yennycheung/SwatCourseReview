@@ -14,25 +14,6 @@
 			<h1><strong>Swat</strong>CoRe</h1>
 			<h2>Helping you find the right classes at Swarthmore.</h2>
 			<form id="id-form-search" action="results.php" method="get">
-				<!--<div class="icon-menu">
-					<div class="sel" data-value="course-id">
-						<img class="icon" src="img/CourseId.png">
-						<p> Course ID </p>
-					</div>
-					<div class="sel" data-value="course-name">
-						<img class="icon" src="img/CourseName.png">
-						<p> Course Name </p>
-					</div>
-					<div class="sel" data-value="professor">
-						<img class="icon" src="img/Professor.png">
-						<p> Professor </p>
-					</div>
-					<div class="sel" data-value="department">
-						<img class="icon" src="img/Department.png">
-						<p> Department </p>
-					</div>
-					<input type="hidden" id="search-criteria" name="search-criteria" value="">
-				</div>-->
 			    <div class="row-select">
 				    <input type="string" name="search-string" id="search" placeholder="Search for your class">
 			    </div>
@@ -104,6 +85,7 @@ swatcoreteam@gmail.com</a> for any feedback.</p>
 	<!-- JS INCLUDES -->
 
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/ezValidation.js"></script>
 	<script type="text/javascript" src="js/parse-1.3.1.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>

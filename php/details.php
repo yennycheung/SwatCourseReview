@@ -71,7 +71,7 @@
                             <div class="add-review">
                                 <form action="details.php" id="id-form-add-review" method="post">
                                     <textarea rows="2" name="reviewText" id="id-review-text" required placeholder="Add a Review..."></textarea>
-                                    <input type="submit" type="button" class="add-review-btn" value="Add Review"/>
+                                    <input type="submit" type="button" id="id-add-review-btn" class="add-review-btn" value="Add Review"/>
                                 </form>
                             </div>
                         </div>

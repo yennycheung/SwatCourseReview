@@ -490,37 +490,6 @@
         "updatedAt": "2014-11-26T06:35:30.018Z"
     },
 	{
-        "courseId": "101",
-        "courseName": "Shakespeare*",
-        "courseType": "Seminar1",
-        "createdAt": "2014-11-26T06:35:30.028Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "ENGL",
-        "division": "HU",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "9S2bd3Ghik",
-        "profFirstName": "Nora",
-        "profLastName": "Johnson",
-        "reviews": [],
-        "searchArray": [
-            "shakespeare",
-            "engl",
-            "english",
-            "literature",
-            "english",
-            "literature",
-            "101",
-            "nora",
-            "johnson"
-        ],
-        "summary": "Study of Shakespeare as a dramatist. The emphasis is on the major plays, with a more rapid reading of much of the remainder of the canon. Students are advised to read widely among the plays before entering the seminar. Students who have taken ENGL 020 may take this seminar for 2 credits.",
-        "updatedAt": "2014-11-26T06:35:30.028Z"
-    },
-	{
         "courseId": "039",
         "courseName": "Existentialism",
         "courseType": "Course",
@@ -797,7 +766,13 @@
         "objectId": "XIaUWeTyhX",
         "profFirstName": "Peter",
         "profLastName": "Collings",
-        "reviews": [],
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "yh1TIZx4GR"
+            }
+        ],
         "searchArray": [
             "the",
             "earth’s",
@@ -817,7 +792,7 @@
             "collings"
         ],
         "summary": "A study of the complex interplay of factors influencing conditions on the surface of the Earth. Basic concepts from geology, oceanography, and atmospheric science lead to an examination of how the Earth’s climate has varied in the past, what changes are occurring now, and what the future may hold. Besides environmental effects, the economic, political, and ethical implications of global warming are explored, including possible ways to reduce climate change. Includes one laboratory every other week.\n\nNatural sciences and engineering practicum.",
-        "updatedAt": "2014-11-26T06:35:30.127Z"
+        "updatedAt": "2014-11-26T18:23:02.608Z"
     },
 	{
         "courseId": "096",
@@ -3597,6 +3572,41 @@
         "updatedAt": "2014-11-26T06:35:31.106Z"
     },
 	{
+        "courseId": "034",
+        "courseName": "Several-Variable Calculus",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:32.567Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "MATH",
+        "division": "NS",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "TsbequIcMz",
+        "profFirstName": "Rachel",
+        "profLastName": "Epstein",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "bFG5DzP8Zl"
+            }
+        ],
+        "searchArray": [
+            "severalvariable",
+            "calculus",
+            "math",
+            "mathematics",
+            "034",
+            "rachel",
+            "epstein"
+        ],
+        "summary": "Same topics as MATH 033 except in more depth using the concepts of linear algebra. The department strongly recommends that students take linear algebra first so that they are eligible for this course. Students may take only one of MATH 033, MATH 034, and MATH 035 for credit.\n\nPrerequisite: MATH 025, or 026; and MATH 027, 028, or 028S.\n\nEach semester.",
+        "updatedAt": "2014-11-26T18:18:24.857Z"
+    },
+	{
         "courseId": "007",
         "courseName": "Hebrew for Text Study I",
         "courseType": "Course",
@@ -5083,7 +5093,7 @@
         "hasLab": false,
         "isFYS": false,
         "isWritingCourse": true,
-        "manuallyModified": false,
+        "manuallyModified": true,
         "objectId": "8slbjZzwiQ",
         "profFirstName": "Thomas",
         "profLastName": "Whitman",
@@ -5106,8 +5116,8 @@
             "thomas",
             "whitman"
         ],
-        "summary": "An introduction to Beethoven’s compositions in various genres. We will consider the artistic, political, and social context in which he lived and examine his legacy among composers later in the 19th century (Berlioz, Chopin, the Schumanns, Brahms, Wagner, and Mahler).\n\nMUSI 008: Music and Gender in Fin-de-siecle Europe\n\n“Kill this woman!” So ends Salome, the opera that launched modern music. Women are onstage everywhere in fin de siècle European art music: seducing, redeeming, and dying. In this course we will examine these monstrous and beautiful representations and the discourses that surrounded them, interspersed with examinations of the real historical women who performed, listened to, and sometimes even wrote this music. Topics include Carmen, Madame Bovary, Salome, Lulu, women’s orchestras, and Ethel Smyth.\n\nNo pre-requisite. Eligible for GSST or German Studies credit.",
-        "updatedAt": "2014-11-26T18:07:23.284Z"
+        "summary": "An introduction to Beethoven’s compositions in various genres. We will consider the artistic, political, and social context in which he lived and examine his legacy among composers later in the 19th century (Berlioz, Chopin, the Schumanns, Brahms, Wagner, and Mahler).",
+        "updatedAt": "2014-11-27T06:06:14.743Z"
     },
 	{
         "courseId": "011",
@@ -6882,7 +6892,13 @@
         "objectId": "GnzZ2rs1S4",
         "profFirstName": "Don",
         "profLastName": "Shimamoto",
-        "reviews": [],
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "QsW6a8WW2r"
+            }
+        ],
         "searchArray": [
             "discrete",
             "mathematics",
@@ -6893,7 +6909,7 @@
             "shimamoto"
         ],
         "summary": "An introduction to noncontinuous mathematics. The key theme is how induction, iteration, and recursion can help one discover, compute, and prove solutions to various problems—often problems of interest in computer science, social science, or management. Topics will include mathematical induction and other methods of proof, recurrence relations, counting, and graph theory. Additional topics may include algorithms, and probability. There is a strong emphasis on good mathematical writing, especially proofs. While it does not use any calculus, MATH 029 is a more sophisticated course than MATH 15 or MATH 25; thus success in a calculus course demonstrates the mathematical maturity needed for MATH 29.\n\nPrerequisite: Strong knowledge of at least precalculus, as evidenced by taking another mathematics course numbered 15 or above, or through our placement examinations (see “Placement Procedure” section). Familiarity with some computer language is helpful but not necessary.",
-        "updatedAt": "2014-11-26T06:35:32.316Z"
+        "updatedAt": "2014-11-27T04:43:36.144Z"
     },
 	{
         "courseId": "013",
@@ -7596,35 +7612,6 @@
         ],
         "summary": "We are sorry, we didn't find a summary for this course.",
         "updatedAt": "2014-11-26T06:35:32.557Z"
-    },
-	{
-        "courseId": "034",
-        "courseName": "Several-Variable Calculus",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:32.567Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "MATH",
-        "division": "NS",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "TsbequIcMz",
-        "profFirstName": "Rachel",
-        "profLastName": "Epstein",
-        "reviews": [],
-        "searchArray": [
-            "severalvariable",
-            "calculus",
-            "math",
-            "mathematics",
-            "034",
-            "rachel",
-            "epstein"
-        ],
-        "summary": "Same topics as MATH 033 except in more depth using the concepts of linear algebra. The department strongly recommends that students take linear algebra first so that they are eligible for this course. Students may take only one of MATH 033, MATH 034, and MATH 035 for credit.\n\nPrerequisite: MATH 025, or 026; and MATH 027, 028, or 028S.\n\nEach semester.",
-        "updatedAt": "2014-11-26T06:35:32.567Z"
     },
 	{
         "courseId": "073",
@@ -8797,41 +8784,6 @@
         ],
         "summary": "Theory course.",
         "updatedAt": "2014-11-26T06:35:33.080Z"
-    },
-	{
-        "courseId": "031",
-        "courseName": "Introduction to Computer Systems",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:33.092Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "CPSC",
-        "division": "NS",
-        "hasLab": true,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "O8AktUnyNd",
-        "profFirstName": "Kevin",
-        "profLastName": "Webb",
-        "reviews": [],
-        "searchArray": [
-            "introduction",
-            "intro",
-            "to",
-            "computer",
-            "systems",
-            "cpsc",
-            "computer",
-            "science",
-            "cs",
-            "compsci",
-            "031",
-            "kevin",
-            "webb"
-        ],
-        "summary": "This course is a broad introduction to computer science that focuses on how a computer works and how programs run on computers. We examine the hardware and software components required to go from a program expressed in a high-level programming language like C or Python to the computer actually running the program. This course takes a bottom-up approach to discovering how a computer works. Topics include theoretical models of computation, data representation, machine organization, assembly and machine code, memory, I/O, the stack, the operating system, compilers and interpreters, processes and threads, and synchronization. This course also introduces parallel and distributed computing with a specific focus on shared memory parallelism for multicore and SMP systems.\n\nPrerequisites: CPSC 021 or equivalent.\n\nLab work required.\n\nNatural sciences and engineering practicum.\n\nEach semester. Staff.",
-        "updatedAt": "2014-11-26T06:35:33.092Z"
     },
 	{
         "courseId": "042D",
@@ -10093,44 +10045,6 @@
         "updatedAt": "2014-11-26T06:35:33.357Z"
     },
 	{
-        "courseId": "011",
-        "courseName": "Electrical Circuit Analysis",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:33.358Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "ENGR",
-        "division": "NS",
-        "hasLab": true,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "fNM6CaeOgW",
-        "profFirstName": "Lynne",
-        "profLastName": "Molter",
-        "reviews": [
-            {
-                "__type": "Pointer",
-                "className": "Review",
-                "objectId": "BYRF61KEyW"
-            }
-        ],
-        "searchArray": [
-            "electrical",
-            "circuit",
-            "analysis",
-            "engr",
-            "engineering",
-            "e",
-            "engin",
-            "011",
-            "lynne",
-            "molter"
-        ],
-        "summary": "The analysis of electrical circuits is introduced, including resistors, capacitors, inductors, op-amps, and diodes. The student will learn to develop equations describing electrical networks. Techniques are taught to solve differential equations resulting from linear circuits. Solutions will be formulated both in the time domain and in the frequency domain. There is a brief introduction to digital circuits and a laboratory.\n\nPrerequisite: MATH 025/026 or its equivalent, or permission of the instructor.\n\nNatural sciences and engineering practicum.",
-        "updatedAt": "2014-11-26T18:02:26.828Z"
-    },
-	{
         "courseId": "046",
         "courseName": "Lesbians and Gays in American Politics",
         "courseType": "Course",
@@ -11042,35 +10956,6 @@
         ],
         "summary": "We are sorry, we didn't find a summary for this course.",
         "updatedAt": "2014-11-26T06:35:33.398Z"
-    },
-	{
-        "courseId": "011",
-        "courseName": "Intermediate Microeconomics",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:33.399Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "ECON",
-        "division": "SS",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "pesfTQyrj7",
-        "profFirstName": "Ellen",
-        "profLastName": "Magenheim",
-        "reviews": [],
-        "searchArray": [
-            "intermediate",
-            "microeconomics",
-            "econ",
-            "economics",
-            "011",
-            "ellen",
-            "magenheim"
-        ],
-        "summary": "Provides a thorough grounding in intermediate-level microeconomics. The standard topics are covered: behavior of consumers and firms, structure and performance of markets, income distribution, general equilibrium, and welfare analysis. Students do extensive problem solving both to facilitate learning microeconomic theory and its applications.\n\nPrerequisites: ECON 001 and MATH 015.",
-        "updatedAt": "2014-11-26T06:35:33.399Z"
     },
 	{
         "courseId": "046",
@@ -13230,42 +13115,6 @@
         "updatedAt": "2014-11-26T06:35:33.528Z"
     },
 	{
-        "courseId": "021",
-        "courseName": "Special Project in Production Dramaturgy",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:33.529Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "THEA",
-        "division": "HU",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "om2v4TQckX",
-        "profFirstName": "James",
-        "profLastName": "Magruder",
-        "reviews": [],
-        "searchArray": [
-            "special",
-            "project",
-            "in",
-            "production",
-            "dramaturgy",
-            "thea",
-            "theater",
-            "theatre",
-            "theaters",
-            "drama",
-            "performance",
-            "021",
-            "james",
-            "magruder"
-        ],
-        "summary": "Production dramaturgy in connection with a production completed on or off campus. To be taken concurrently with or following THEA 001: Fundamentals of Dramaturgy. By individual arrangement between the student and the department faculty.\n\nPrerequisite: THEA 001\n\n0.5 or 1 credit.\n\nFall and spring semesters. Staff.",
-        "updatedAt": "2014-11-26T06:35:33.529Z"
-    },
-	{
         "courseId": "002B",
         "courseName": "Introduction to Mandarin Chinese",
         "courseType": "Language",
@@ -13731,7 +13580,13 @@
         "objectId": "dsqINlBGM1",
         "profFirstName": "Timothy",
         "profLastName": "Burke",
-        "reviews": [],
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "DzFBMSWq8i"
+            }
+        ],
         "searchArray": [
             "networks",
             "simulations",
@@ -13748,7 +13603,7 @@
             "burke"
         ],
         "summary": "This course first asks: is there a \"prehistory\" of the digital worth considering? It then moves on to the earliest cultural forms and practices associated with digital technology in the 1970s and 1980s, including video game consoles, bulletin boards (BBSs), homebrew computing, and hacking, moving on from there up to 2014. Students will engage in original research about how the history of digital culture shapes contemporary practices.",
-        "updatedAt": "2014-11-26T06:35:33.552Z"
+        "updatedAt": "2014-11-26T21:25:30.682Z"
     },
 	{
         "courseId": "102",
@@ -15406,6 +15261,121 @@
         "updatedAt": "2014-11-26T06:35:33.641Z"
     },
 	{
+        "courseId": "101",
+        "courseName": "Shakespeare*",
+        "courseType": "Seminar1",
+        "createdAt": "2014-11-26T06:35:30.028Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "ENGL",
+        "division": "HU",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "9S2bd3Ghik",
+        "profFirstName": "Nora",
+        "profLastName": "Johnson",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "8JPvwD1w4q"
+            }
+        ],
+        "searchArray": [
+            "shakespeare",
+            "engl",
+            "english",
+            "literature",
+            "english",
+            "literature",
+            "101",
+            "nora",
+            "johnson"
+        ],
+        "summary": "Study of Shakespeare as a dramatist. The emphasis is on the major plays, with a more rapid reading of much of the remainder of the canon. Students are advised to read widely among the plays before entering the seminar. Students who have taken ENGL 020 may take this seminar for 2 credits.",
+        "updatedAt": "2014-11-26T22:22:51.035Z"
+    },
+	{
+        "courseId": "011",
+        "courseName": "Electrical Circuit Analysis",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:33.358Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "ENGR",
+        "division": "NS",
+        "hasLab": true,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "fNM6CaeOgW",
+        "profFirstName": "Lynne",
+        "profLastName": "Molter",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "BYRF61KEyW"
+            },
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "WvIk3rwDj5"
+            }
+        ],
+        "searchArray": [
+            "electrical",
+            "circuit",
+            "analysis",
+            "engr",
+            "engineering",
+            "e",
+            "engin",
+            "011",
+            "lynne",
+            "molter"
+        ],
+        "summary": "The analysis of electrical circuits is introduced, including resistors, capacitors, inductors, op-amps, and diodes. The student will learn to develop equations describing electrical networks. Techniques are taught to solve differential equations resulting from linear circuits. Solutions will be formulated both in the time domain and in the frequency domain. There is a brief introduction to digital circuits and a laboratory.\n\nPrerequisite: MATH 025/026 or its equivalent, or permission of the instructor.\n\nNatural sciences and engineering practicum.",
+        "updatedAt": "2014-11-26T23:22:11.991Z"
+    },
+	{
+        "courseId": "011",
+        "courseName": "Intermediate Microeconomics",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:33.399Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "ECON",
+        "division": "SS",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "pesfTQyrj7",
+        "profFirstName": "Ellen",
+        "profLastName": "Magenheim",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "NBwJlLtbZ7"
+            }
+        ],
+        "searchArray": [
+            "intermediate",
+            "microeconomics",
+            "econ",
+            "economics",
+            "011",
+            "ellen",
+            "magenheim"
+        ],
+        "summary": "Provides a thorough grounding in intermediate-level microeconomics. The standard topics are covered: behavior of consumers and firms, structure and performance of markets, income distribution, general equilibrium, and welfare analysis. Students do extensive problem solving both to facilitate learning microeconomic theory and its applications.\n\nPrerequisites: ECON 001 and MATH 015.",
+        "updatedAt": "2014-11-27T01:21:12.474Z"
+    },
+	{
         "courseId": "070A",
         "courseName": "Poetry Workshop",
         "courseType": "Workshop",
@@ -16891,39 +16861,6 @@
         ],
         "summary": "The extraordinary diversity of life is the product of the ongoing processes of speciation and extinction. An understanding of the fossil record is essential to the formulation of robust hypotheses about evolutionary history and the relationships that tie together all forms of life.\n\nThis seminar will use independent research projects and a synthesis of primary literature to highlight the key role that paleontological data play in a range of biological research pursuits.\n\nPrerequisites: Any GROUP II or III course.\n\nLab required.\n\nNatural sciences and engineering practicum.\n\n*With permission of instructor, a student may take the discussion (NOT LAB) section of this seminar as 1 credit of BIOL 093.",
         "updatedAt": "2014-11-26T06:35:33.921Z"
-    },
-	{
-        "courseId": "032",
-        "courseName": "The Roman Republic",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:33.931Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "ANCH",
-        "division": "SS",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": true,
-        "manuallyModified": false,
-        "objectId": "cFZuI6nV4O",
-        "profFirstName": "Seth",
-        "profLastName": "Bernard",
-        "reviews": [],
-        "searchArray": [
-            "the",
-            "roman",
-            "republic",
-            "anch",
-            "ancient",
-            "history",
-            "ancient",
-            "history",
-            "032",
-            "seth",
-            "bernard"
-        ],
-        "summary": "This course studies Rome from its origins to the civil wars and the establishment of the principate of Augustus (753–27 B.C.E.). Topics include the legends of Rome's foundation and of its republican constitution; the conquest of the Mediterranean world, with special attention to the causes and pretexts for imperialism; the political system of the Late Republic, and its collapse into civil war.\n\nSocial sciences. 1 credit.",
-        "updatedAt": "2014-11-26T06:35:33.931Z"
     },
 	{
         "courseId": "054",
@@ -19769,35 +19706,6 @@
         "updatedAt": "2014-11-26T06:35:34.363Z"
     },
 	{
-        "courseId": "033",
-        "courseName": "Financial Accounting",
-        "courseType": "Course",
-        "createdAt": "2014-11-26T06:35:34.364Z",
-        "credit": 1,
-        "crossList": [],
-        "dept": "ECON",
-        "division": "SS",
-        "hasLab": false,
-        "isFYS": false,
-        "isWritingCourse": false,
-        "manuallyModified": false,
-        "objectId": "SpVlsGLTQM",
-        "profFirstName": "Joseph",
-        "profLastName": "Hargadon",
-        "reviews": [],
-        "searchArray": [
-            "financial",
-            "accounting",
-            "econ",
-            "economics",
-            "033",
-            "joseph",
-            "hargadon"
-        ],
-        "summary": "This course is designed to provide students with an intermediate level study of corporate accounting theory and practice as it falls within the framework of United States generally accepted accounting principles (GAAP). A major focus of the course is how accounting provides information to various user groups so that they can make more informed decisions. In particular, students will learn the steps in the accounting cycle leading up to the preparation and analysis of corporate financial statements. Students are also exposed to some of the fundamental differences between federal tax rules and external financial reporting requirements and are made aware of the organizations that influence and contribute to the body of knowledge in financial accounting. Finally, ethical issues that may be confronted by the accountant are also discussed throughout the course.\n\nPrerequisite: ECON 001.\n\nEach semester. Hargadon.",
-        "updatedAt": "2014-11-26T06:35:34.364Z"
-    },
-	{
         "courseId": "002",
         "courseName": "Digital Film Fundamentals",
         "courseType": "Course",
@@ -21284,5 +21192,156 @@
         ],
         "summary": "This course presents fundamental ideas in computer science while building skills in software development. Students implement algorithms as programs in a high-level programming language. Introducing object-oriented programming and data structures allows students to construct correct, understandable, and efficient algorithms. CPSC 031 and CPSC 035 present a deeper coverage of these topics. CPSC 021 is appropriate for all students who want to be able to write programs. It is the usual first course for computer science majors and minors. Students with Advanced Placement credit or extensive programming experience may be able to place out of this course. Students who think that they may fall into this latter category should consult with any computer science faculty member.\n\nLab work required, programming intensive. No prerequisites.\n\nNatural sciences and engineering practicum.\n\nEach semester. Staff.",
         "updatedAt": "2014-11-26T18:11:48.748Z"
+    },
+	{
+        "courseId": "031",
+        "courseName": "Introduction to Computer Systems",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:33.092Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "CPSC",
+        "division": "NS",
+        "hasLab": true,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "O8AktUnyNd",
+        "profFirstName": "Kevin",
+        "profLastName": "Webb",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "t7sN1tr9lC"
+            }
+        ],
+        "searchArray": [
+            "introduction",
+            "intro",
+            "to",
+            "computer",
+            "systems",
+            "cpsc",
+            "computer",
+            "science",
+            "cs",
+            "compsci",
+            "031",
+            "kevin",
+            "webb"
+        ],
+        "summary": "This course is a broad introduction to computer science that focuses on how a computer works and how programs run on computers. We examine the hardware and software components required to go from a program expressed in a high-level programming language like C or Python to the computer actually running the program. This course takes a bottom-up approach to discovering how a computer works. Topics include theoretical models of computation, data representation, machine organization, assembly and machine code, memory, I/O, the stack, the operating system, compilers and interpreters, processes and threads, and synchronization. This course also introduces parallel and distributed computing with a specific focus on shared memory parallelism for multicore and SMP systems.\n\nPrerequisites: CPSC 021 or equivalent.\n\nLab work required.\n\nNatural sciences and engineering practicum.\n\nEach semester. Staff.",
+        "updatedAt": "2014-11-26T18:28:03.466Z"
+    },
+	{
+        "courseId": "032",
+        "courseName": "The Roman Republic",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:33.931Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "ANCH",
+        "division": "SS",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": true,
+        "manuallyModified": false,
+        "objectId": "cFZuI6nV4O",
+        "profFirstName": "Seth",
+        "profLastName": "Bernard",
+        "reviews": [],
+        "searchArray": [
+            "the",
+            "roman",
+            "republic",
+            "anch",
+            "ancient",
+            "history",
+            "ancient",
+            "history",
+            "032",
+            "seth",
+            "bernard"
+        ],
+        "summary": "This course studies Rome from its origins to the civil wars and the establishment of the principate of Augustus (753–27 B.C.E.). Topics include the legends of Rome's foundation and of its republican constitution; the conquest of the Mediterranean world, with special attention to the causes and pretexts for imperialism; the political system of the Late Republic, and its collapse into civil war.\n\nSocial sciences. 1 credit.",
+        "updatedAt": "2014-11-28T06:14:07.448Z"
+    },
+	{
+        "courseId": "021",
+        "courseName": "Special Project in Production Dramaturgy",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:33.529Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "THEA",
+        "division": "HU",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "om2v4TQckX",
+        "profFirstName": "James",
+        "profLastName": "Magruder",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "MEeBXiiA50"
+            }
+        ],
+        "searchArray": [
+            "special",
+            "project",
+            "in",
+            "production",
+            "dramaturgy",
+            "thea",
+            "theater",
+            "theatre",
+            "theaters",
+            "drama",
+            "performance",
+            "021",
+            "james",
+            "magruder"
+        ],
+        "summary": "Production dramaturgy in connection with a production completed on or off campus. To be taken concurrently with or following THEA 001: Fundamentals of Dramaturgy. By individual arrangement between the student and the department faculty.\n\nPrerequisite: THEA 001\n\n0.5 or 1 credit.\n\nFall and spring semesters. Staff.",
+        "updatedAt": "2014-11-27T04:35:39.170Z"
+    },
+	{
+        "courseId": "033",
+        "courseName": "Financial Accounting",
+        "courseType": "Course",
+        "createdAt": "2014-11-26T06:35:34.364Z",
+        "credit": 1,
+        "crossList": [],
+        "dept": "ECON",
+        "division": "SS",
+        "hasLab": false,
+        "isFYS": false,
+        "isWritingCourse": false,
+        "manuallyModified": false,
+        "objectId": "SpVlsGLTQM",
+        "profFirstName": "Joseph",
+        "profLastName": "Hargadon",
+        "reviews": [
+            {
+                "__type": "Pointer",
+                "className": "Review",
+                "objectId": "RJ2fHyKgIT"
+            }
+        ],
+        "searchArray": [
+            "financial",
+            "accounting",
+            "econ",
+            "economics",
+            "033",
+            "joseph",
+            "hargadon"
+        ],
+        "summary": "This course is designed to provide students with an intermediate level study of corporate accounting theory and practice as it falls within the framework of United States generally accepted accounting principles (GAAP). A major focus of the course is how accounting provides information to various user groups so that they can make more informed decisions. In particular, students will learn the steps in the accounting cycle leading up to the preparation and analysis of corporate financial statements. Students are also exposed to some of the fundamental differences between federal tax rules and external financial reporting requirements and are made aware of the organizations that influence and contribute to the body of knowledge in financial accounting. Finally, ethical issues that may be confronted by the accountant are also discussed throughout the course.\n\nPrerequisite: ECON 001.\n\nEach semester. Hargadon.",
+        "updatedAt": "2014-11-28T05:02:38.574Z"
     }
 ] }
