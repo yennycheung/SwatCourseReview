@@ -31,8 +31,9 @@
 					Are your classes interesting? Engaging professors? 
 					Want to let your peers to know more about your classes? 
 					Share your experience with us!
-					This website is built and maintained by Yenny Cheung and Peng Zhao. 
-					Feel free to reach us at <a href="mailto:swatcoreteam@gmail.com?Subject=Feedback">
+					This website is built and maintained by Yenny Cheung and Peng Zhao 
+					(credits to Shivam Bhalla for his help in frontend development).
+					Please reach us at <a href="mailto:swatcoreteam@gmail.com?Subject=Feedback">
 swatcoreteam@gmail.com</a> for any feedback.</p>
 			</div>
 		</div>
