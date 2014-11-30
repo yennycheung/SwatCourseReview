@@ -15,7 +15,7 @@
 			<h2>Helping you find the right classes at Swarthmore.</h2>
 			<form id="id-form-search" action="results.php" method="get">
 			    <div class="row-select">
-				    <input type="string" name="search-string" id="search" placeholder="Search for your class">
+				    <input type="string" name="search-string" id="search" placeholder="Search for a class, professor, or department">
 			    </div>
 			</form>
 			<a href="signup.php" class="white btn searchbtn" id="signup-now" value="Sign Up Now!">Sign Up Now!</a>
