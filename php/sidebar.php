@@ -37,6 +37,7 @@
 					<option value="">&geq; 2</option>
 					<option value="">&geq; 3</option>
 					<option value="">&geq; 4</option>
+					<option value="">= 5</option>
 				</select>
 			</div>
 			<!--<input type="text" style="width:66%; height:35px; font-size:13px; padding:6px 10px; float:right;" placeholder="Ratings out of 5" >-->
