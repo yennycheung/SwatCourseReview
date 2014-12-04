@@ -7,13 +7,14 @@
 		
 		<section class="welcome bgParallax signup" data-speed="2">
 			<div class="wrapper">
-				<div class="contactscontainer">
+				<div class="container">
 					<div class="top"> <span>Sign Up Now!</span> </div>
 					<div class="bottom">
-						<div class="form">
+						<div class="form" id= "form-signup">
 						<form action="" method="post">
-						    <input type="email" placeholder="Email Address" name="email" required><br>
-							<input type="password" placeholder="Password" name="password" required><br>
+						    <input type="email" id="signup-email" placeholder="Email Address" name="email" required><br>
+							<input type="password" id="signup-password" placeholder="Password" name="password" required><br>
+							<p id="signup-error">Error message</p>	
 							<input value="Submit" type="submit" >
 						</form>
 					</div>

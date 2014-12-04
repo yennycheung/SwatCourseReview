@@ -107,7 +107,7 @@ jQuery(document).ready(function() {
 			},
 
 			error: function(error) {
-				displayError("We are sorry, our database gave an error. Come back later ...");
+				displayError("We are sorry, our database gave an error. Please come back later ...");
 				return;
 			}
 		});
@@ -281,7 +281,13 @@ jQuery(document).ready(function() {
 		}
 
 		// Display review summary
-		var reviewSummary = "" + cleanedArray.length + " Reviews";
+		var reviewSummary = "" + cleanedArray.length;
+		if (cleanedArray.length == 1){
+			reviewSummary += " Review";
+		}
+		else{
+			reviewSummary += " Reviews";
+		}
 		$("#js-populate-review-summary").html(reviewSummary);
 
 		if (cleanedArray.length > 0) {

@@ -279,8 +279,18 @@ jQuery(document).ready(function() {
 	}
 
 	function displaySearchResults(courseList) {
-		$("#resultText").html(courseList.length + " Courses Found");
+		var searchString = $("#data-search-query").text();	
+		// Strip php json_encode() extra quote.
+		searchString = searchString.substring(1, searchString.length-1);
+		searchString = searchString.trim();
 
+		if (searchString=='' || searchString==null){
+			$("#resultText").html(courseList.length + " courses found");
+		}
+		else{
+			$("#resultText").html(courseList.length + " courses found matching \"" + searchString + "\"");
+		}
+		
 		if (!courseList) {
 			return;
 		}
@@ -319,7 +329,7 @@ jQuery(document).ready(function() {
 		content += "<input type='hidden' class='input-course-id' name='course-object-id' value='"+courseObject.id+"'>";
 		content += "<div class='list' style='cursor:pointer;'>\n<span>";
 		content += ("<p><strong>" + courseObject.get("dept").toUpperCase() + " " + courseObject.get("courseId") + " </strong>");
-		content += ("| " + courseObject.get("courseName") + " | " + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
+		content += ("&nbsp|&nbsp&nbsp" + courseObject.get("courseName") + "&nbsp&nbsp|&nbsp&nbsp" + courseObject.get("profFirstName") + " " + courseObject.get("profLastName") + "</p>\n");
 		content += "<p> "+ courseObject.get("division") + getReviewSummary(courseObject) + "</p>";
 		content += "\n</span>\n</div>\n</form>";
 
@@ -340,9 +350,15 @@ jQuery(document).ready(function() {
 
 
 	function getReviewSummary(courseObject) {
-		var reviewSummary = " | " + courseObject.numberOfReviews + " Reviews";
+		var reviewSummary = "&nbsp&nbsp|&nbsp&nbsp" + courseObject.numberOfReviews;
+		if (courseObject.numberOfReviews == 1){
+			reviewSummary += " Review";
+		}
+		else{
+			reviewSummary += " Reviews";
+		}
 		if (courseObject.numberOfReviews > 0) {
-			reviewSummary += (" | Rating: " + courseObject.averageRating );
+			reviewSummary += ("&nbsp&nbsp|&nbsp&nbspRating: " + courseObject.averageRating );
 		}
 		return reviewSummary;
 	}

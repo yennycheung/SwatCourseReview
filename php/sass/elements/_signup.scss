@@ -2,7 +2,7 @@
 	height: auto;
 	.wrapper{
 		margin-top: 180px !important;
-		.contactscontainer {
+		.container {
 			width: 50%;
 			margin: auto;
 			background: rgba(255,255,255,.6);
@@ -17,7 +17,7 @@
 					text-align:left;
 					line-height: 48px;
 					color:$green;
-					padding-left:40px;
+					padding-left:20px;
 					padding-top: 20px;
 					font-size:25px;
 					margin-top: 20px;
@@ -25,11 +25,15 @@
 				}
 			}
 			.bottom {
-				padding: 40px;
-				p{
+				padding: 20px;
+				#signup-error{
 					font-weight: 300;
-					color: #777;
+					font-size: 13px;
+					color: red;
 					line-height: 1.5;
+					visibility: hidden;
 				}	
 			}
 		}
+	}
+}

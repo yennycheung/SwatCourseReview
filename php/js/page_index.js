@@ -51,7 +51,7 @@ jQuery(document).ready(function() {
 
     $("#id-form-login>div.col>input[type='submit']").popover({
         container:"body",
-        content:"Please login before search",
+        content:"Please login before searching",
         placement:"bottom",
         trigger:"manual",
         delay: {show: 0, hide: 1000}

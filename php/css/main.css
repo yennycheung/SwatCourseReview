@@ -1066,7 +1066,7 @@ form .row {
         line-height: 40px; }
       .details .content .row.top .rating {
         float: left;
-        margin-top: 32px;
+        margin-top: 28px;
         margin-left: 30px; }
       .details .content .row.top .right {
         float: right;
@@ -1227,6 +1227,38 @@ form .row {
         font-weight: 300;
         color: #777;
         line-height: 1.5; }
+
+.signup {
+  height: auto; }
+  .signup .wrapper {
+    margin-top: 180px !important; }
+    .signup .wrapper .container {
+      width: 50%;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      text-align: left; }
+      .signup .wrapper .container .top {
+        height: 80px; }
+        .signup .wrapper .container .top span {
+          display: block;
+          text-transform: uppercase;
+          text-align: left;
+          line-height: 48px;
+          color: #006655;
+          padding-left: 20px;
+          padding-top: 20px;
+          font-size: 25px;
+          margin-top: 20px;
+          font-weight: 500; }
+      .signup .wrapper .container .bottom {
+        padding: 20px; }
+        .signup .wrapper .container .bottom #signup-error {
+          font-weight: 300;
+          font-size: 13px;
+          color: red;
+          line-height: 1.5;
+          visibility: hidden; }
 
 @media (max-width: 1024px) {
   .home .banner {
