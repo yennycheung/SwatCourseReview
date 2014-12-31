@@ -18,7 +18,6 @@ jQuery(document).ready(function() {
         scrollPos = $(window).scrollTop();
     });
 
-    var start = 0, 
     done = 0,
     scrollPos = $(window).scrollTop();
     $(window).scroll(function() {  

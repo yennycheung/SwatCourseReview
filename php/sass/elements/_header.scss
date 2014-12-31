@@ -58,8 +58,29 @@
 			input[type="submit"] {
 				height:auto;
 			}
+			.password{
+				position: relative;
+			}
 			input {
 				margin-top: 2px;
+			}
+			a{
+				position: absolute;
+				top: 50%;
+				transform: translate(0, -40%);
+				@include shift(1.6);
+				border: $lightgreen 1px solid;
+				border-radius: 15px;
+				padding: 2px 7px !important;
+				color: $lightgreen;
+				font-size: 10px;
+				height: 20px;
+				width: 20px;
+				&:hover{
+					border-color: $green;
+					color: $green;
+					text-decoration: none;
+				}
 			}
 		}
 	}

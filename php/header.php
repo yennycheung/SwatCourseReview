@@ -34,10 +34,11 @@
 			<div class="login">
 				<form action="#" id="id-form-login">
 					<div class="col">
-						<input type="email" class="email" required placeholder="Email">	
+						<input type="email" class="email" required placeholder="Your Swatmail">	
 					</div>
 					<div class="col">
-						<input type="password" class="password" placeholder="Password" required>	
+						<input type="password" class="password" placeholder="Password" required>
+						<a href="forgotpassword.php" class="forgot-password-link">?</a>	
 					</div>	
 					<div class="col">
 						<input type="submit" value="login" data-toggle="popover">

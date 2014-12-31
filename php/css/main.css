@@ -360,26 +360,6 @@ th {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-body:before {
-  content: '';
-  display: inline-block;
-  background-image: deprecated-webkit-gradient(linear, left top, left bottom, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  background-image: -webkit-linear-gradient(left, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  background-image: -moz-linear-gradient(left, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  background-image: -ms-linear-gradient(left, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  background-image: -o-linear-gradient(left, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  background-image: linear-gradient(left, transparent 0, #EEE 0, #EEE 6.17215%, transparent 6.17215%, transparent 8.5298%, #EEE 8.5298%, #EEE 14.70196%, transparent 14.70196%, transparent 17.05961%, #EEE 17.05961%, #EEE 23.23176%, transparent 23.23176%, transparent 25.58941%, #EEE 25.58941%, #EEE 31.76157%, transparent 31.76157%, transparent 34.11922%, #EEE 34.11922%, #EEE 40.29137%, transparent 40.29137%, transparent 42.64902%, #EEE 42.64902%, #EEE 48.82117%, transparent 48.82117%, transparent 51.17883%, #EEE 51.17883%, #EEE 57.35098%, transparent 57.35098%, transparent 59.70863%, #EEE 59.70863%, #EEE 65.88078%, transparent 65.88078%, transparent 68.23843%, #EEE 68.23843%, #EEE 74.41059%, transparent 74.41059%, transparent 76.76824%, #EEE 76.76824%, #EEE 82.94039%, transparent 82.94039%, transparent 85.29804%, #EEE 85.29804%, #EEE 91.4702%, transparent 91.4702%, transparent 93.82785%, #EEE 93.82785%, #EEE 100.0%, transparent 100.0%);
-  height: 100%;
-  left: 0;
-  margin: 0 auto;
-  max-width: 68em;
-  opacity: 0.4;
-  position: fixed;
-  right: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: -1; }
-
 .list-fix {
   list-style: none; }
   .list-fix li {
@@ -627,34 +607,6 @@ select {
 form .row {
   margin-bottom: 10px; }
 
-.select-style {
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  width: 150px;
-  overflow: hidden;
-  background: #fff url("../img/dropdown.jpg") no-repeat top right;
-  opacity: 0.6;
-  height: 31px;
-  float: left; }
-
-.select-style select {
-  padding: 5px 8px;
-  width: 100%;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  background-image: none;
-  -webkit-appearance: none; }
-  .select-style select:focus {
-    outline: none; }
-
-.select label {
-  width: 30%;
-  float: left;
-  font-size: 14px;
-  color: #888;
-  font-weight: 500; }
-
 .header {
   width: 100%;
   height: 65px;
@@ -727,8 +679,26 @@ form .row {
           margin-right: 0; }
       .header .login form input[type="submit"] {
         height: auto; }
+      .header .login form .password {
+        position: relative; }
       .header .login form input {
         margin-top: 2px; }
+      .header .login form a {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -40%);
+        margin-left: 27.95444%;
+        border: rgba(0, 66, 55, 0.4) 1px solid;
+        border-radius: 15px;
+        padding: 2px 7px !important;
+        color: rgba(0, 66, 55, 0.4);
+        font-size: 10px;
+        height: 20px;
+        width: 20px; }
+        .header .login form a:hover {
+          border-color: #006655;
+          color: #006655;
+          text-decoration: none; }
 
 .footer {
   height: 60px;
@@ -1012,37 +982,33 @@ form .row {
     .results .realContent .list:hover {
       border-color: #006655; }
 
-.signup {
-  height: auto; }
-  .signup .wrapper {
-    margin-top: 180px !important; }
-    .signup .wrapper .contactscontainer {
-      width: 50%;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 8px;
-      text-align: left; }
-      .signup .wrapper .contactscontainer .top {
-        height: 80px; }
-        .signup .wrapper .contactscontainer .top span {
-          display: block;
-          text-transform: uppercase;
-          text-align: left;
-          line-height: 58px;
-          color: #006655;
-          padding-left: 40px;
-          padding-top: 20px;
-          font-size: 25px;
-          margin-top: 20px;
-          font-weight: 500; }
-      .signup .wrapper .contactscontainer .bottom {
-        padding: 30px; }
-        .signup .wrapper .contactscontainer .bottom input[type=submit] {
-          margin-bottom: 0; }
-        .signup .wrapper .contactscontainer .bottom p {
-          font-weight: 300;
-          color: #777;
-          line-height: 1.5; }
+.pagecontact .wrapper, .signup .wrapper, .forgotpassword .wrapper {
+  margin-top: 180px !important; }
+  .pagecontact .wrapper .container, .signup .wrapper .container, .forgotpassword .wrapper .container {
+    width: 70%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    text-align: left; }
+    .pagecontact .wrapper .container .top, .signup .wrapper .container .top, .forgotpassword .wrapper .container .top {
+      height: 80px; }
+      .pagecontact .wrapper .container .top h3, .signup .wrapper .container .top h3, .forgotpassword .wrapper .container .top h3 {
+        text-transform: uppercase;
+        line-height: 48px;
+        color: #006655;
+        padding-left: 20px;
+        padding-top: 20px;
+        font-size: 25px;
+        margin-top: 20px;
+        font-weight: 500; }
+    .pagecontact .wrapper .container .bottom, .signup .wrapper .container .bottom, .forgotpassword .wrapper .container .bottom {
+      padding: 20px; }
+      .pagecontact .wrapper .container .bottom .error-msg, .signup .wrapper .container .bottom .error-msg, .forgotpassword .wrapper .container .bottom .error-msg {
+        font-weight: 300;
+        font-size: 13px;
+        color: red;
+        line-height: 1.5;
+        visibility: hidden; }
 
 .details {
   background: #fff;
@@ -1202,63 +1168,6 @@ form .row {
         width: 23.23176%; }
         .details .content .two .right input[type="submit"]:last-child {
           margin-right: 0; }
-
-.pagecontact .wrapper {
-  margin-top: 180px !important; }
-  .pagecontact .wrapper .contactscontainer {
-    width: 70%;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 8px;
-    text-align: left; }
-    .pagecontact .wrapper .contactscontainer .top {
-      height: 80px; }
-      .pagecontact .wrapper .contactscontainer .top h3 {
-        text-transform: uppercase;
-        line-height: 58px;
-        font-weight: 500;
-        color: #006655;
-        padding-left: 30px;
-        padding-top: 30px;
-        margin-top: 30px; }
-    .pagecontact .wrapper .contactscontainer .bottom {
-      padding: 30px; }
-      .pagecontact .wrapper .contactscontainer .bottom p {
-        font-weight: 300;
-        color: #777;
-        line-height: 1.5; }
-
-.signup {
-  height: auto; }
-  .signup .wrapper {
-    margin-top: 180px !important; }
-    .signup .wrapper .container {
-      width: 50%;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 8px;
-      text-align: left; }
-      .signup .wrapper .container .top {
-        height: 80px; }
-        .signup .wrapper .container .top span {
-          display: block;
-          text-transform: uppercase;
-          text-align: left;
-          line-height: 48px;
-          color: #006655;
-          padding-left: 20px;
-          padding-top: 20px;
-          font-size: 25px;
-          margin-top: 20px;
-          font-weight: 500; }
-      .signup .wrapper .container .bottom {
-        padding: 20px; }
-        .signup .wrapper .container .bottom #signup-error {
-          font-weight: 300;
-          font-size: 13px;
-          color: red;
-          line-height: 1.5;
-          visibility: hidden; }
 
 @media (max-width: 1024px) {
   .home .banner {

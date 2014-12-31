@@ -5,8 +5,6 @@ $visual_grid: true;
 @import "neat/neat";
 @import "neat/neat-helpers"; 
 
-// Change the grid settings
-
 
 // Define your breakpoints
 
@@ -35,8 +33,6 @@ $mobile: new-breakpoint(max-width 480px 4);
 @import "elements/results";
 @import "elements/secondary";
 @import "elements/details";
-@import "elements/contacts";
-@import "elements/signup";
 
 // Responsive
 @import "responsive/quarries";

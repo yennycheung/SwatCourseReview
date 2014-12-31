@@ -73,35 +73,35 @@ form {
 		margin-bottom:10px;
 	}
 }
-.select-style {
-    border:1px solid #ddd;
-    border-radius: 3px;
-    width: 150px;
-    overflow: hidden;
-    background: #fff url("../img/dropdown.jpg") no-repeat top right;
-    opacity: 0.6;
-    height:31px;
-   	float:left;
-} 
+// .select-style {
+//     border:1px solid #ddd;
+//     border-radius: 3px;
+//     width: 150px;
+//     overflow: hidden;
+//     background: #fff url("../img/dropdown.jpg") no-repeat top right;
+//     opacity: 0.6;
+//     height:31px;
+//    	float:left;
+// } 
 
-.select-style { 
-	select {
-	    padding: 5px 8px;
-	    width: 100%;
-	    border: none;
-	    box-shadow: none;
-	    background: transparent;
-	    background-image: none;
-	    -webkit-appearance: none;
-	    &:focus {
-		    outline: none;
-		}
-	}
-}
-.select label {
-	width:30%;
-	float:left;
-	font-size:14px;
-	color:$gray;
-	font-weight:500;
-}
+// .select-style { 
+// 	select {
+// 	    padding: 5px 8px;
+// 	    width: 100%;
+// 	    border: none;
+// 	    box-shadow: none;
+// 	    background: transparent;
+// 	    background-image: none;
+// 	    -webkit-appearance: none;
+// 	    &:focus {
+// 		    outline: none;
+// 		}
+// 	}
+// }
+// .select label {
+// 	width:30%;
+// 	float:left;
+// 	font-size:14px;
+// 	color:$gray;
+// 	font-weight:500;
+// }

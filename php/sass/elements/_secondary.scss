@@ -1,39 +1,33 @@
-.signup {
-	height: auto;
+.pagecontact, .signup, .forgotpassword {
 	.wrapper{
 		margin-top: 180px !important;
-		.contactscontainer {
-			width: 50%;
+		.container {
+			width: 70%;
 			margin: auto;
 			background: rgba(255,255,255,.6);
 			border-radius: 8px;
 			text-align:left;
-
 			.top {
 				height: 80px;
-				span {
-					display: block;
+				h3 {
 					text-transform:uppercase;
-					text-align:left;
-					line-height: 58px;
+					line-height: 48px;
 					color:$green;
-					padding-left:40px;
+					padding-left:20px;
 					padding-top: 20px;
 					font-size:25px;
 					margin-top: 20px;
 					font-weight:500;
 				}
-
 			}
 			.bottom {
-				padding: 30px;
-				input[type=submit]{
-					margin-bottom: 0;
-				}
-				p{
+				padding: 20px;
+				.error-msg{
 					font-weight: 300;
-					color: #777;
+					font-size: 13px;
+					color: red;
 					line-height: 1.5;
+					visibility: hidden;
 				}	
 			}
 		}
