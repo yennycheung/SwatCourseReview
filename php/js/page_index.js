@@ -5,6 +5,8 @@
 jQuery(document).ready(function() {
     $(".intro-text").hide();
     $("#id-form-header-search").hide();
+    var height = $(window).innerHeight();
+    $(".welcome").css("height", height.toString());
 
     // Number increasing when scroll.
     var start = 0, 

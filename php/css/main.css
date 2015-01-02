@@ -601,11 +601,33 @@ input[type="checkbox"]:checked + label span {
   height: 23px;
   background: url(../img/checkbox.png) left bottom no-repeat; }
 
-select {
-  color: #777; }
-
 form .row {
   margin-bottom: 10px; }
+
+.select-style {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff url("../img/dropdown.jpg") no-repeat top right;
+  opacity: 0.6;
+  height: 31px;
+  float: left; }
+  .select-style select {
+    color: #777;
+    padding: 5px 8px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none; }
+    .select-style select:focus {
+      outline: none; }
+
+.select label {
+  float: left;
+  font-size: 14px;
+  color: #888;
+  font-weight: 500; }
 
 .header {
   width: 100%;
@@ -618,87 +640,84 @@ form .row {
   border-bottom: solid 1px #eee; }
   .header .wrapper {
     max-width: 95%; }
-  .header .logo {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
-    float: left; }
-    .header .logo:last-child {
-      margin-right: 0; }
-    .header .logo a:hover {
-      text-decoration: none; }
-    .header .logo span {
-      color: #333;
-      font-weight: 100;
-      font-size: 25px;
-      margin-top: 16px;
-      display: block; }
-      .header .logo span strong {
-        font-size: inherit;
-        font-weight: 700;
-        color: #006655; }
-  .header #id-form-header-search {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    margin-left: 11%; }
-    .header #id-form-header-search:last-child {
-      margin-right: 0; }
-    .header #id-form-header-search #header-search {
+    .header .wrapper .logo {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%;
+      float: left; }
+      .header .wrapper .logo:last-child {
+        margin-right: 0; }
+      .header .wrapper .logo a:hover {
+        text-decoration: none; }
+      .header .wrapper .logo span {
+        color: #333;
+        font-weight: 100;
+        font-size: 25px;
+        margin-top: 16px;
+        display: block; }
+        .header .wrapper .logo span strong {
+          font-size: inherit;
+          font-weight: 700;
+          color: #006655; }
+    .header .wrapper #id-form-header-search {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%;
+      margin-left: 11%; }
+      .header .wrapper #id-form-header-search:last-child {
+        margin-right: 0; }
+      .header .wrapper #id-form-header-search #header-search {
+        margin-top: 13px; }
+    .header .wrapper #id-btn-logout {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%;
+      float: right;
+      height: auto;
+      margin-right: 0;
       margin-top: 13px; }
-  .header #id-btn-logout {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 14.70196%;
-    float: right;
-    height: auto;
-    margin-right: 0;
-    margin-top: 13px; }
-    .header #id-btn-logout:last-child {
-      margin-right: 0; }
-  .header .login {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    margin-left: 34.11922%;
-    margin-top: 12px; }
-    .header .login:last-child {
-      margin-right: 0; }
-    .header .login form {
-      overflow: visible; }
-      .header .login form .col {
-        float: left;
-        display: block;
-        margin-right: 4.82916%;
-        width: 30.11389%; }
-        .header .login form .col:last-child {
-          margin-right: 0; }
-      .header .login form input[type="submit"] {
-        height: auto; }
-      .header .login form .password {
-        position: relative; }
-      .header .login form input {
-        margin-top: 2px; }
-      .header .login form a {
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -40%);
-        margin-left: 27.95444%;
-        border: rgba(0, 66, 55, 0.4) 1px solid;
-        border-radius: 15px;
-        padding: 2px 7px !important;
-        color: rgba(0, 66, 55, 0.4);
-        font-size: 10px;
-        height: 20px;
-        width: 20px; }
-        .header .login form a:hover {
-          border-color: #006655;
-          color: #006655;
-          text-decoration: none; }
+      .header .wrapper #id-btn-logout:last-child {
+        margin-right: 0; }
+    .header .wrapper .login {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 48.82117%;
+      margin-left: 34.11922%;
+      margin-top: 12px; }
+      .header .wrapper .login:last-child {
+        margin-right: 0; }
+      .header .wrapper .login form {
+        overflow: visible; }
+        .header .wrapper .login form .col {
+          position: relative;
+          float: left;
+          display: block;
+          margin-right: 4.82916%;
+          width: 30.11389%; }
+          .header .wrapper .login form .col:last-child {
+            margin-right: 0; }
+          .header .wrapper .login form .col input {
+            margin-top: 2px !important;
+            margin-bottom: 10px !important; }
+          .header .wrapper .login form .col a {
+            position: absolute;
+            top: 22%;
+            right: 10%;
+            border: rgba(0, 66, 55, 0.4) 1px solid;
+            border-radius: 15px;
+            padding: 2px 7px !important;
+            color: rgba(0, 66, 55, 0.4);
+            font-size: 10px;
+            height: 20px;
+            width: 20px; }
+            .header .wrapper .login form .col a:hover {
+              border-color: #006655;
+              color: #006655;
+              text-decoration: none; }
 
 .footer {
   height: 60px;
@@ -724,13 +743,12 @@ form .row {
   overflow: hidden; }
   .body section.welcome {
     width: 100%;
-    height: 100%;
     padding-bottom: 220px;
     background: url(../img/bg.jpg) repeat-y;
     background-size: cover;
     background-attachment: fixed; }
     .body section.welcome .wrapper {
-      margin-top: 240px;
+      margin-top: 17%;
       text-align: center;
       /*.icon-menu{
       	margin-top: 15px;
@@ -923,7 +941,6 @@ form .row {
 .sidebar {
   background: #eee;
   padding: 100px 30px 50px;
-  width: 325px;
   z-index: -1; }
   .sidebar form {
     padding-left: 15px; }
@@ -937,8 +954,6 @@ form .row {
     clear: both;
     float: left;
     margin-bottom: 20px; }
-  .sidebar .select label {
-    line-height: 31px; }
   .sidebar .select-style {
     width: 66%;
     float: right; }
@@ -983,7 +998,7 @@ form .row {
       border-color: #006655; }
 
 .pagecontact .wrapper, .signup .wrapper, .forgotpassword .wrapper {
-  margin-top: 180px !important; }
+  margin-top: 15% !important; }
   .pagecontact .wrapper .container, .signup .wrapper .container, .forgotpassword .wrapper .container {
     width: 70%;
     margin: auto;
@@ -1194,7 +1209,7 @@ form .row {
   .header .logo span {
     font-size: 20px;
     line-height: 65px;
-    margin: 0; }
+    margin: 0 !important; }
   .header input {
     width: 95%;
     margin-left: 20px; }

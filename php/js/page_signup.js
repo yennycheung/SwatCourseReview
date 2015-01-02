@@ -1,6 +1,8 @@
 jQuery(document).ready(function() {
 	$('.loader').fadeOut(500);
 	$('#footer-signup').hide();
+	var height = $(window).innerHeight();
+    $(".welcome").css("height", (height-60).toString());
 
 	$("#form-signup").submit( function (event) {
 		event.preventDefault();

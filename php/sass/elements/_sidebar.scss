@@ -1,7 +1,6 @@
 .sidebar {
 	background:#eee;
 	padding:100px 30px 50px;
-	width: 325px;
 	z-index: -1;
 	form{
 		padding-left: 15px;
@@ -18,11 +17,6 @@
 		clear:both;
 		float:left;
 		margin-bottom: 20px;
-	}
-	.select {
-		label {
-			line-height: 31px;
-		}
 	}
 	.select-style {
 		width: 66%;

@@ -3,7 +3,7 @@
 
 jQuery(document).ready(function() {
 	//validation
-	ezValidation.init();
+	//ezValidation.init();
 
 	// scroll to div
 	$('a[href*=#]:not([href=#])').click(function() {

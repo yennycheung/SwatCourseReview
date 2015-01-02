@@ -24,9 +24,9 @@ jQuery(document).ready(function() {
 
 	/* Backend Stuff */
 	function main() {
-
-		// If not logged in, display the remind string.
-		if ( !Parse.User.current()) {
+        var emailVerified = Parse.User.current().get("emailVerified");
+		// If not logged in or if email not verified, display the remind string.
+		if ( !Parse.User.current() || !emailVerified) {
 			displayError("Please log in before visiting this page!")
 			return;
 		}

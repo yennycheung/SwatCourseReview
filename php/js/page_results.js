@@ -17,8 +17,9 @@ jQuery(document).ready(function() {
 		// Disable all advanced search options before we get search results.
 		configureAdvancedSearch(false);
 
-		// If not logged in, display the remind string.
-		if ( !Parse.User.current()) {
+   		var emailVerified = Parse.User.current().get("emailVerified");
+		// If not logged in or email not verified, display the remind string.
+		if ( !Parse.User.current() || !emailVerified) {
 			displayError("Please login before visiting this page!");
 			return;
 		}

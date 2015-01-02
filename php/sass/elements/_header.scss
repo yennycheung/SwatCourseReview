@@ -10,79 +10,72 @@
 	
 	.wrapper {
 		max-width:95%;
-	}
-
-	.logo {
-		@include span-columns(2);
-		float:left;
-		a:hover {
-			text-decoration: none;
-		}
-		span {
-			color:#333;
-			font-weight: 100;
-			font-size: 25px;
-			margin-top:16px;
-			display:block;
-			strong {
-				font-size: inherit;
-				font-weight: 700;
-				color:$green;
+			.logo {
+			@include span-columns(2);
+			float:left;
+			a:hover {
+				text-decoration: none;
+			}
+			span {
+				color:#333;
+				font-weight: 100;
+				font-size: 25px;
+				margin-top:16px;
+				display:block;
+				strong {
+					font-size: inherit;
+					font-weight: 700;
+					color:$green;
+				}
 			}
 		}
-	}
-	#id-form-header-search{
+		#id-form-header-search{
+				@include span-columns(6);
+				margin-left: 11%;
+				#header-search{
+					margin-top: 13px;
+				}
+			}
+		#id-btn-logout{
+			@include span-columns(2);
+			float:right;
+			height: auto;
+			margin-right:0;
+			margin-top: 13px;
+		}
+		.login {
 			@include span-columns(6);
-			margin-left: 11%;
-			#header-search{
-				margin-top: 13px;
-			}
-		}
-	#id-btn-logout{
-		@include span-columns(2);
-		float:right;
-		height: auto;
-		margin-right:0;
-		margin-top: 13px;
-	}
-	.login {
-		@include span-columns(6);
-		@include shift(4);
-		margin-top:12px;
+			@include shift(4);
+			margin-top:12px;
 
-		form {
-			overflow: visible;
-			.col {
-				@include span-columns(2 of 6);
-			}
-			input[type="submit"] {
-				height:auto;
-			}
-			.password{
-				position: relative;
-			}
-			input {
-				margin-top: 2px;
-			}
-			a{
-				position: absolute;
-				top: 50%;
-				transform: translate(0, -40%);
-				@include shift(1.6);
-				border: $lightgreen 1px solid;
-				border-radius: 15px;
-				padding: 2px 7px !important;
-				color: $lightgreen;
-				font-size: 10px;
-				height: 20px;
-				width: 20px;
-				&:hover{
-					border-color: $green;
-					color: $green;
-					text-decoration: none;
+			form {
+				overflow: visible;
+				.col {
+					position: relative;
+					@include span-columns(2 of 6);
+					input{
+						margin-top: 2px !important;
+						margin-bottom: 10px !important;
+					}
+					a{
+						position: absolute;
+						top: 22%;
+						right: 10%;
+						border: $lightgreen 1px solid;
+						border-radius: 15px;
+						padding: 2px 7px !important;
+						color: $lightgreen;
+						font-size: 10px;
+						height: 20px;
+						width: 20px;
+						&:hover{
+							border-color: $green;
+							color: $green;
+							text-decoration: none;
+						}
+					}
 				}
 			}
 		}
 	}
 }
-
