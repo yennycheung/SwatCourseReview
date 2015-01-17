@@ -12,6 +12,7 @@ jQuery(document).ready(function() {
 		if (validateEmail(email, errorMsg) && validatePassword(password, errorMsg)){
 			Parse.User.signUp(email, password, {email:email, ACL: new Parse.ACL()}, {
 				 success: function(user) {
+				 	Parse.User.logOut();
 				 	errorMsg.text("Please check your Swatmail to verify your account.");
 				  	errorMsg.css({
 				 		color:"green",

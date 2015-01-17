@@ -16,15 +16,16 @@ jQuery(document).ready(function() {
 	function main() {
 		// Disable all advanced search options before we get search results.
 		configureAdvancedSearch(false);
-		
+
    		var emailVerified = Parse.User.current().get("emailVerified");
+   		var verified = Parse.User.current().get("verified");
 		// If not logged in or email not emailVerified, display the remind string.
 		if ( !Parse.User.current()) {
 			displayError("Please login before visiting this page!");
 			return;
 		}
 
-		if ( !emailVerified) {
+		if ( !(emailVerified||verified)) {
 			displayError("Please verify your account before visiting this page!");
 			return;
 		}
@@ -35,8 +36,7 @@ jQuery(document).ready(function() {
 			return;
 		} 
 
-		var height = $(window).height();
-		$('.table').css('height', height);
+		
 
 		// Extract search queries from DOM objects.
 		var searchString = $("#data-search-query").text();

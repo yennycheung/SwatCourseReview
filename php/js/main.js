@@ -4,6 +4,17 @@
 jQuery(document).ready(function() {
 	//validation
 	//ezValidation.init();
+    resizingElements();
+    $(window).resize(function(event){
+		resizingElements();
+	});
+
+	//resizing the elements
+	function resizingElements(){
+		var height = $(window).innerHeight();
+    	$(".welcome").css("height", height.toString());
+    	$('.table').css('height', height);
+	}
 
 	// scroll to div
 	$('a[href*=#]:not([href=#])').click(function() {
