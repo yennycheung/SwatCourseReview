@@ -16,11 +16,16 @@ jQuery(document).ready(function() {
 	function main() {
 		// Disable all advanced search options before we get search results.
 		configureAdvancedSearch(false);
-
+		
    		var emailVerified = Parse.User.current().get("emailVerified");
-		// If not logged in or email not verified, display the remind string.
-		if ( !Parse.User.current() || !emailVerified) {
+		// If not logged in or email not emailVerified, display the remind string.
+		if ( !Parse.User.current()) {
 			displayError("Please login before visiting this page!");
+			return;
+		}
+
+		if ( !emailVerified) {
+			displayError("Please verify your account before visiting this page!");
 			return;
 		}
 
@@ -287,6 +292,9 @@ jQuery(document).ready(function() {
 
 		if (searchString=='' || searchString==null){
 			$("#resultText").html(courseList.length + " courses found");
+		}
+		else if (courseList.length == 1) {
+			$("#resultText").html(courseList.length + " course found matching \"" + searchString + "\"");
 		}
 		else{
 			$("#resultText").html(courseList.length + " courses found matching \"" + searchString + "\"");

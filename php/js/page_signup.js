@@ -12,7 +12,11 @@ jQuery(document).ready(function() {
 		if (validateEmail(email, errorMsg) && validatePassword(password, errorMsg)){
 			Parse.User.signUp(email, password, {email:email, ACL: new Parse.ACL()}, {
 				 success: function(user) {
-				 	window.location.replace("index.php");
+				 	errorMsg.text("Please check your Swatmail to verify your account.");
+				  	errorMsg.css({
+				 		color:"green",
+				 		visibility:"visible"
+				 	});
 				  },
 				  error: function(user, error) {
 				  	errorMsg.text("*You already have an account. Please log in.");
@@ -25,7 +29,7 @@ jQuery(document).ready(function() {
 	});
 
 	function validateEmail(email, errorMsg){		
-		var emailValid = /[^@]@gmail.com/.test(email);
+		var emailValid = /[^@]@swarthmore.edu/.test(email);
 		if (!emailValid){
 			errorMsg.text("*Please enter your Swarthmore email address.");
 			errorMsg.css("visibility","visible");

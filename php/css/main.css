@@ -997,17 +997,17 @@ form .row {
     .results .realContent .list:hover {
       border-color: #006655; }
 
-.pagecontact .wrapper, .signup .wrapper, .forgotpassword .wrapper {
+.pagecontact .wrapper, .signup .wrapper, .forgotpassword .wrapper, .verifyemailsuccess .wrapper {
   margin-top: 15% !important; }
-  .pagecontact .wrapper .container, .signup .wrapper .container, .forgotpassword .wrapper .container {
+  .pagecontact .wrapper .container, .signup .wrapper .container, .forgotpassword .wrapper .container, .verifyemailsuccess .wrapper .container {
     width: 70%;
     margin: auto;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 8px;
     text-align: left; }
-    .pagecontact .wrapper .container .top, .signup .wrapper .container .top, .forgotpassword .wrapper .container .top {
+    .pagecontact .wrapper .container .top, .signup .wrapper .container .top, .forgotpassword .wrapper .container .top, .verifyemailsuccess .wrapper .container .top {
       height: 80px; }
-      .pagecontact .wrapper .container .top h3, .signup .wrapper .container .top h3, .forgotpassword .wrapper .container .top h3 {
+      .pagecontact .wrapper .container .top h3, .signup .wrapper .container .top h3, .forgotpassword .wrapper .container .top h3, .verifyemailsuccess .wrapper .container .top h3 {
         text-transform: uppercase;
         line-height: 48px;
         color: #006655;
@@ -1016,9 +1016,9 @@ form .row {
         font-size: 25px;
         margin-top: 20px;
         font-weight: 500; }
-    .pagecontact .wrapper .container .bottom, .signup .wrapper .container .bottom, .forgotpassword .wrapper .container .bottom {
+    .pagecontact .wrapper .container .bottom, .signup .wrapper .container .bottom, .forgotpassword .wrapper .container .bottom, .verifyemailsuccess .wrapper .container .bottom {
       padding: 20px; }
-      .pagecontact .wrapper .container .bottom .error-msg, .signup .wrapper .container .bottom .error-msg, .forgotpassword .wrapper .container .bottom .error-msg {
+      .pagecontact .wrapper .container .bottom .error-msg, .signup .wrapper .container .bottom .error-msg, .forgotpassword .wrapper .container .bottom .error-msg, .verifyemailsuccess .wrapper .container .bottom .error-msg {
         font-weight: 300;
         font-size: 13px;
         color: red;
@@ -1219,10 +1219,12 @@ form .row {
     font-size: 8px;
     padding: 8px; } }
 @media only screen and (max-width: 568px) and (min-width: 320px) {
-  .body section.welcome .wrapper h1 {
-    font-size: 50px; }
-  .body section.welcome .wrapper h2 {
-    font-size: 15px; }
+  .body section.welcome .wrapper {
+    margin-top: 240px; }
+    .body section.welcome .wrapper h1 {
+      font-size: 50px; }
+    .body section.welcome .wrapper h2 {
+      font-size: 15px; }
   .body section.hello h3 {
     font-size: 30px; }
   .body section.testimonial .wrapper {
