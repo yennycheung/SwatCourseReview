@@ -25,13 +25,14 @@ jQuery(document).ready(function() {
 	/* Backend Stuff */
 	function main() {
         var emailVerified = Parse.User.current().get("emailVerified");
+        var verified = Parse.User.current().get("verified");
 		// If not logged in or if email not verified, display the remind string.
 		if ( !Parse.User.current()) {
 			displayError("Please log in before visiting this page!")
 			return;
 		}
 
-		if ( !emailVerified) {
+		if ( !(emailVerified||verified)) {
 			displayError("Please verify your account before visiting this page!")
 			return;
 		}
