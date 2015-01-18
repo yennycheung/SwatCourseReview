@@ -610,11 +610,10 @@ form .row {
   overflow: hidden;
   background: #fff url("../img/dropdown.jpg") no-repeat top right;
   opacity: 0.6;
-  height: 31px;
   float: left; }
   .select-style select {
     color: #777;
-    padding: 5px 8px;
+    padding: 5px 34px 5px 8px;
     border: none;
     box-shadow: none;
     background: transparent;
@@ -955,7 +954,7 @@ form .row {
     float: left;
     margin-bottom: 20px; }
   .sidebar .select-style {
-    width: 66%;
+    width: auto;
     float: right; }
 
 .results {

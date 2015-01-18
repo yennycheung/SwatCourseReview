@@ -21,7 +21,7 @@
 			<label for="id-division-select">Division</label>
 			<div class="select-style">
 				<select name="" id="id-division-select">
-					<option value="">All</option>
+					<option value="">Show All Results</option>
 					<option value="">Natural Sciences</option>
 					<option value="">Humanities</option>
 					<option value="">Social Sciences</option>
@@ -29,10 +29,10 @@
 			</div>
 		</div>
 		<div class="row select">
-			<label for="id-rating-select" style="line-height:40px;">Rating</label>
+			<label for="id-rating-select" class="id-rating-select" style="line-height:40px;" >Rating</label>
 			<div class="select-style">
 				<select name="" id="id-rating-select">
-					<option value="">All</option>
+					<option value="">Show All Results</option>
 					<option value="">&geq; 1</option>
 					<option value="">&geq; 2</option>
 					<option value="">&geq; 3</option>
