@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
 
     // Number increasing when scroll.
     var start = 0, 
-    max = 52,
+    max = 60,
     scrollPos = $(window).scrollTop();
     $(window).scroll(function() {  
         if (scrollPos > 550 && scrollPos < 1655 && start < max) {
