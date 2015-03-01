@@ -8,8 +8,9 @@ jQuery(document).ready(function() {
 		event.preventDefault();
 		var email = document.getElementById("signup-email").value.trim();
 		var password = document.getElementById("signup-password").value;
+		var rePassword = document.getElementById("reenter-password").value;		//password from the re-enter input box
 		var errorMsg = $("#signup-error");
-		if (validateEmail(email, errorMsg) && validatePassword(password, errorMsg)){
+		if (validateEmail(email, errorMsg) && validatePassword(password, rePassword, errorMsg)){
 			Parse.User.signUp(email, password, {email:email, ACL: new Parse.ACL()}, {
 				 success: function(user) {
 				 	Parse.User.logOut();
@@ -39,10 +40,15 @@ jQuery(document).ready(function() {
 		return true;
 	}
 
-	function validatePassword(password, errorMsg){
+	function validatePassword(password, rePassword, errorMsg){				//changed the validate password function to see if two passwords match
 		var passwordLen = password.length;
 		if (passwordLen < 6){
 			errorMsg.text("*Password must be at least 6 characters");
+			errorMsg.css("visibility","visible");
+			return false;
+		}
+		if (password != rePassword){
+			errorMsg.text("*Two passwords does not match");
 			errorMsg.css("visibility","visible");
 			return false;
 		}

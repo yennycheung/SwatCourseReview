@@ -14,7 +14,7 @@
 						<form action="" method="post">
 						    <input type="email" id="signup-email" placeholder="Your Swatmail" name="email" required><br>
 							<input type="password" id="signup-password" placeholder="Password" name="password" required><br>
-							<input type="password" id="re-enter-signup-password" placeholder="Reenter password" name="reenter-password" required><br>
+							<input type="password" id="reenter-password" placeholder="Reenter password" name="reenter-password" required><br>
 							<p class="error-msg" id="signup-error">Error message</p>	
 							<input value="Submit" type="submit" >
 						</form>
