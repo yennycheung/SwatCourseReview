@@ -19,13 +19,13 @@
 		<section class="welcome bgParallax signup" data-speed="2">
 			<div class="wrapper">
 				<div class="container">
-					"<div class=\"top\"> <h3>Sign Up Now!</h3> </div>
+					<div class=\"top\"> <h3>Sign Up Now!</h3> </div>
 
 					<div class="bottom">
 						<div class="form" id= "form-signup">
 						<form action="signup.php" method="post">
 						    <input type="email" id="signup-email" placeholder="Your Swatmail" name="email" required><br>
-							<input type="password" id="password" placeholder="Password" name="password" required><br>
+							<input type="password" id="signup-password" placeholder="Password" name="password" required><br>
 							<input type="password" id="cpassword" placeholder="Confirm password" name="cpassword" required><br>
 							<p class="error-msg" id="signup-error">Error message</p>	
 							<?php if(isset($error_msg)) echo $error_msg."<br/>" ?>
