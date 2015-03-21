@@ -7,8 +7,8 @@ jQuery(document).ready(function() {
 	$("#form-signup").submit( function (event) {
 		event.preventDefault();
 		var email = document.getElementById("signup-email").value.trim();
-		var password = document.getElementById("signup-password").value;
-		var rePassword = document.getElementById("reenter-password").value;		//password from the re-enter input box
+		var password = document.getElementById("password").value;
+		var rePassword = document.getElementById("cpassword").value;		//password from the re-enter input box
 		var errorMsg = $("#signup-error");
 		if (validateEmail(email, errorMsg) && validatePassword(password, rePassword, errorMsg)){
 			Parse.User.signUp(email, password, {email:email, ACL: new Parse.ACL()}, {
