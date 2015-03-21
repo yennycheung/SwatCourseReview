@@ -1,3 +1,5 @@
+<!-- You have opened developer tools! Please enjoy the marvelous work of
+our many monkeys with typewriters.-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
