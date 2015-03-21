@@ -1,5 +1,4 @@
 <?php
-	//The form pass back to this page itself, read form
 	if(array_key_exists('password', $_POST) && array_key_exists('cpassword', $_POST)){
 		$password = $_POST['password'];
 		$cpassword = $_POST['cpassword'];
