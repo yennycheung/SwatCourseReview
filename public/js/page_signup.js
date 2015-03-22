@@ -41,8 +41,10 @@ jQuery(document).ready(function() {
 
 	function validatePassword(password, errorMsg){
 		var passwordLen = password.length;
-		if (passwordLen < 6){
-			errorMsg.text("*Password must be at least 6 characters");
+		var i = 0;
+		var checkLetter = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/; 
+		if (!checkLetter.test(password)){
+			errorMsg.text("*Password must contain at least 6 characters and one uppercase letter.");
 			errorMsg.css("visibility","visible");
 			return false;
 		}

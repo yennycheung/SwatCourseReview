@@ -6,6 +6,7 @@
 	<div class="loader"></div>	
 		
 		<section class="welcome bgParallax signup" data-speed="2">
+		<div id="password-req">
 			<div class="wrapper">
 				<div class="container">
 					<div class="top"> <h3>Sign Up Now!</h3> </div>
@@ -14,6 +15,7 @@
 						<form action="" method="post">
 						    <input type="email" id="signup-email" placeholder="Your Swatmail" name="email" required><br>
 							<input type="password" id="signup-password" placeholder="Password" name="password" required><br>
+							
 							<p class="error-msg" id="signup-error">Error message</p>	
 							<input value="Submit" type="submit" >
 						</form>
