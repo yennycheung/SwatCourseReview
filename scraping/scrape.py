@@ -417,6 +417,7 @@ class CourseDB:
 	def toJSON(self):
 		courseList = []
 		for course in self.uniqueKeyDictionary.values():
+			print "Converting course to JSON"
 			courseList.append(course.toJSONObject())
 
 		jsonObject = {}
@@ -669,7 +670,7 @@ def extractCoursesFromPages(pages, courseDB):
 			continue
 
 		# Loop through rows in table.
-		table = page[0]
+		table = page[0][0]
 		usefulRows = table[2:(len(table)-2)]
 		for row in usefulRows:
 			if getRowType(row) == ROW_TYPE_COURSE:
@@ -901,14 +902,15 @@ def main():
 	courseDB = readExportedData()
 
 	# Read fall 2014 schedule
-	scheduleTree = readScheduleFile("schedule-f14.html")
-	pages = scheduleTree.getroot().findall(".//page")
+	scheduleTree = readScheduleFile("schedule-f15.html")
+	pages = scheduleTree.getroot().findall(".//page") 
 
+	"""
 	# Read spring 2014 schedule
 	scheduleTree = readScheduleFile("schedule-s14.html")
 	for page in scheduleTree.getroot().findall(".//page"):
 		pages.append(page)
-	
+	"""
 
 	# Populate department search array
 	populateDeptSearchKey()
