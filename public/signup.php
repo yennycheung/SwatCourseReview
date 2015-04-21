@@ -1,3 +1,13 @@
+<?php
+	if(array_key_exists('password', $_POST) && array_key_exists('cpassword', $_POST)){
+		$password = $_POST['password'];
+		$cpassword = $_POST['cpassword'];
+		if($password !== $cpassword){
+			$error_msg = "Passwords do not match";
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -8,13 +18,16 @@
 		<section class="welcome bgParallax signup" data-speed="2">
 			<div class="wrapper">
 				<div class="container">
-					<div class="top"> <h3>Sign Up Now!</h3> </div>
+					<div class=\"top\"> <h3>Sign Up Now!</h3> </div>
+
 					<div class="bottom">
 						<div class="form" id= "form-signup">
-						<form action="" method="post">
+						<form action="signup.php" method="post">
 						    <input type="email" id="signup-email" placeholder="Your Swatmail" name="email" required><br>
 							<input type="password" id="signup-password" placeholder="Password" name="password" required><br>
+							<input type="password" id="cpassword" placeholder="Confirm password" name="cpassword" required><br>
 							<p class="error-msg" id="signup-error">Error message</p>	
+							<?php if(isset($error_msg)) echo $error_msg."<br/>" ?>
 							<input value="Submit" type="submit" >
 						</form>
 					</div>
